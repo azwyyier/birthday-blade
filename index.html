@@ -1,42 +1,63 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>Дни рождения</title>
 
 <style>
 
+/* =========================
+   ОСНОВНЫЕ НАСТРОЙКИ
+========================= */
+
 :root {
+
     --background: #f7f7f5;
+
     --white: #ffffff;
+
     --text: #171717;
+
     --muted: #777777;
+
     --border: #e4e4e1;
 
     --soon-background: #fff8d9;
+
     --soon-border: #eadb88;
+
     --soon-text: #79691e;
 
-    --danger-background: #fff0f0;
-    --danger-text: #b42318;
+    --danger: #d11;
 
     --radius: 14px;
 }
+
 
 * {
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
 }
 
+
 body {
+
     margin: 0;
 
     background: var(--background);
+
     color: var(--text);
 
     font-family:
@@ -49,11 +70,18 @@ body {
         sans-serif;
 
     font-size: 16px;
+
     line-height: 1.5;
 }
 
+
 .container {
-    width: min(900px, calc(100% - 32px));
+
+    width: min(
+        900px,
+        calc(100% - 32px)
+    );
+
     margin: 0 auto;
 }
 
@@ -63,6 +91,7 @@ body {
 ========================= */
 
 .header {
+
     padding: 42px 0 34px;
 
     background: var(--white);
@@ -71,7 +100,9 @@ body {
         1px solid var(--border);
 }
 
+
 .eyebrow {
+
     margin-bottom: 8px;
 
     color: var(--muted);
@@ -79,17 +110,22 @@ body {
     font-size: 14px;
 }
 
+
 h1 {
+
     margin: 0 0 10px;
 
-    font-size: clamp(34px, 6vw, 48px);
+    font-size:
+        clamp(34px, 6vw, 48px);
 
     line-height: 1.05;
 
     letter-spacing: -1.8px;
 }
 
+
 .header-description {
+
     max-width: 680px;
 
     margin: 0;
@@ -99,7 +135,9 @@ h1 {
     font-size: 15px;
 }
 
+
 .navigation {
+
     display: flex;
 
     gap: 18px;
@@ -107,7 +145,9 @@ h1 {
     margin-top: 22px;
 }
 
+
 .navigation a {
+
     color: var(--text);
 
     font-size: 14px;
@@ -123,14 +163,19 @@ h1 {
 ========================= */
 
 main {
+
     padding: 34px 0 70px;
 }
 
+
 section {
+
     margin-bottom: 42px;
 }
 
+
 h2 {
+
     margin: 0 0 16px;
 
     font-size: 23px;
@@ -142,21 +187,26 @@ h2 {
 
 
 /* =========================
-   SOON
+   БЛОК "СКОРО"
 ========================= */
 
 .soon-section {
+
     padding: 20px;
 
-    background: var(--soon-background);
+    background:
+        var(--soon-background);
 
     border:
         1px solid var(--soon-border);
 
-    border-radius: var(--radius);
+    border-radius:
+        var(--radius);
 }
 
+
 .soon-list {
+
     display: flex;
 
     flex-direction: column;
@@ -164,7 +214,9 @@ h2 {
     gap: 8px;
 }
 
+
 .soon-item {
+
     display: flex;
 
     align-items: center;
@@ -175,22 +227,29 @@ h2 {
 
     padding: 11px 14px;
 
-    background: rgba(255,255,255,.7);
+    background:
+        rgba(255,255,255,.7);
 
     border-radius: 9px;
 }
 
+
 .soon-name {
+
     font-weight: 650;
 }
 
+
 .soon-date {
+
     color: var(--soon-text);
 
     font-size: 14px;
 }
 
+
 .soon-days {
+
     flex-shrink: 0;
 
     color: var(--soon-text);
@@ -200,19 +259,25 @@ h2 {
 
 
 /* =========================
-   MONTHS
+   МЕСЯЦЫ
 ========================= */
 
 .months {
+
     display: grid;
 
     grid-template-columns:
-        repeat(2, minmax(0, 1fr));
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
 
     gap: 12px;
 }
 
+
 .month {
+
     overflow: hidden;
 
     background: var(--white);
@@ -220,10 +285,13 @@ h2 {
     border:
         1px solid var(--border);
 
-    border-radius: var(--radius);
+    border-radius:
+        var(--radius);
 }
 
+
 .month-title {
+
     padding: 14px 16px;
 
     border-bottom:
@@ -232,7 +300,9 @@ h2 {
     font-weight: 700;
 }
 
+
 .month-list {
+
     margin: 0;
 
     padding: 0;
@@ -240,7 +310,13 @@ h2 {
     list-style: none;
 }
 
+
+/* =========================
+   ЧЕЛОВЕК
+========================= */
+
 .person {
+
     display: grid;
 
     grid-template-columns:
@@ -255,20 +331,47 @@ h2 {
 
     border-bottom:
         1px solid #f0f0ee;
+
+    transition:
+        background .15s ease;
 }
 
+
 .person:last-child {
+
     border-bottom: 0;
 }
 
+
+.person:hover {
+
+    background: #fafaf8;
+}
+
+
 .person-day {
+
     color: var(--muted);
 
     font-variant-numeric:
         tabular-nums;
 }
 
+
+.person-name-wrapper {
+
+    display: flex;
+
+    align-items: center;
+
+    min-width: 0;
+
+    gap: 8px;
+}
+
+
 .person-name {
+
     min-width: 0;
 
     font-weight: 600;
@@ -276,7 +379,88 @@ h2 {
     overflow-wrap: anywhere;
 }
 
+
+.person-age {
+
+    grid-column: 2;
+
+    margin-top: -7px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   КРЕСТИК УДАЛЕНИЯ
+========================= */
+
+.delete-person {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 24px;
+
+    height: 24px;
+
+    padding: 0;
+
+    flex-shrink: 0;
+
+    background: transparent;
+
+    color: #999;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-size: 21px;
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    opacity: 0;
+
+    transition:
+        opacity .15s ease,
+        background .15s ease,
+        color .15s ease;
+}
+
+
+.person:hover .delete-person {
+
+    opacity: 1;
+}
+
+
+.delete-person:hover {
+
+    background: #eeeeec;
+
+    color: var(--danger);
+}
+
+
+.delete-person:active {
+
+    transform: scale(.92);
+}
+
+
 .month-empty {
+
     padding: 15px 16px;
 
     color: #aaa;
@@ -286,10 +470,11 @@ h2 {
 
 
 /* =========================
-   ADD FORM
+   ФОРМА
 ========================= */
 
 .add-section {
+
     padding: 24px;
 
     background: var(--white);
@@ -297,18 +482,24 @@ h2 {
     border:
         1px solid var(--border);
 
-    border-radius: var(--radius);
+    border-radius:
+        var(--radius);
 }
 
+
 .description {
-    margin: -6px 0 22px;
+
+    margin:
+        -6px 0 22px;
 
     color: var(--muted);
 
     font-size: 14px;
 }
 
+
 .form-row {
+
     display: grid;
 
     grid-template-columns:
@@ -321,7 +512,9 @@ h2 {
     margin-bottom: 16px;
 }
 
+
 label {
+
     display: flex;
 
     flex-direction: column;
@@ -333,8 +526,10 @@ label {
     font-weight: 600;
 }
 
+
 input,
 select {
+
     width: 100%;
 
     height: 43px;
@@ -352,20 +547,25 @@ select {
 
     outline: none;
 
-    font: inherit;
+    font-family: inherit;
 
     font-size: 14px;
 }
 
+
 input:focus,
 select:focus {
+
     border-color: #888;
 
     box-shadow:
-        0 0 0 3px rgba(0,0,0,.06);
+        0 0 0 3px
+        rgba(0,0,0,.06);
 }
 
+
 .actions {
+
     display: flex;
 
     flex-wrap: wrap;
@@ -375,7 +575,9 @@ select:focus {
     margin-top: 22px;
 }
 
+
 button {
+
     min-height: 42px;
 
     padding: 0 15px;
@@ -384,22 +586,33 @@ button {
 
     cursor: pointer;
 
-    font: inherit;
+    font-family: inherit;
 
     font-size: 14px;
 
     font-weight: 600;
 }
 
+
 .primary {
+
     background: #111;
 
     color: #fff;
 
-    border: 1px solid #111;
+    border:
+        1px solid #111;
 }
 
+
+.primary:hover {
+
+    background: #292929;
+}
+
+
 .secondary {
+
     background: #fff;
 
     color: var(--text);
@@ -408,21 +621,36 @@ button {
         1px solid #d8d8d5;
 }
 
-.danger {
-    background: var(--danger-background);
 
-    color: var(--danger-text);
+.secondary:hover {
+
+    background: #f5f5f3;
+}
+
+
+.danger {
+
+    background: #fff;
+
+    color: var(--text);
 
     border:
-        1px solid #f0caca;
+        1px solid #d8d8d5;
+}
+
+
+.danger:hover {
+
+    background: #f5f5f3;
 }
 
 
 /* =========================
-   INSTRUCTIONS
+   ИНСТРУКЦИЯ
 ========================= */
 
 .instructions ol {
+
     margin: 0;
 
     padding-left: 23px;
@@ -430,8 +658,23 @@ button {
     color: #444;
 }
 
+
 .instructions li {
+
     margin-bottom: 10px;
+}
+
+
+code {
+
+    padding:
+        2px 5px;
+
+    background: #eeeeec;
+
+    border-radius: 4px;
+
+    font-size: 13px;
 }
 
 
@@ -440,6 +683,7 @@ button {
 ========================= */
 
 footer {
+
     padding: 25px 0;
 
     color: var(--muted);
@@ -452,34 +696,47 @@ footer {
 
 
 /* =========================
-   MOBILE
+   МОБИЛЬНЫЕ
 ========================= */
 
 @media (max-width: 700px) {
 
     .container {
+
         width:
             calc(100% - 24px);
     }
 
+
     .header {
+
         padding:
             30px 0 26px;
     }
 
+
     .months {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
     }
+
 
     .form-row {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
     }
 
+
     .add-section {
+
         padding: 18px;
     }
 
+
     .soon-item {
+
         align-items: flex-start;
 
         flex-direction: column;
@@ -487,22 +744,43 @@ footer {
         gap: 5px;
     }
 
+
     .actions {
+
         flex-direction: column;
     }
 
-    button {
+
+    .actions > button {
+
         width: 100%;
+    }
+
+
+    /*
+       На телефоне нет hover,
+       поэтому крестик всегда виден.
+    */
+
+    .delete-person {
+
+        opacity: 1;
     }
 
 }
 
+
 </style>
+
 </head>
 
 
 <body>
 
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header class="header">
 
@@ -512,19 +790,23 @@ footer {
             Общий календарь
         </div>
 
+
         <h1>
             Дни рождения
         </h1>
 
+
         <p class="header-description">
             Список по месяцам. Добавляй людей на сайте.
         </p>
+
 
         <nav class="navigation">
 
             <a href="#add">
                 Добавить
             </a>
+
 
             <a href="#list">
                 К списку
@@ -540,208 +822,233 @@ footer {
 <main class="container">
 
 
-    <!-- =====================
-         SOON
-    ====================== -->
+<!-- =========================
+     СКОРО
+========================= -->
 
-    <section class="soon-section">
+<section class="soon-section">
 
-        <h2>
-            Скоро
-        </h2>
-
-        <div
-            id="soon-list"
-            class="soon-list"
-        >
-            Загрузка...
-        </div>
-
-    </section>
+    <h2>
+        Скоро
+    </h2>
 
 
-    <!-- =====================
-         ALL BIRTHDAYS
-    ====================== -->
-
-    <section id="list">
-
-        <h2>
-            Все дни рождения
-        </h2>
-
-        <div
-            id="months"
-            class="months"
-        ></div>
-
-    </section>
-
-
-    <!-- =====================
-         ADD
-    ====================== -->
-
-    <section
-        id="add"
-        class="add-section"
+    <div
+        id="soon-list"
+        class="soon-list"
     >
 
-        <h2>
-            Добавить день рождения
-        </h2>
+        Загрузка...
 
-        <p class="description">
-            Добавь имя, день и месяц.
-            Возраст указывать необязательно.
-        </p>
+    </div>
+
+</section>
 
 
-        <form id="birthday-form">
+<!-- =========================
+     ВСЕ ДНИ РОЖДЕНИЯ
+========================= -->
+
+<section id="list">
+
+    <h2>
+        Все дни рождения
+    </h2>
 
 
-            <div class="form-row">
+    <div
+        id="months"
+        class="months"
+    ></div>
+
+</section>
 
 
-                <label>
+<!-- =========================
+     ДОБАВЛЕНИЕ
+========================= -->
 
-                    Имя
+<section
+    id="add"
+    class="add-section"
+>
 
-                    <input
-                        id="name"
-                        type="text"
-                        placeholder="например Villi"
-                        autocomplete="off"
-                        required
-                    >
-
-                </label>
-
-
-                <label>
-
-                    День
-
-                    <input
-                        id="day"
-                        type="number"
-                        min="1"
-                        max="31"
-                        placeholder="7"
-                        required
-                    >
-
-                </label>
+    <h2>
+        Добавить день рождения
+    </h2>
 
 
-                <label>
+    <p class="description">
 
-                    Месяц
+        Добавь имя, день и месяц.
+        Возраст указывать необязательно.
 
-                    <select id="month">
-                    </select>
-
-                </label>
+    </p>
 
 
-            </div>
+    <form id="birthday-form">
 
 
-            <div class="form-row">
+        <div class="form-row">
 
 
-                <label>
+            <label>
 
-                    Возраст
+                Имя
 
-                    <input
-                        id="age"
-                        type="number"
-                        min="0"
-                        placeholder="17"
-                    >
-
-                </label>
-
-
-            </div>
-
-
-            <div class="actions">
-
-
-                <button
-                    type="submit"
-                    class="primary"
+                <input
+                    id="name"
+                    type="text"
+                    placeholder="например Villi"
+                    autocomplete="off"
+                    required
                 >
-                    Добавить в список
-                </button>
+
+            </label>
 
 
-                <button
-                    type="button"
-                    id="download"
-                    class="secondary"
+            <label>
+
+                День
+
+                <input
+                    id="day"
+                    type="number"
+                    min="1"
+                    max="31"
+                    placeholder="7"
+                    required
                 >
-                    Скачать JSON
-                </button>
+
+            </label>
 
 
-                <button
-                    type="button"
-                    id="reset"
-                    class="danger"
+            <label>
+
+                Месяц
+
+                <select id="month">
+                </select>
+
+            </label>
+
+
+        </div>
+
+
+        <div class="form-row">
+
+
+            <label>
+
+                Возраст
+
+                <input
+                    id="age"
+                    type="number"
+                    min="0"
+                    placeholder="17"
                 >
-                    Сбросить
-                </button>
+
+            </label>
 
 
-            </div>
+        </div>
 
 
-        </form>
-
-    </section>
+        <div class="actions">
 
 
-    <!-- =====================
-         INSTRUCTIONS
-    ====================== -->
+            <button
+                type="submit"
+                class="primary"
+            >
 
-    <section class="instructions">
+                Добавить в список
 
-        <h2>
-            Как пользоваться
-        </h2>
+            </button>
 
-        <ol>
 
-            <li>
-                Заполни имя, день и месяц.
-            </li>
+            <button
+                type="button"
+                id="download"
+                class="secondary"
+            >
 
-            <li>
-                При желании укажи возраст.
-            </li>
+                Скачать JSON
 
-            <li>
-                Нажми «Добавить в список».
-            </li>
+            </button>
 
-            <li>
-                Запись сохранится в браузере.
-            </li>
 
-            <li>
-                Чтобы обновить общий JSON,
-                скачай его и замени
-                <code>data/birthdays.json</code>
-                на GitHub.
-            </li>
+            <button
+                type="button"
+                id="reset"
+                class="danger"
+            >
 
-        </ol>
+                Сбросить
 
-    </section>
+            </button>
+
+
+        </div>
+
+
+    </form>
+
+</section>
+
+
+<!-- =========================
+     ИНСТРУКЦИЯ
+========================= -->
+
+<section class="instructions">
+
+    <h2>
+        Как пользоваться
+    </h2>
+
+
+    <ol>
+
+        <li>
+            Заполни имя, день и месяц.
+        </li>
+
+
+        <li>
+            При желании укажи возраст.
+        </li>
+
+
+        <li>
+            Нажми «Добавить в список».
+        </li>
+
+
+        <li>
+            Запись сохранится в браузере.
+        </li>
+
+
+        <li>
+            Для обновления общего JSON
+            скачай файл и замени
+            <code>data/birthdays.json</code>
+            на GitHub.
+        </li>
+
+
+        <li>
+            Чтобы удалить человека,
+            наведи на его имя и нажми
+            крестик ×.
+        </li>
+
+    </ol>
+
+</section>
 
 
 </main>
@@ -762,26 +1069,42 @@ footer {
 
 
 /* =========================
-   SETTINGS
+   МЕСЯЦЫ
 ========================= */
 
 const MONTHS = [
 
     "Январь",
+
     "Февраль",
+
     "Март",
+
     "Апрель",
+
     "Май",
+
     "Июнь",
+
     "Июль",
+
     "Август",
+
     "Сентябрь",
+
     "Октябрь",
+
     "Ноябрь",
+
     "Декабрь"
 
 ];
 
+
+/*
+   Ключ, под которым сайт
+   хранит изменения браузера.
+*/
 
 const STORAGE_KEY =
     "birthday-blade-data";
@@ -791,12 +1114,12 @@ let birthdays = [];
 
 
 /* =========================
-   START
+   ЗАПУСК
 ========================= */
 
 document.addEventListener(
     "DOMContentLoaded",
-    async () => {
+    async function () {
 
         createMonthSelect();
 
@@ -804,6 +1127,10 @@ document.addEventListener(
 
         render();
 
+
+        /*
+           Добавление человека.
+        */
 
         document
             .getElementById("birthday-form")
@@ -813,6 +1140,10 @@ document.addEventListener(
             );
 
 
+        /*
+           Скачать JSON.
+        */
+
         document
             .getElementById("download")
             .addEventListener(
@@ -821,11 +1152,16 @@ document.addEventListener(
             );
 
 
+        /*
+           Сбросить теперь означает
+           только очистить ФОРМУ.
+        */
+
         document
             .getElementById("reset")
             .addEventListener(
                 "click",
-                resetData
+                resetForm
             );
 
     }
@@ -833,15 +1169,14 @@ document.addEventListener(
 
 
 /* =========================
-   LOAD DATA
+   ЗАГРУЗКА ДАННЫХ
 ========================= */
 
 async function loadBirthdays() {
 
-
     /*
-       Сначала пытаемся загрузить
-       birthdays.json из GitHub.
+       Сначала загружаем общий
+       birthdays.json.
     */
 
     try {
@@ -863,7 +1198,8 @@ async function loadBirthdays() {
 
             if (Array.isArray(data)) {
 
-                birthdays = cleanData(data);
+                birthdays =
+                    cleanData(data);
 
             }
 
@@ -880,8 +1216,8 @@ async function loadBirthdays() {
 
 
     /*
-       Если в этом браузере уже есть
-       локальные изменения — используем их.
+       Если в браузере есть локальный
+       список — используем его.
     */
 
     const local =
@@ -917,11 +1253,6 @@ async function loadBirthdays() {
     }
 
 
-    /*
-       Если вообще нет данных,
-       создаём пустой список.
-    */
-
     if (!Array.isArray(birthdays)) {
 
         birthdays = [];
@@ -932,13 +1263,14 @@ async function loadBirthdays() {
 
 
 /* =========================
-   CLEAN DATA
+   ОЧИСТКА ДАННЫХ
 ========================= */
 
 function cleanData(data) {
 
     return data
-        .filter(person => {
+
+        .filter(function (person) {
 
             return (
                 person &&
@@ -948,7 +1280,9 @@ function cleanData(data) {
             );
 
         })
-        .map(person => {
+
+
+        .map(function (person) {
 
             const cleaned = {
 
@@ -965,8 +1299,11 @@ function cleanData(data) {
 
 
             /*
-               Возраст сохраняем,
-               если он существует.
+               Старое поле note
+               намеренно НЕ переносим.
+
+               Поэтому "скоро"
+               больше нигде не появится.
             */
 
             if (
@@ -984,18 +1321,13 @@ function cleanData(data) {
                     age >= 0
                 ) {
 
-                    cleaned.age = age;
+                    cleaned.age =
+                        age;
 
                 }
 
             }
 
-
-            /*
-               note намеренно НЕ переносим.
-               Старое поле "скоро" полностью
-               удаляется из данных сайта.
-            */
 
             return cleaned;
 
@@ -1005,7 +1337,7 @@ function cleanData(data) {
 
 
 /* =========================
-   MONTH SELECT
+   СПИСОК МЕСЯЦЕВ
 ========================= */
 
 function createMonthSelect() {
@@ -1017,7 +1349,7 @@ function createMonthSelect() {
 
 
     MONTHS.forEach(
-        (month, index) => {
+        function (month, index) {
 
             const option =
                 document.createElement(
@@ -1044,7 +1376,7 @@ function createMonthSelect() {
 
 
 /* =========================
-   RENDER
+   ОБЩИЙ RENDER
 ========================= */
 
 function render() {
@@ -1057,7 +1389,7 @@ function render() {
 
 
 /* =========================
-   MONTHS
+   МЕСЯЦЫ
 ========================= */
 
 function renderMonths() {
@@ -1072,7 +1404,7 @@ function renderMonths() {
 
 
     MONTHS.forEach(
-        (monthName, index) => {
+        function (monthName, index) {
 
             const monthNumber =
                 index + 1;
@@ -1080,15 +1412,19 @@ function renderMonths() {
 
             const people =
                 birthdays
-                    .filter(person => {
+                    .filter(
+                        function (person) {
 
-                        return (
-                            Number(person.month)
-                            ===
-                            monthNumber
-                        );
+                            return (
+                                Number(
+                                    person.month
+                                )
+                                ===
+                                monthNumber
+                            );
 
-                    })
+                        }
+                    )
                     .sort(
                         compareBirthdays
                     );
@@ -1154,7 +1490,7 @@ function renderMonths() {
 
 
             people.forEach(
-                person => {
+                function (person) {
 
                     list.appendChild(
                         createPerson(
@@ -1187,7 +1523,7 @@ function renderMonths() {
 
 
 /* =========================
-   PERSON
+   СОЗДАНИЕ ЧЕЛОВЕКА
 ========================= */
 
 function createPerson(person) {
@@ -1201,6 +1537,10 @@ function createPerson(person) {
     item.className =
         "person";
 
+
+    /* =====================
+       ДЕНЬ
+    ====================== */
 
     const day =
         document.createElement(
@@ -1218,6 +1558,20 @@ function createPerson(person) {
         ).padStart(2, "0");
 
 
+    /* =====================
+       ИМЯ
+    ====================== */
+
+    const nameWrapper =
+        document.createElement(
+            "div"
+        );
+
+
+    nameWrapper.className =
+        "person-name-wrapper";
+
+
     const name =
         document.createElement(
             "div"
@@ -1232,20 +1586,87 @@ function createPerson(person) {
         person.name;
 
 
+    /* =====================
+       КНОПКА УДАЛЕНИЯ
+    ====================== */
+
+    const deleteButton =
+        document.createElement(
+            "button"
+        );
+
+
+    deleteButton.type =
+        "button";
+
+
+    deleteButton.className =
+        "delete-person";
+
+
+    deleteButton.textContent =
+        "×";
+
+
+    deleteButton.title =
+        "Удалить этого человека";
+
+
+    deleteButton.setAttribute(
+        "aria-label",
+        `Удалить ${person.name}`
+    );
+
+
+    deleteButton.addEventListener(
+        "click",
+        function (event) {
+
+            /*
+               Не даём событию
+               делать лишние действия.
+            */
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+
+            deleteBirthday(
+                person
+            );
+
+        }
+    );
+
+
+    nameWrapper.appendChild(
+        name
+    );
+
+
+    nameWrapper.appendChild(
+        deleteButton
+    );
+
+
+    /* =====================
+       ДОБАВЛЯЕМ В СТРОКУ
+    ====================== */
+
     item.appendChild(
         day
     );
 
 
     item.appendChild(
-        name
+        nameWrapper
     );
 
 
-    /*
-       Возраст показываем только если
-       он действительно указан.
-    */
+    /* =====================
+       ВОЗРАСТ
+    ====================== */
 
     if (
         person.age !== undefined
@@ -1259,14 +1680,6 @@ function createPerson(person) {
 
         age.className =
             "person-age";
-
-
-        age.style.color =
-            "#777";
-
-
-        age.style.fontSize =
-            "13px";
 
 
         age.textContent =
@@ -1286,7 +1699,73 @@ function createPerson(person) {
 
 
 /* =========================
-   SOON
+   УДАЛЕНИЕ ОДНОГО ЧЕЛОВЕКА
+========================= */
+
+function deleteBirthday(person) {
+
+    const confirmed =
+        confirm(
+            `Удалить ${person.name} из списка?`
+        );
+
+
+    if (!confirmed) {
+
+        return;
+
+    }
+
+
+    /*
+       Удаляем только конкретного
+       человека по имени + дате.
+    */
+
+    birthdays =
+        birthdays.filter(
+            function (item) {
+
+                return !(
+                    String(item.name)
+                    ===
+                    String(person.name)
+
+                    &&
+
+                    Number(item.day)
+                    ===
+                    Number(person.day)
+
+                    &&
+
+                    Number(item.month)
+                    ===
+                    Number(person.month)
+                );
+
+            }
+        );
+
+
+    /*
+       Сохраняем новый список.
+    */
+
+    saveLocal();
+
+
+    /*
+       Обновляем весь интерфейс.
+    */
+
+    render();
+
+}
+
+
+/* =========================
+   СКОРО
 ========================= */
 
 function renderSoon() {
@@ -1326,46 +1805,57 @@ function renderSoon() {
 
 
     /*
-       Для каждого человека
-       определяем следующий ДР.
+       Рассчитываем следующий
+       день рождения каждого человека.
     */
 
     const upcoming =
         birthdays
-            .map(person => {
 
-                const date =
-                    nextBirthday(
-                        person,
-                        today
-                    );
+            .map(
+                function (person) {
 
-
-                const days =
-                    Math.round(
-                        (
-                            date.getTime()
-                            -
-                            today.getTime()
-                        )
-                        /
-                        86400000
-                    );
+                    const date =
+                        nextBirthday(
+                            person,
+                            today
+                        );
 
 
-                return {
+                    const days =
+                        Math.round(
+                            (
+                                date.getTime()
+                                -
+                                today.getTime()
+                            )
+                            /
+                            86400000
+                        );
 
-                    person,
 
-                    date,
+                    return {
 
-                    days
+                        person:
 
-                };
+                            person,
 
-            })
+                        date:
+
+                            date,
+
+                        days:
+
+                            days
+
+                    };
+
+                }
+            )
+
+
             .sort(
-                (a, b) => {
+                function (a, b) {
 
                     if (
                         a.days !==
@@ -1373,8 +1863,7 @@ function renderSoon() {
                     ) {
 
                         return (
-                            a.days
-                            -
+                            a.days -
                             b.days
                         );
 
@@ -1392,8 +1881,9 @@ function renderSoon() {
 
     /*
        ВАЖНО:
-       берём только одного человека —
-       ближайший день рождения.
+
+       Показываем ТОЛЬКО
+       ближайшего человека.
     */
 
     const next =
@@ -1488,7 +1978,7 @@ function renderSoon() {
 
 
 /* =========================
-   NEXT BIRTHDAY
+   СЛЕДУЮЩИЙ ДЕНЬ РОЖДЕНИЯ
 ========================= */
 
 function nextBirthday(
@@ -1544,7 +2034,7 @@ function nextBirthday(
 
 
 /* =========================
-   ADD BIRTHDAY
+   ДОБАВЛЕНИЕ
 ========================= */
 
 function addBirthday(event) {
@@ -1581,6 +2071,10 @@ function addBirthday(event) {
             .value;
 
 
+    /* =====================
+       ПРОВЕРКА ИМЕНИ
+    ====================== */
+
     if (!name) {
 
         alert(
@@ -1592,6 +2086,10 @@ function addBirthday(event) {
 
     }
 
+
+    /* =====================
+       ПРОВЕРКА ДНЯ
+    ====================== */
 
     const maxDay =
         new Date(
@@ -1619,16 +2117,30 @@ function addBirthday(event) {
     }
 
 
+    /* =====================
+       СОЗДАЁМ ЗАПИСЬ
+    ====================== */
+
     const person = {
 
-        name,
+        name:
 
-        day,
+            name,
 
-        month
+        day:
+
+            day,
+
+        month:
+
+            month
 
     };
 
+
+    /* =====================
+       ВОЗРАСТ
+    ====================== */
 
     if (
         ageInput !== ""
@@ -1660,6 +2172,10 @@ function addBirthday(event) {
     }
 
 
+    /* =====================
+       ДОБАВЛЯЕМ
+    ====================== */
+
     birthdays.push(
         person
     );
@@ -1676,12 +2192,21 @@ function addBirthday(event) {
     render();
 
 
+    /*
+       Очищаем форму после
+       успешного добавления.
+    */
+
     document
         .getElementById(
             "birthday-form"
         )
         .reset();
 
+
+    /*
+       Возвращаемся к списку.
+    */
 
     window.location.hash =
         "list";
@@ -1690,7 +2215,7 @@ function addBirthday(event) {
 
 
 /* =========================
-   LOCAL STORAGE
+   СОХРАНЕНИЕ
 ========================= */
 
 function saveLocal() {
@@ -1700,7 +2225,7 @@ function saveLocal() {
         STORAGE_KEY,
 
         JSON.stringify(
-            birthdays,
+            cleanData(birthdays),
             null,
             2
         )
@@ -1711,15 +2236,10 @@ function saveLocal() {
 
 
 /* =========================
-   DOWNLOAD JSON
+   СКАЧАТЬ JSON
 ========================= */
 
 function downloadJSON() {
-
-    /*
-       Перед скачиванием ещё раз
-       очищаем старые поля.
-    */
 
     const clean =
         cleanData(
@@ -1784,41 +2304,44 @@ function downloadJSON() {
 
 
 /* =========================
-   RESET
+   СБРОС ФОРМЫ
 ========================= */
 
-function resetData() {
+function resetForm() {
 
-    const confirmed =
-        confirm(
-            "Сбросить локальные изменения?"
+    /*
+       ВАЖНО:
+
+       Эта функция НЕ трогает
+       birthdays и localStorage.
+
+       Она очищает только поля
+       формы добавления.
+    */
+
+    const form =
+        document.getElementById(
+            "birthday-form"
         );
 
 
-    if (!confirmed) {
-
-        return;
-
-    }
-
-
-    localStorage.removeItem(
-        STORAGE_KEY
-    );
+    form.reset();
 
 
     /*
-       После сброса снова загружаем
-       birthdays.json с GitHub.
+       После очистки сразу ставим
+       курсор в поле имени.
     */
 
-    location.reload();
+    document
+        .getElementById("name")
+        .focus();
 
 }
 
 
 /* =========================
-   SORT
+   СОРТИРОВКА
 ========================= */
 
 function compareBirthdays(
@@ -1876,7 +2399,7 @@ function compareBirthdays(
 
 
 /* =========================
-   FORMAT DATE
+   ФОРМАТ ДАТЫ
 ========================= */
 
 function formatDate(
@@ -1905,7 +2428,7 @@ function formatDate(
 
 
 /* =========================
-   FORMAT DAYS
+   ФОРМАТ ДНЕЙ
 ========================= */
 
 function formatDays(
@@ -1938,7 +2461,7 @@ function formatDays(
 
 
 /* =========================
-   DAYS WORD
+   СКЛОНЕНИЕ "ДЕНЬ"
 ========================= */
 
 function daysWord(
@@ -1989,7 +2512,7 @@ function daysWord(
 
 
 /* =========================
-   YEARS WORD
+   СКЛОНЕНИЕ "ГОД"
 ========================= */
 
 function yearsWord(
@@ -2042,4 +2565,5 @@ function yearsWord(
 </script>
 
 </body>
+
 </html>
