@@ -2,25 +2,35 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Дни рождения</title>
 
 <style>
+:root {
+    --bg: #090512;
+    --bg2: #11081d;
+    --card: #171022;
+    --card2: #1d1430;
+
+    --purple: #8b5cf6;
+    --purple-light: #a78bfa;
+    --violet: #7c3aed;
+    --pink: #d946ef;
+
+    --text: #faf7ff;
+    --muted: #9d91b0;
+
+    --border: rgba(167, 139, 250, .15);
+    --border-hover: rgba(167, 139, 250, .3);
+}
+
 * {
     box-sizing: border-box;
 }
 
-:root {
-    --bg: #090511;
-    --card: #171022;
-    --card2: #1e1530;
-    --purple: #8b5cf6;
-    --purple2: #a855f7;
-    --pink: #d946ef;
-    --text: #faf7ff;
-    --muted: #9c91ad;
-    --border: rgba(167,139,250,.16);
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -31,6 +41,7 @@ body {
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
+        Roboto,
         Arial,
         sans-serif;
 
@@ -38,37 +49,44 @@ body {
 
     background:
         radial-gradient(
-            circle at 10% 0%,
-            rgba(139,92,246,.25),
-            transparent 30%
+            circle at 5% 0%,
+            rgba(139, 92, 246, .22),
+            transparent 28%
         ),
         radial-gradient(
-            circle at 90% 0%,
-            rgba(217,70,239,.16),
+            circle at 95% 5%,
+            rgba(217, 70, 239, .14),
             transparent 25%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(124, 58, 237, .14),
+            transparent 35%
         ),
         linear-gradient(
             180deg,
-            #090511,
-            #10071a
+            var(--bg),
+            var(--bg2)
         );
+
+    background-attachment: fixed;
 }
 
 .container {
-    width: min(1100px, calc(100% - 24px));
-    margin: auto;
+    width: min(1100px, calc(100% - 30px));
+    margin: 0 auto;
 }
 
 /* HEADER */
 
 header {
     text-align: center;
-    padding: 50px 0 30px;
+    padding: 55px 0 30px;
 }
 
 .logo {
-    width: 68px;
-    height: 68px;
+    width: 70px;
+    height: 70px;
 
     margin: 0 auto 18px;
 
@@ -76,7 +94,7 @@ header {
     align-items: center;
     justify-content: center;
 
-    border-radius: 20px;
+    border-radius: 21px;
 
     font-size: 32px;
 
@@ -89,21 +107,24 @@ header {
         );
 
     box-shadow:
-        0 15px 45px
-        rgba(139,92,246,.35);
+        0 15px 45px rgba(139, 92, 246, .35);
 }
 
-h1 {
+header h1 {
     margin: 0;
 
-    font-size: clamp(38px,6vw,56px);
+    font-size: clamp(38px, 6vw, 56px);
+
+    line-height: 1.05;
+
+    font-weight: 800;
 
     letter-spacing: -2px;
 
     background:
         linear-gradient(
             135deg,
-            white,
+            #ffffff,
             #c4b5fd,
             #e879f9
         );
@@ -115,126 +136,125 @@ h1 {
 }
 
 header p {
+    margin: 14px auto 0;
+
     color: var(--muted);
+
+    font-size: 15px;
 }
 
 /* CARDS */
 
-.card {
+.form-card,
+.section-card,
+.month {
     background:
         linear-gradient(
             145deg,
-            rgba(139,92,246,.08),
-            rgba(255,255,255,.015)
+            rgba(139, 92, 246, .08),
+            rgba(255, 255, 255, .015)
         ),
         var(--card);
 
-    border:
-        1px solid var(--border);
-
-    border-radius: 20px;
-
-    padding: 20px;
+    border: 1px solid var(--border);
 
     box-shadow:
-        0 15px 45px rgba(0,0,0,.3);
-}
-
-/* TOKEN */
-
-.token-box {
-    margin-bottom: 20px;
-}
-
-.token-title {
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 12px;
-}
-
-.token-row {
-    display: flex;
-    gap: 10px;
-}
-
-.token-row input {
-    flex: 1;
+        0 15px 45px rgba(0, 0, 0, .28);
 }
 
 /* FORM */
 
+.form-card {
+    padding: 20px;
+    border-radius: 22px;
+}
+
 .form-title {
-    margin-bottom: 14px;
+    margin: 0 0 15px;
+
+    font-size: 17px;
     font-weight: 700;
 }
 
-form {
+#birthday-form {
     display: grid;
 
     grid-template-columns:
         1.5fr
-        .7fr
+        .65fr
         1fr
-        .9fr
+        .7fr
         auto
         auto;
 
     gap: 10px;
 }
 
+/* INPUTS */
+
 input,
 select {
     width: 100%;
     height: 46px;
 
-    padding: 0 13px;
-
-    border-radius: 12px;
+    padding: 0 14px;
 
     border:
         1px solid
-        rgba(167,139,250,.16);
+        rgba(167, 139, 250, .15);
+
+    border-radius: 12px;
 
     outline: none;
 
     background:
-        rgba(5,3,10,.65);
+        rgba(8, 5, 17, .65);
 
-    color: white;
+    color: var(--text);
+
+    font-size: 14px;
+
+    transition: .2s ease;
+}
+
+input::placeholder {
+    color: #756b87;
 }
 
 input:focus,
 select:focus {
-    border-color: var(--purple);
+    border-color: var(--purple-light);
 
     box-shadow:
         0 0 0 3px
-        rgba(139,92,246,.12);
+        rgba(139, 92, 246, .12);
 }
+
+/* BUTTONS */
 
 button {
     height: 46px;
+
+    padding: 0 18px;
 
     border: 0;
 
     border-radius: 12px;
 
-    padding: 0 18px;
-
-    color: white;
+    cursor: pointer;
 
     font-weight: 700;
 
-    cursor: pointer;
+    color: white;
 
-    transition: .2s;
+    transition: .2s ease;
 }
 
 button:hover {
     transform: translateY(-2px);
 }
 
-.primary {
+#birthday-form button[type="submit"] {
     background:
         linear-gradient(
             135deg,
@@ -242,55 +262,94 @@ button:hover {
             #a855f7,
             #d946ef
         );
+
+    box-shadow:
+        0 8px 25px
+        rgba(139, 92, 246, .28);
 }
 
-.secondary {
+#reset {
     background:
-        rgba(255,255,255,.06);
+        rgba(255, 255, 255, .055);
+
+    color: #c8c0d8;
+
+    border:
+        1px solid
+        rgba(167, 139, 250, .14);
 }
 
-.status {
-    min-height: 22px;
+#reset:hover {
+    background:
+        rgba(167, 139, 250, .12);
 
-    margin-top: 12px;
-
-    text-align: center;
-
-    color: var(--muted);
-
-    font-size: 13px;
+    color: white;
 }
 
-.success {
-    color: #c4b5fd;
+/* SECTIONS */
+
+.section {
+    margin-top: 28px;
 }
 
-.error {
-    color: #fb7185;
+.section-card {
+    padding: 22px;
+    border-radius: 20px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 0 0 15px;
+
+    font-size: 20px;
+}
+
+.section-icon {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background:
+        rgba(139, 92, 246, .14);
 }
 
 /* SOON */
 
-.section {
-    margin-top: 24px;
-}
-
-.section h2 {
-    margin-top: 0;
-}
-
-.soon {
+.soon-item {
     display: flex;
 
     align-items: center;
     justify-content: space-between;
 
-    padding: 15px;
+    gap: 15px;
 
-    border-radius: 13px;
+    padding: 15px 17px;
+
+    border-radius: 14px;
 
     background:
-        rgba(139,92,246,.07);
+        rgba(139, 92, 246, .07);
+
+    border:
+        1px solid
+        rgba(167, 139, 250, .1);
+}
+
+.soon-left {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
 }
 
 .soon-name {
@@ -299,169 +358,14 @@ button:hover {
 
 .soon-date {
     color: var(--muted);
-    margin-left: 8px;
 }
 
 .soon-days {
     color: #c4b5fd;
-    font-weight: 700;
-}
-
-/* MONTHS */
-
-#months {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap: 15px;
-
-    margin-top: 25px;
-
-    padding-bottom: 30px;
-}
-
-.month {
-    overflow: hidden;
-
-    background: var(--card);
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 18px;
-}
-
-.month-title {
-    padding: 15px;
 
     font-weight: 700;
-
-    color: #ddd6fe;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(139,92,246,.14),
-            rgba(217,70,239,.04)
-        );
-}
-
-.month-list {
-    list-style: none;
-
-    margin: 0;
-    padding: 6px;
-}
-
-.person {
-    display: grid;
-
-    grid-template-columns:
-        42px 1fr;
-
-    gap: 10px;
-
-    padding: 10px;
-
-    border-radius: 12px;
-}
-
-.person:hover {
-    background:
-        rgba(139,92,246,.08);
-}
-
-.day {
-    width: 38px;
-    height: 38px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 10px;
-
-    color: #ddd6fe;
-
-    background:
-        rgba(139,92,246,.16);
-
-    font-weight: 800;
-}
-
-.person-main {
-    min-width: 0;
-}
-
-.person-top {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 5px;
-}
-
-.name {
-    overflow: hidden;
-
-    text-overflow: ellipsis;
 
     white-space: nowrap;
-
-    font-weight: 600;
-}
-
-.age {
-    margin-top: 3px;
-
-    color: var(--muted);
-
-    font-size: 12px;
-}
-
-.person-buttons {
-    display: flex;
-
-    gap: 4px;
-}
-
-.icon-btn {
-    width: 28px;
-    height: 28px;
-
-    padding: 0;
-
-    opacity: 0;
-
-    background:
-        rgba(139,92,246,.1);
-
-    color: #c4b5fd;
-}
-
-.person:hover .icon-btn {
-    opacity: 1;
-}
-
-.delete:hover {
-    background: #dc2626;
-}
-
-footer {
-    text-align: center;
-
-    padding:
-        15px 0 45px;
-
-    color: #a78bfa;
-
-    font-size: 13px;
-
-    font-weight: 700;
 }
 
 .empty {
@@ -474,22 +378,252 @@ footer {
     font-size: 13px;
 }
 
-@media(max-width:900px) {
+/* DOWNLOAD */
 
-    form {
-        grid-template-columns:
-            repeat(3,1fr);
-    }
+.actions {
+    display: flex;
+    justify-content: center;
 
-    #months {
+    margin: 14px 0 0;
+}
+
+#download {
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #7c3aed
+        );
+}
+
+/* MONTHS */
+
+#months {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 16px;
+
+    margin-top: 28px;
+
+    padding-bottom: 30px;
+}
+
+.month {
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    transition: .25s ease;
+}
+
+.month:hover {
+    transform: translateY(-4px);
+
+    border-color:
+        var(--border-hover);
+}
+
+.month-title {
+    padding: 15px 17px;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    color: #ddd6fe;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(139, 92, 246, .13),
+            rgba(232, 121, 249, .045)
+        );
+
+    border-bottom:
+        1px solid
+        rgba(167, 139, 250, .1);
+}
+
+.month-list {
+    list-style: none;
+
+    margin: 0;
+    padding: 6px;
+}
+
+/* PERSON */
+
+.person {
+    display: grid;
+
+    grid-template-columns:
+        42px 1fr;
+
+    column-gap: 10px;
+
+    align-items: center;
+
+    padding: 10px;
+
+    border-radius: 12px;
+
+    transition: .2s ease;
+}
+
+.person:hover {
+    background:
+        rgba(139, 92, 246, .085);
+}
+
+.person-day {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    font-weight: 800;
+
+    color: #ddd6fe;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(139, 92, 246, .2),
+            rgba(99, 102, 241, .12)
+        );
+}
+
+.person-content {
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 8px;
+}
+
+.person-name {
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    font-weight: 600;
+}
+
+.person-age {
+    grid-column: 2;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+/* DELETE */
+
+.delete-person {
+    flex-shrink: 0;
+
+    width: 28px;
+    height: 28px;
+
+    padding: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    color: #d8b4fe;
+
+    background:
+        rgba(232, 121, 249, .07);
+
+    border:
+        1px solid
+        rgba(232, 121, 249, .12);
+
+    font-size: 19px;
+
+    opacity: 0;
+
+    transform: scale(.8);
+}
+
+.person:hover .delete-person {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.delete-person:hover {
+    color: white;
+
+    background:
+        rgba(239, 68, 68, .8);
+}
+
+/* FOOTER */
+
+footer {
+    padding: 15px 0 45px;
+
+    text-align: center;
+
+    color: #a78bfa;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: .3px;
+}
+
+/* MOBILE */
+
+@media(max-width: 1000px) {
+    #birthday-form {
         grid-template-columns:
-            repeat(2,1fr);
+            repeat(3, 1fr);
     }
 }
 
-@media(max-width:600px) {
+@media(max-width: 800px) {
+    #months {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
 
-    form {
+    #birthday-form {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 560px) {
+    .container {
+        width:
+            calc(100% - 20px);
+    }
+
+    header {
+        padding:
+            35px 0 25px;
+    }
+
+    #birthday-form {
         grid-template-columns: 1fr;
     }
 
@@ -497,20 +631,15 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .token-row {
-        flex-direction: column;
-    }
-
-    .soon {
+    .soon-item {
         flex-direction: column;
 
         align-items: flex-start;
-
-        gap: 8px;
     }
 
-    .icon-btn {
-        opacity: .8;
+    .delete-person {
+        opacity: .7;
+        transform: scale(1);
     }
 }
 </style>
@@ -522,9 +651,13 @@ footer {
 
 <header>
 
-    <div class="logo">🎂</div>
+    <div class="logo">
+        🎂
+    </div>
 
-    <h1>Дни рождения</h1>
+    <h1>
+        Дни рождения
+    </h1>
 
     <p>
         Все важные даты в одном красивом месте
@@ -533,52 +666,19 @@ footer {
 </header>
 
 
-<!-- TOKEN -->
+<section class="form-card">
 
-<div class="card token-box">
-
-    <div class="token-title">
-        🔑 Подключение к GitHub
-    </div>
-
-    <div class="token-row">
-
-        <input
-            id="token"
-            type="password"
-            placeholder="Вставь GitHub Token"
-        >
-
-        <button
-            class="primary"
-            id="connect"
-        >
-            Подключить
-        </button>
-
-    </div>
-
-    <div
-        id="token-status"
-        class="status"
-    ></div>
-
-</div>
-
-
-<!-- FORM -->
-
-<div class="card">
-
-    <div class="form-title">
+    <h2 class="form-title">
         Добавить участника
-    </div>
+    </h2>
 
-    <form id="form">
+    <form id="birthday-form">
 
         <input
             id="name"
+            type="text"
             placeholder="Имя участника"
+            autocomplete="off"
             required
         >
 
@@ -594,23 +694,17 @@ footer {
         <select id="month"></select>
 
         <input
-            id="year"
+            id="age"
             type="number"
-            min="1900"
-            max="2100"
-            placeholder="Год рождения"
-            required
+            min="0"
+            placeholder="Возраст"
         >
 
-        <button
-            class="primary"
-            type="submit"
-        >
+        <button type="submit">
             Добавить
         </button>
 
         <button
-            class="secondary"
             type="button"
             id="reset"
         >
@@ -619,40 +713,52 @@ footer {
 
     </form>
 
-    <div
-        id="status"
-        class="status"
-    ></div>
-
-</div>
+</section>
 
 
-<!-- SOON -->
+<section class="section">
 
-<div class="section card">
+    <div class="section-card">
 
-    <h2>
-        🎉 Скоро
-    </h2>
+        <h2 class="section-title">
 
-    <div id="soon">
-        <div class="empty">
-            Подключение к GitHub...
+            <span class="section-icon">
+                🎉
+            </span>
+
+            Скоро
+
+        </h2>
+
+        <div id="soon-list">
+
+            <div class="empty">
+                Загрузка...
+            </div>
+
         </div>
+
     </div>
+
+</section>
+
+
+<div class="actions">
+
+    <button id="download">
+        ↓ Скачать birthdays.json
+    </button>
 
 </div>
 
 
-<!-- MONTHS -->
+<main id="months">
 
-<div id="months">
-
-    <div class="card empty">
-        Подключение к GitHub...
+    <div class="empty">
+        Загрузка дней рождения...
     </div>
 
-</div>
+</main>
 
 
 <footer>
@@ -665,36 +771,7 @@ footer {
 <script>
 
 /* =========================================
-   GITHUB
-========================================= */
-
-const OWNER = "azwyyier";
-const REPO = "birthday-blade";
-const FILE = "data/birthdays.json";
-const BRANCH = "main";
-
-const API =
-    "https://api.github.com";
-
-
-/* =========================================
-   STATE
-========================================= */
-
-let token =
-    localStorage.getItem(
-        "github_token"
-    ) || "";
-
-let birthdays = [];
-
-let sha = null;
-
-let busy = false;
-
-
-/* =========================================
-   MONTHS
+   НАСТРОЙКИ
 ========================================= */
 
 const MONTHS = [
@@ -712,764 +789,342 @@ const MONTHS = [
     "Декабрь"
 ];
 
+const STORAGE_KEY = "birthday-blade-data";
 
-const monthSelect =
-    document.getElementById(
-        "month"
-    );
+let birthdays = [];
 
 
-MONTHS.forEach(
-    (month, index) => {
+/* =========================================
+   ЗАПУСК
+========================================= */
 
-        const option =
-            document.createElement(
-                "option"
+document.addEventListener(
+    "DOMContentLoaded",
+    async () => {
+
+        createMonthSelect();
+
+        await loadBirthdays();
+
+        render();
+
+        document
+            .getElementById("birthday-form")
+            .addEventListener(
+                "submit",
+                addBirthday
             );
 
-        option.value =
-            index + 1;
+        document
+            .getElementById("reset")
+            .addEventListener(
+                "click",
+                clearForm
+            );
 
-        option.textContent =
-            month;
-
-        monthSelect.appendChild(
-            option
-        );
+        document
+            .getElementById("download")
+            .addEventListener(
+                "click",
+                downloadJSON
+            );
     }
 );
 
 
 /* =========================================
-   TOKEN
+   ЗАГРУЗКА
 ========================================= */
 
-const tokenInput =
-    document.getElementById(
-        "token"
-    );
+async function loadBirthdays() {
 
-
-if (token) {
-
-    tokenInput.value =
-        token;
-
-    load();
-
-}
-
-
-document
-    .getElementById("connect")
-    .addEventListener(
-        "click",
-        async () => {
-
-            const value =
-                tokenInput
-                    .value
-                    .trim();
-
-            if (!value) {
-
-                showToken(
-                    "Вставь GitHub Token",
-                    true
-                );
-
-                return;
-            }
-
-            token = value;
-
-            localStorage.setItem(
-                "github_token",
-                token
-            );
-
-            await load();
-        }
-    );
-
-
-/* =========================================
-   HEADERS
-========================================= */
-
-function headers() {
-
-    return {
-
-        "Accept":
-            "application/vnd.github+json",
-
-        "Authorization":
-            "Bearer " + token,
-
-        "X-GitHub-Api-Version":
-            "2026-03-10",
-
-        "Content-Type":
-            "application/json"
-    };
-}
-
-
-/* =========================================
-   GET FILE
-========================================= */
-
-async function getFile() {
-
-    const url =
-        `${API}/repos/` +
-        `${OWNER}/` +
-        `${REPO}/contents/` +
-        `${FILE}?ref=${BRANCH}`;
-
-    const response =
-        await fetch(
-            url,
-            {
-                headers:
-                    headers(),
-
-                cache:
-                    "no-store"
-            }
-        );
-
-
-    if (!response.ok) {
-
-        if (
-            response.status === 401
-        ) {
-
-            throw new Error(
-                "GitHub отклонил Token (401). Создай новый Fine-grained token."
-            );
-        }
-
-        if (
-            response.status === 404
-        ) {
-
-            throw new Error(
-                "GitHub не нашёл birthdays.json."
-            );
-        }
-
-        throw new Error(
-            `GitHub ошибка ${response.status}`
-        );
-    }
-
-
-    return response.json();
-}
-
-
-/* =========================================
-   LOAD
-========================================= */
-
-async function load() {
-
-    if (!token) {
-
-        return;
-    }
-
+    let remote = [];
 
     try {
 
-        showToken(
-            "Подключение...",
-            false
+        const response = await fetch(
+            "data/birthdays.json",
+            {
+                cache: "no-store"
+            }
         );
 
+        if (response.ok) {
 
-        const file =
-            await getFile();
+            const data =
+                await response.json();
 
-
-        sha =
-            file.sha;
-
-
-        const text =
-            decode(
-                file.content
-            );
-
-
-        birthdays =
-            JSON.parse(text);
-
-
-        if (
-            !Array.isArray(
-                birthdays
-            )
-        ) {
-
-            throw new Error(
-                "birthdays.json должен быть массивом."
-            );
+            if (Array.isArray(data)) {
+                remote = data;
+            }
         }
-
-
-        render();
-
-
-        showToken(
-            "✓ GitHub подключён",
-            false
-        );
-
 
     } catch (error) {
 
-        console.error(
+        console.warn(
+            "Не удалось загрузить birthdays.json",
             error
         );
+    }
 
 
-        showToken(
-            error.message,
-            true
+    const local =
+        localStorage.getItem(
+            STORAGE_KEY
         );
-    }
-}
 
 
-/* =========================================
-   SAVE
-========================================= */
+    if (local) {
 
-async function save(
-    message
-) {
+        try {
 
-    if (busy) {
+            const parsed =
+                JSON.parse(local);
 
-        throw new Error(
-            "Подожди завершения предыдущей операции."
-        );
-    }
-
-
-    busy = true;
-
-
-    try {
-
-        /*
-           Получаем свежий SHA.
-        */
-
-        const current =
-            await getFile();
-
-
-        sha =
-            current.sha;
-
-
-        const content =
-            JSON.stringify(
-                birthdays,
-                null,
-                2
-            ) + "\n";
-
-
-        const response =
-            await fetch(
-                `${API}/repos/${OWNER}/${REPO}/contents/${FILE}`,
-                {
-
-                    method:
-                        "PUT",
-
-                    headers:
-                        headers(),
-
-                    body:
-                        JSON.stringify({
-
-                            message,
-
-                            content:
-                                encode(
-                                    content
-                                ),
-
-                            sha,
-
-                            branch:
-                                BRANCH
-
-                        })
-                }
-            );
-
-
-        const result =
-            await response.json();
-
-
-        if (!response.ok) {
-
-            throw new Error(
-                result.message ||
-                `Ошибка GitHub ${response.status}`
-            );
-        }
-
-
-        sha =
-            result.content.sha;
-
-
-    } finally {
-
-        busy = false;
-    }
-}
-
-
-/* =========================================
-   ADD
-========================================= */
-
-document
-    .getElementById("form")
-    .addEventListener(
-        "submit",
-        async event => {
-
-            event.preventDefault();
-
-
-            if (!token) {
-
-                alert(
-                    "Сначала подключи GitHub."
-                );
-
-                return;
-            }
-
-
-            const name =
-                document
-                    .getElementById("name")
-                    .value
-                    .trim();
-
-
-            const day =
-                Number(
-                    document
-                        .getElementById("day")
-                        .value
-                );
-
-
-            const month =
-                Number(
-                    document
-                        .getElementById("month")
-                        .value
-                );
-
-
-            const birthYear =
-                Number(
-                    document
-                        .getElementById("year")
-                        .value
-                );
-
-
-            if (
-                !name
-            ) {
-
-                alert(
-                    "Введите имя."
-                );
-
-                return;
-            }
-
-
-            if (
-                day < 1 ||
-                day >
-                daysInMonth(month)
-            ) {
-
-                alert(
-                    "Неправильный день."
-                );
-
-                return;
-            }
-
-
-            const currentYear =
-                new Date()
-                    .getFullYear();
-
-
-            if (
-                birthYear <
-                    1900 ||
-                birthYear >
-                    currentYear
-            ) {
-
-                alert(
-                    "Неправильный год рождения."
-                );
-
-                return;
-            }
-
-
-            const person = {
-
-                name,
-
-                day,
-
-                month,
-
-                birthYear
-            };
-
-
-            birthdays.push(
-                person
-            );
-
-
-            sort();
-
-
-            render();
-
-
-            status(
-                "Сохраняем...",
-                false
-            );
-
-
-            try {
-
-                await save(
-                    `Добавлен день рождения: ${name}`
-                );
-
-
-                document
-                    .getElementById(
-                        "form"
-                    )
-                    .reset();
-
-
-                monthSelect.value =
-                    "1";
-
-
-                status(
-                    "✓ Сохранено в GitHub",
-                    false
-                );
-
-
-            } catch (error) {
+            if (Array.isArray(parsed)) {
 
                 birthdays =
-                    birthdays.filter(
-                        x =>
-                            x !== person
-                    );
+                    normalizeData(parsed);
 
+                /*
+                   Обновляем localStorage после
+                   нормализации старых записей.
+                */
 
-                render();
+                saveLocal();
 
-
-                status(
-                    error.message,
-                    true
-                );
-
-                alert(
-                    error.message
-                );
+                return;
             }
 
-        }
-    );
+        } catch (error) {
 
-
-/* =========================================
-   RESET
-========================================= */
-
-document
-    .getElementById("reset")
-    .addEventListener(
-        "click",
-        () => {
-
-            document
-                .getElementById(
-                    "form"
-                )
-                .reset();
-
-            monthSelect.value =
-                "1";
-
-            document
-                .getElementById(
-                    "name"
-                )
-                .focus();
-
-            status(
-                "",
-                false
+            console.warn(
+                "Ошибка локальных данных",
+                error
             );
         }
-    );
-
-
-/* =========================================
-   DELETE
-========================================= */
-
-async function remove(
-    person
-) {
-
-    if (
-        !confirm(
-            `Удалить ${person.name}?`
-        )
-    ) {
-
-        return;
     }
-
-
-    const old =
-        [...birthdays];
 
 
     birthdays =
-        birthdays.filter(
-            x =>
-                x !== person
+        normalizeData(remote);
+
+    saveLocal();
+}
+
+
+/* =========================================
+   НОРМАЛИЗАЦИЯ СТАРЫХ ДАННЫХ
+========================================= */
+
+function normalizeData(data) {
+
+    return data
+        .filter(person => {
+
+            return (
+                person &&
+                person.name &&
+                person.day &&
+                person.month
+            );
+
+        })
+        .map(person => {
+
+            const result = {
+
+                name: String(person.name),
+
+                day: Number(person.day),
+
+                month: Number(person.month)
+
+            };
+
+
+            /*
+               Если birthYear уже существует —
+               оставляем его.
+            */
+
+            if (
+                person.birthYear !== undefined &&
+                person.birthYear !== null &&
+                person.birthYear !== ""
+            ) {
+
+                result.birthYear =
+                    Number(person.birthYear);
+
+                return result;
+            }
+
+
+            /*
+               Старый формат с age.
+
+               Здесь очень важно:
+               age означает возраст ЧЕЛОВЕКА
+               НА МОМЕНТ СОЗДАНИЯ ЗАПИСИ.
+
+               Если день рождения в этом году
+               уже прошёл, год рождения:
+
+                   currentYear - age
+
+               Если ещё не прошёл:
+
+                   currentYear - age - 1
+            */
+
+            if (
+                person.age !== undefined &&
+                person.age !== null &&
+                person.age !== ""
+            ) {
+
+                const age =
+                    Number(person.age);
+
+
+                if (
+                    Number.isInteger(age) &&
+                    age >= 0
+                ) {
+
+                    result.birthYear =
+                        calculateBirthYear(
+                            age,
+                            result.day,
+                            result.month
+                        );
+                }
+            }
+
+
+            return result;
+
+        });
+}
+
+
+/* =========================================
+   ПРАВИЛЬНОЕ ОПРЕДЕЛЕНИЕ ГОДА РОЖДЕНИЯ
+
+   Например:
+
+   Сегодня: 14.08.2026
+   ДР:      25.05
+   Возраст: 17
+
+   День рождения уже был.
+
+   Значит:
+
+   2026 - 17 = 2009
+
+
+   Если:
+
+   Сегодня: 14.08.2026
+   ДР:      25.12
+   Возраст: 17
+
+   День рождения ещё впереди.
+
+   Значит:
+
+   2026 - 17 - 1 = 2008
+========================================= */
+
+function calculateBirthYear(
+    age,
+    day,
+    month
+) {
+
+    const today =
+        new Date();
+
+    const currentYear =
+        today.getFullYear();
+
+
+    const birthdayThisYear =
+        new Date(
+            currentYear,
+            Number(month) - 1,
+            Number(day)
         );
 
 
-    render();
+    today.setHours(
+        0,
+        0,
+        0,
+        0
+    );
 
-
-    status(
-        "Удаляем...",
-        false
+    birthdayThisYear.setHours(
+        0,
+        0,
+        0,
+        0
     );
 
 
-    try {
+    if (
+        birthdayThisYear <= today
+    ) {
 
-        await save(
-            `Удалён день рождения: ${person.name}`
-        );
+        return currentYear - age;
 
-
-        status(
-            "✓ Запись удалена",
-            false
-        );
-
-
-    } catch (error) {
-
-        birthdays =
-            old;
-
-        render();
-
-        status(
-            error.message,
-            true
-        );
-
-        alert(
-            error.message
-        );
     }
+
+
+    return currentYear - age - 1;
 }
 
 
 /* =========================================
-   EDIT
+   МЕСЯЦЫ
 ========================================= */
 
-async function edit(
-    person
-) {
+function createMonthSelect() {
 
-    const name =
-        prompt(
-            "Имя:",
-            person.name
+    const select =
+        document.getElementById(
+            "month"
         );
 
-
-    if (
-        name === null
-    ) {
-
-        return;
-    }
+    select.innerHTML = "";
 
 
-    const day =
-        prompt(
-            "День:",
-            person.day
-        );
+    MONTHS.forEach(
+        (month, index) => {
 
+            const option =
+                document.createElement(
+                    "option"
+                );
 
-    if (
-        day === null
-    ) {
+            option.value =
+                index + 1;
 
-        return;
-    }
+            option.textContent =
+                month;
 
-
-    const month =
-        prompt(
-            "Месяц (1-12):",
-            person.month
-        );
-
-
-    if (
-        month === null
-    ) {
-
-        return;
-    }
-
-
-    const year =
-        prompt(
-            "Год рождения:",
-            person.birthYear
-        );
-
-
-    if (
-        year === null
-    ) {
-
-        return;
-    }
-
-
-    const newDay =
-        Number(day);
-
-    const newMonth =
-        Number(month);
-
-    const newYear =
-        Number(year);
-
-
-    if (
-        newDay < 1 ||
-        newDay >
-        daysInMonth(newMonth)
-    ) {
-
-        alert(
-            "Неправильный день."
-        );
-
-        return;
-    }
-
-
-    const old = {
-        ...person
-    };
-
-
-    person.name =
-        name.trim();
-
-    person.day =
-        newDay;
-
-    person.month =
-        newMonth;
-
-    person.birthYear =
-        newYear;
-
-
-    sort();
-
-    render();
-
-
-    try {
-
-        await save(
-            `Изменён день рождения: ${person.name}`
-        );
-
-
-        status(
-            "✓ Изменения сохранены",
-            false
-        );
-
-
-    } catch (error) {
-
-        Object.assign(
-            person,
-            old
-        );
-
-        render();
-
-        status(
-            error.message,
-            true
-        );
-    }
+            select.appendChild(
+                option
+            );
+        }
+    );
 }
 
 
 /* =========================================
-   RENDER
+   РЕНДЕР
 ========================================= */
 
 function render() {
@@ -1481,7 +1136,7 @@ function render() {
 
 
 /* =========================================
-   MONTHS
+   МЕСЯЦЫ
 ========================================= */
 
 function renderMonths() {
@@ -1490,7 +1145,6 @@ function renderMonths() {
         document.getElementById(
             "months"
         );
-
 
     container.innerHTML = "";
 
@@ -1506,38 +1160,40 @@ function renderMonths() {
                 birthdays
                     .filter(
                         person =>
-                            Number(
-                                person.month
-                            ) ===
+                            Number(person.month)
+                            ===
                             monthNumber
                     )
                     .sort(
-                        compare
+                        compareBirthdays
                     );
 
 
-            const article =
+            const month =
+                document.createElement(
+                    "article"
+                );
+
+            month.className =
+                "month";
+
+
+            const title =
                 document.createElement(
                     "div"
                 );
 
+            title.className =
+                "month-title";
 
-            article.className =
-                "month";
-
-
-            article.innerHTML = `
-                <div class="month-title">
-                    ${monthName} · ${people.length}
-                </div>
-            `;
+            title.textContent =
+                `${monthName} · ${people.length}`;
 
 
             const list =
                 document.createElement(
                     "ul"
                 );
-
 
             list.className =
                 "month-list";
@@ -1547,11 +1203,20 @@ function renderMonths() {
                 people.length === 0
             ) {
 
-                list.innerHTML = `
-                    <li class="empty">
-                        Пока никого нет.
-                    </li>
-                `;
+                const empty =
+                    document.createElement(
+                        "li"
+                    );
+
+                empty.className =
+                    "empty";
+
+                empty.textContent =
+                    "Пока никого нет.";
+
+                list.appendChild(
+                    empty
+                );
             }
 
 
@@ -1559,104 +1224,135 @@ function renderMonths() {
                 person => {
 
                     list.appendChild(
-                        personElement(
+                        createPersonElement(
                             person
                         )
                     );
+
                 }
             );
 
 
-            article.appendChild(
-                list
-            );
+            month.appendChild(title);
 
+            month.appendChild(list);
 
-            container.appendChild(
-                article
-            );
+            container.appendChild(month);
         }
     );
 }
 
 
 /* =========================================
-   PERSON
+   ЧЕЛОВЕК
 ========================================= */
 
-function personElement(
-    person
-) {
+function createPersonElement(person) {
 
     const item =
-        document.createElement(
-            "li"
-        );
-
+        document.createElement("li");
 
     item.className =
         "person";
 
 
+    const day =
+        document.createElement("div");
+
+    day.className =
+        "person-day";
+
+    day.textContent =
+        String(person.day)
+            .padStart(2, "0");
+
+
+    const content =
+        document.createElement("div");
+
+    content.className =
+        "person-content";
+
+
+    const name =
+        document.createElement("div");
+
+    name.className =
+        "person-name";
+
+    name.textContent =
+        person.name;
+
+
+    const deleteButton =
+        document.createElement("button");
+
+    deleteButton.type =
+        "button";
+
+    deleteButton.className =
+        "delete-person";
+
+    deleteButton.textContent =
+        "×";
+
+    deleteButton.title =
+        "Удалить участника";
+
+
+    deleteButton.addEventListener(
+        "click",
+        event => {
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+            deleteBirthday(person);
+
+        }
+    );
+
+
+    content.appendChild(name);
+
+    content.appendChild(
+        deleteButton
+    );
+
+
+    item.appendChild(day);
+
+    item.appendChild(content);
+
+
+    /*
+       Возраст всегда рассчитывается
+       заново из birthYear.
+
+       Поэтому он изменится только
+       в день рождения.
+    */
+
     const age =
-        getAge(person);
+        getCurrentAge(person);
 
 
-    item.innerHTML = `
-        <div class="day">
-            ${String(person.day).padStart(2,"0")}
-        </div>
+    if (age !== null) {
 
-        <div class="person-main">
+        const ageElement =
+            document.createElement("div");
 
-            <div class="person-top">
+        ageElement.className =
+            "person-age";
 
-                <div class="name">
-                    ${escapeHtml(person.name)}
-                </div>
+        ageElement.textContent =
+            `${age} ${yearsWord(age)}`;
 
-                <div class="person-buttons">
-
-                    <button
-                        class="icon-btn"
-                        title="Изменить"
-                    >
-                        ✎
-                    </button>
-
-                    <button
-                        class="icon-btn delete"
-                        title="Удалить"
-                    >
-                        ×
-                    </button>
-
-                </div>
-
-            </div>
-
-            <div class="age">
-                ${age} ${years(age)}
-            </div>
-
-        </div>
-    `;
-
-
-    const buttons =
-        item.querySelectorAll(
-            ".icon-btn"
+        item.appendChild(
+            ageElement
         );
-
-
-    buttons[0].onclick =
-        () =>
-            edit(person);
-
-
-    buttons[1].onclick =
-        () =>
-            remove(person);
+    }
 
 
     return item;
@@ -1664,145 +1360,72 @@ function personElement(
 
 
 /* =========================================
-   SOON
+   ТЕКУЩИЙ ВОЗРАСТ
+
+   Это ключевая функция.
+
+   Она НЕ прибавляет возраст просто
+   потому, что дата прошла.
+
+   Она считает реальный возраст
+   по году рождения.
 ========================================= */
 
-function renderSoon() {
-
-    const container =
-        document.getElementById(
-            "soon"
-        );
-
-
-    container.innerHTML = "";
-
+function getCurrentAge(person) {
 
     if (
-        birthdays.length === 0
+        person.birthYear === undefined ||
+        person.birthYear === null ||
+        person.birthYear === ""
     ) {
 
-        container.innerHTML = `
-            <div class="empty">
-                Пока нет записей.
-            </div>
-        `;
-
-        return;
+        return null;
     }
 
 
     const today =
         new Date();
 
-
-    today.setHours(
-        0,0,0,0
-    );
-
-
-    const upcoming =
-        birthdays
-            .map(
-                person => {
-
-                    const date =
-                        nextBirthday(
-                            person,
-                            today
-                        );
-
-
-                    const days =
-                        Math.round(
-                            (
-                                date -
-                                today
-                            )
-                            /
-                            86400000
-                        );
-
-
-                    return {
-                        person,
-                        days
-                    };
-                }
-            )
-            .sort(
-                (a,b) =>
-                    a.days -
-                    b.days
-            );
-
-
-    const next =
-        upcoming[0];
-
-
-    container.innerHTML = `
-        <div class="soon">
-
-            <div>
-
-                <span class="soon-name">
-                    ${escapeHtml(next.person.name)}
-                </span>
-
-                <span class="soon-date">
-                    · ${formatDate(next.person)}
-                </span>
-
-            </div>
-
-            <div class="soon-days">
-                ${formatDays(next.days)}
-            </div>
-
-        </div>
-    `;
-}
-
-
-/* =========================================
-   AGE
-========================================= */
-
-function getAge(
-    person
-) {
-
-    const today =
-        new Date();
+    const currentYear =
+        today.getFullYear();
 
 
     let age =
-        today.getFullYear()
-        -
-        person.birthYear;
+        currentYear -
+        Number(person.birthYear);
 
 
-    const birthday =
+    const birthdayThisYear =
         new Date(
-            today.getFullYear(),
-            person.month - 1,
-            person.day
+            currentYear,
+            Number(person.month) - 1,
+            Number(person.day)
         );
 
 
-    birthday.setHours(
-        0,0,0,0
+    birthdayThisYear.setHours(
+        0,
+        0,
+        0,
+        0
     );
 
 
     today.setHours(
-        0,0,0,0
+        0,
+        0,
+        0,
+        0
     );
 
 
+    /*
+       Если день рождения ещё НЕ наступил,
+       текущий возраст на один меньше.
+    */
+
     if (
-        today < birthday
+        today < birthdayThisYear
     ) {
 
         age--;
@@ -1814,7 +1437,235 @@ function getAge(
 
 
 /* =========================================
-   NEXT
+   УДАЛЕНИЕ
+========================================= */
+
+function deleteBirthday(person) {
+
+    const confirmed =
+        confirm(
+            `Удалить ${person.name} из списка?`
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    /*
+       Удаляем конкретную запись.
+
+       Не трогаем остальных.
+    */
+
+    birthdays =
+        birthdays.filter(
+            item => !(
+                String(item.name)
+                ===
+                String(person.name)
+
+                &&
+
+                Number(item.day)
+                ===
+                Number(person.day)
+
+                &&
+
+                Number(item.month)
+                ===
+                Number(person.month)
+
+                &&
+
+                Number(item.birthYear)
+                ===
+                Number(person.birthYear)
+            )
+        );
+
+
+    saveLocal();
+
+    render();
+}
+
+
+/* =========================================
+   СКОРО
+
+   Показывается только человек,
+   чей день рождения наступит первым.
+========================================= */
+
+function renderSoon() {
+
+    const container =
+        document.getElementById(
+            "soon-list"
+        );
+
+    container.innerHTML = "";
+
+
+    if (
+        birthdays.length === 0
+    ) {
+
+        container.innerHTML = `
+            <div class="empty">
+                Пока нет дней рождения.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    const today =
+        new Date();
+
+    today.setHours(
+        0,
+        0,
+        0,
+        0
+    );
+
+
+    const upcoming =
+        birthdays
+            .map(person => {
+
+                const date =
+                    nextBirthday(
+                        person,
+                        today
+                    );
+
+
+                const days =
+                    Math.round(
+                        (
+                            date.getTime()
+                            -
+                            today.getTime()
+                        )
+                        /
+                        86400000
+                    );
+
+
+                return {
+                    person,
+                    date,
+                    days
+                };
+
+            })
+            .sort(
+                (a, b) => {
+
+                    if (
+                        a.days !==
+                        b.days
+                    ) {
+
+                        return (
+                            a.days -
+                            b.days
+                        );
+                    }
+
+
+                    return compareBirthdays(
+                        a.person,
+                        b.person
+                    );
+                }
+            );
+
+
+    const next =
+        upcoming[0];
+
+
+    const row =
+        document.createElement(
+            "div"
+        );
+
+    row.className =
+        "soon-item";
+
+
+    const left =
+        document.createElement(
+            "div"
+        );
+
+    left.className =
+        "soon-left";
+
+
+    const name =
+        document.createElement(
+            "span"
+        );
+
+    name.className =
+        "soon-name";
+
+    name.textContent =
+        next.person.name;
+
+
+    const date =
+        document.createElement(
+            "span"
+        );
+
+    date.className =
+        "soon-date";
+
+    date.textContent =
+        `· ${formatDate(
+            next.person
+        )}`;
+
+
+    left.appendChild(name);
+
+    left.appendChild(date);
+
+
+    const days =
+        document.createElement(
+            "span"
+        );
+
+    days.className =
+        "soon-days";
+
+    days.textContent =
+        formatDays(
+            next.days
+        );
+
+
+    row.appendChild(left);
+
+    row.appendChild(days);
+
+
+    container.appendChild(row);
+}
+
+
+/* =========================================
+   БЛИЖАЙШИЙ ДЕНЬ РОЖДЕНИЯ
 ========================================= */
 
 function nextBirthday(
@@ -1822,16 +1673,23 @@ function nextBirthday(
     today
 ) {
 
+    const year =
+        today.getFullYear();
+
+
     let date =
         new Date(
-            today.getFullYear(),
-            person.month - 1,
-            person.day
+            year,
+            Number(person.month) - 1,
+            Number(person.day)
         );
 
 
     date.setHours(
-        0,0,0,0
+        0,
+        0,
+        0,
+        0
     );
 
 
@@ -1841,13 +1699,16 @@ function nextBirthday(
 
         date =
             new Date(
-                today.getFullYear() + 1,
-                person.month - 1,
-                person.day
+                year + 1,
+                Number(person.month) - 1,
+                Number(person.day)
             );
 
         date.setHours(
-            0,0,0,0
+            0,
+            0,
+            0,
+            0
         );
     }
 
@@ -1857,93 +1718,379 @@ function nextBirthday(
 
 
 /* =========================================
-   HELPERS
+   ДОБАВЛЕНИЕ
+
+   ВАЖНО:
+
+   Если сейчас человеку 17,
+   мы сначала определяем его
+   настоящий birthYear.
+
+   После этого возраст больше
+   не хранится как постоянное число.
 ========================================= */
 
-function compare(a,b) {
+function addBirthday(event) {
 
-    if (
-        a.month !== b.month
-    ) {
+    event.preventDefault();
 
-        return a.month - b.month;
+
+    const name =
+        document
+            .getElementById("name")
+            .value
+            .trim();
+
+
+    const day =
+        Number(
+            document
+                .getElementById("day")
+                .value
+        );
+
+
+    const month =
+        Number(
+            document
+                .getElementById("month")
+                .value
+        );
+
+
+    const ageValue =
+        document
+            .getElementById("age")
+            .value;
+
+
+    if (!name) {
+
+        alert(
+            "Введите имя."
+        );
+
+        return;
     }
 
 
+    const maxDay =
+        new Date(
+            2024,
+            month,
+            0
+        ).getDate();
+
+
     if (
-        a.day !== b.day
+        !Number.isInteger(day) ||
+        day < 1 ||
+        day > maxDay
     ) {
 
-        return a.day - b.day;
+        alert(
+            "Введите правильный день."
+        );
+
+        return;
     }
 
 
-    return a.name.localeCompare(
-        b.name,
-        "ru"
+    const birthday = {
+
+        name,
+        day,
+        month
+    };
+
+
+    /*
+       Возраст вводится именно
+       текущий.
+
+       Например:
+
+       сегодня 14.08.2026
+       ДР 25.05
+       возраст 17
+
+       birthYear = 2009
+
+       сайт сразу покажет 17.
+    */
+
+    if (
+        ageValue !== ""
+    ) {
+
+        const age =
+            Number(ageValue);
+
+
+        if (
+            !Number.isInteger(age) ||
+            age < 0
+        ) {
+
+            alert(
+                "Введите правильный возраст."
+            );
+
+            return;
+        }
+
+
+        birthday.birthYear =
+            calculateBirthYear(
+                age,
+                day,
+                month
+            );
+    }
+
+
+    birthdays.push(
+        birthday
     );
-}
 
-
-function sort() {
 
     birthdays.sort(
-        compare
+        compareBirthdays
+    );
+
+
+    saveLocal();
+
+    render();
+
+    clearForm();
+
+
+    /*
+       После добавления
+       сразу прокручиваем к списку.
+    */
+
+    window.location.hash =
+        "list";
+}
+
+
+/* =========================================
+   СБРОС ФОРМЫ
+
+   ВАЖНО:
+
+   НИ ОДНА запись не удаляется.
+
+   Очищаются только поля:
+   имя
+   день
+   месяц
+   возраст
+========================================= */
+
+function clearForm() {
+
+    document
+        .getElementById("name")
+        .value = "";
+
+
+    document
+        .getElementById("day")
+        .value = "";
+
+
+    document
+        .getElementById("month")
+        .value = "1";
+
+
+    document
+        .getElementById("age")
+        .value = "";
+
+
+    document
+        .getElementById("name")
+        .focus();
+}
+
+
+/* =========================================
+   СОХРАНЕНИЕ
+========================================= */
+
+function saveLocal() {
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(
+            birthdays,
+            null,
+            2
+        )
     );
 }
 
 
-function daysInMonth(
-    month
-) {
+/* =========================================
+   СКАЧИВАНИЕ JSON
+========================================= */
 
-    return new Date(
-        2024,
-        month,
-        0
-    ).getDate();
+function downloadJSON() {
+
+    const json =
+        JSON.stringify(
+            birthdays,
+            null,
+            2
+        );
+
+
+    const blob =
+        new Blob(
+            [json],
+            {
+                type:
+                    "application/json"
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(
+            blob
+        );
+
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+
+    link.href =
+        url;
+
+    link.download =
+        "birthdays.json";
+
+
+    document.body.appendChild(
+        link
+    );
+
+
+    link.click();
+
+
+    link.remove();
+
+
+    URL.revokeObjectURL(
+        url
+    );
 }
 
 
-function formatDate(
-    person
-) {
+/* =========================================
+   СОРТИРОВКА
+========================================= */
+
+function compareBirthdays(a, b) {
+
+    const monthA =
+        Number(a.month);
+
+    const monthB =
+        Number(b.month);
+
+
+    if (
+        monthA !== monthB
+    ) {
+
+        return (
+            monthA -
+            monthB
+        );
+    }
+
+
+    const dayA =
+        Number(a.day);
+
+    const dayB =
+        Number(b.day);
+
+
+    if (
+        dayA !== dayB
+    ) {
+
+        return (
+            dayA -
+            dayB
+        );
+    }
+
+
+    return String(a.name)
+        .localeCompare(
+            String(b.name),
+            "ru"
+        );
+}
+
+
+/* =========================================
+   ДАТА
+========================================= */
+
+function formatDate(person) {
 
     return (
-        String(
-            person.day
-        ).padStart(2,"0")
+        String(person.day)
+            .padStart(2, "0")
+
         +
+
         "."
+
         +
-        String(
-            person.month
-        ).padStart(2,"0")
+
+        String(person.month)
+            .padStart(2, "0")
     );
 }
 
 
-function formatDays(
-    days
-) {
+/* =========================================
+   ДНИ
+========================================= */
 
-    if (
-        days === 0
-    ) return "сегодня 🎉";
+function formatDays(days) {
 
-    if (
-        days === 1
-    ) return "завтра";
+    if (days === 0) {
+        return "сегодня 🎉";
+    }
 
-    return `через ${days} ${daysWord(days)}`;
+    if (days === 1) {
+        return "завтра";
+    }
+
+    return (
+        `через ${days} ${daysWord(days)}`
+    );
 }
 
 
-function daysWord(
-    n
-) {
+function daysWord(number) {
 
-    n = Math.abs(n) % 100;
+    const n =
+        Math.abs(number) % 100;
 
     const last =
         n % 10;
@@ -1952,29 +2099,38 @@ function daysWord(
     if (
         n >= 11 &&
         n <= 19
-    ) return "дней";
+    ) {
+
+        return "дней";
+    }
 
 
-    if (
-        last === 1
-    ) return "день";
+    if (last === 1) {
+        return "день";
+    }
 
 
     if (
         last >= 2 &&
         last <= 4
-    ) return "дня";
+    ) {
+
+        return "дня";
+    }
 
 
     return "дней";
 }
 
 
-function years(
-    n
-) {
+/* =========================================
+   ГОД / ГОДА / ЛЕТ
+========================================= */
 
-    n = Math.abs(n) % 100;
+function yearsWord(number) {
+
+    const n =
+        Math.abs(number) % 100;
 
     const last =
         n % 10;
@@ -1983,163 +2139,27 @@ function years(
     if (
         n >= 11 &&
         n <= 19
-    ) return "лет";
+    ) {
+
+        return "лет";
+    }
 
 
-    if (
-        last === 1
-    ) return "год";
+    if (last === 1) {
+        return "год";
+    }
 
 
     if (
         last >= 2 &&
         last <= 4
-    ) return "года";
-
-
-    return "лет";
-}
-
-
-function status(
-    text,
-    error
-) {
-
-    const element =
-        document.getElementById(
-            "status"
-        );
-
-
-    element.textContent =
-        text;
-
-
-    element.className =
-        "status " +
-        (
-            error
-                ? "error"
-                : "success"
-        );
-}
-
-
-function showToken(
-    text,
-    error
-) {
-
-    const element =
-        document.getElementById(
-            "token-status"
-        );
-
-
-    element.textContent =
-        text;
-
-
-    element.className =
-        "status " +
-        (
-            error
-                ? "error"
-                : "success"
-        );
-}
-
-
-function escapeHtml(
-    value
-) {
-
-    return String(value)
-        .replaceAll(
-            "&",
-            "&amp;"
-        )
-        .replaceAll(
-            "<",
-            "&lt;"
-        )
-        .replaceAll(
-            ">",
-            "&gt;"
-        )
-        .replaceAll(
-            '"',
-            "&quot;"
-        )
-        .replaceAll(
-            "'",
-            "&#039;"
-        );
-}
-
-
-/* =========================================
-   BASE64 UTF-8
-========================================= */
-
-function encode(
-    text
-) {
-
-    const bytes =
-        new TextEncoder()
-            .encode(text);
-
-
-    let binary = "";
-
-
-    for (
-        let i = 0;
-        i < bytes.length;
-        i += 0x8000
     ) {
 
-        binary +=
-            String.fromCharCode(
-                ...bytes.subarray(
-                    i,
-                    i + 0x8000
-                )
-            );
+        return "года";
     }
 
 
-    return btoa(
-        binary
-    );
-}
-
-
-function decode(
-    base64
-) {
-
-    const binary =
-        atob(
-            base64.replace(
-               (/\n/g),
-                ""
-            )
-        );
-
-
-    const bytes =
-        Uint8Array.from(
-            binary,
-            char =>
-                char.charCodeAt(0)
-        );
-
-
-    return new TextDecoder()
-        .decode(bytes);
+    return "лет";
 }
 
 </script>
