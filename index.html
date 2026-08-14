@@ -1,2777 +1,1592 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>Дни рождения</title>
-
-    <meta
-        name="description"
-        content="Список дней рождения"
-    >
-
-
-    <style>
-
-        /* ========================================
-           ОСНОВНЫЕ ЦВЕТА
-        ======================================== */
-
-        :root {
-
-            --bg: #0d0818;
-            --bg2: #130c23;
-
-            --card: #1a102b;
-            --card2: #211437;
-
-            --purple: #8b5cf6;
-            --purple-light: #a78bfa;
-            --purple-dark: #6d28d9;
-
-            --pink: #e879f9;
-            --pink-dark: #c026d3;
-
-            --indigo: #6366f1;
-
-            --white: #ffffff;
-            --text: #f5f3ff;
-            --text-soft: #c8c0d8;
-            --text-muted: #9187a5;
-
-            --border:
-                rgba(167, 139, 250, 0.16);
-
-            --shadow:
-                0 15px 45px
-                rgba(0, 0, 0, 0.35);
-
-        }
-
-
-        /* ========================================
-           RESET
-        ======================================== */
-
-        * {
-            box-sizing: border-box;
-        }
-
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-
-        body {
-
-            margin: 0;
-
-            min-height: 100vh;
-
-            font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                Roboto,
-                Helvetica,
-                Arial,
-                sans-serif;
-
-            color: var(--text);
-
-            background:
-
-                radial-gradient(
-                    circle at 10% 5%,
-                    rgba(139, 92, 246, .18),
-                    transparent 28%
-                ),
-
-                radial-gradient(
-                    circle at 90% 10%,
-                    rgba(232, 121, 249, .10),
-                    transparent 25%
-                ),
-
-                radial-gradient(
-                    circle at 50% 100%,
-                    rgba(99, 102, 241, .13),
-                    transparent 35%
-                ),
-
-                linear-gradient(
-                    180deg,
-                    var(--bg),
-                    var(--bg2)
-                );
-
-            background-attachment: fixed;
-
-            line-height: 1.5;
-
-        }
-
-
-        /* ========================================
-           ДЕКОРАТИВНЫЕ ПЯТНА
-        ======================================== */
-
-        body::before {
-
-            content: "";
-
-            position: fixed;
-
-            width: 300px;
-            height: 300px;
-
-            left: -120px;
-            top: 35%;
-
-            background:
-                rgba(139, 92, 246, .12);
-
-            filter:
-                blur(100px);
-
-            border-radius: 50%;
-
-            pointer-events: none;
-
-            z-index: -1;
-
-        }
-
-
-        body::after {
-
-            content: "";
-
-            position: fixed;
-
-            width: 280px;
-            height: 280px;
-
-            right: -100px;
-            top: 55%;
-
-            background:
-                rgba(232, 121, 249, .08);
-
-            filter:
-                blur(100px);
-
-            border-radius: 50%;
-
-            pointer-events: none;
-
-            z-index: -1;
-
-        }
-
-
-        /* ========================================
-           CONTAINER
-        ======================================== */
-
-        .container {
-
-            width:
-                min(
-                    1100px,
-                    calc(100% - 32px)
-                );
-
-            margin: 0 auto;
-
-        }
-
-
-        /* ========================================
-           HEADER
-        ======================================== */
-
-        header {
-
-            text-align: center;
-
-            padding:
-                60px 0 35px;
-
-        }
-
-
-        .logo {
-
-            width: 68px;
-            height: 68px;
-
-            margin:
-                0 auto 18px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            border-radius: 20px;
-
-            font-size: 32px;
-
-            background:
-
-                linear-gradient(
-                    135deg,
-                    #7c3aed,
-                    #a855f7,
-                    #d946ef
-                );
-
-            box-shadow:
-
-                0 12px 35px
-                rgba(139, 92, 246, .35),
-
-                0 0 50px
-                rgba(168, 85, 247, .15);
-
-            animation:
-                floating 4s ease-in-out infinite;
-
-        }
-
-
-        @keyframes floating {
-
-            0%,
-            100% {
-                transform:
-                    translateY(0);
-            }
-
-            50% {
-                transform:
-                    translateY(-5px);
-            }
-
-        }
-
-
-        header h1 {
-
-            margin: 0;
-
-            font-size:
-                clamp(
-                    34px,
-                    6vw,
-                    54px
-                );
-
-            line-height: 1.1;
-
-            font-weight: 800;
-
-            letter-spacing: -2px;
-
-            background:
-
-                linear-gradient(
-                    135deg,
-                    #ffffff,
-                    #c4b5fd 45%,
-                    #e879f9
-                );
-
-            -webkit-background-clip: text;
-
-            background-clip: text;
-
-            color: transparent;
-
-        }
-
-
-        header p {
-
-            margin:
-                14px auto 0;
-
-            max-width: 520px;
-
-            color:
-                var(--text-muted);
-
-            font-size: 16px;
-
-        }
-
-
-        /* ========================================
-           FORM
-        ======================================== */
-
-        .form-card {
-
-            position: relative;
-
-            padding: 20px;
-
-            background:
-
-                linear-gradient(
-                    145deg,
-                    rgba(139, 92, 246, .10),
-                    rgba(232, 121, 249, .035)
-                ),
-
-                rgba(26, 16, 43, .9);
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius: 22px;
-
-            box-shadow:
-                var(--shadow);
-
-            backdrop-filter:
-                blur(16px);
-
-        }
-
-
-        .form-title {
-
-            margin:
-                0 0 15px;
-
-            font-size: 17px;
-
-            font-weight: 700;
-
-            color:
-                var(--text);
-
-        }
-
-
-        #birthday-form {
-
-            display: grid;
-
-            grid-template-columns:
-                1.5fr
-                .65fr
-                1fr
-                .7fr
-                auto
-                auto;
-
-            gap: 10px;
-
-        }
-
-
-        input,
-        select {
-
-            width: 100%;
-
-            height: 46px;
-
-            padding:
-                0 14px;
-
-            border:
-                1px solid
-                rgba(167, 139, 250, .15);
-
-            border-radius: 12px;
-
-            outline: none;
-
-            background:
-                rgba(8, 5, 17, .55);
-
-            color:
-                var(--text);
-
-            font-size: 14px;
-
-            transition:
-                .2s ease;
-
-        }
-
-
-        input::placeholder {
-
-            color:
-                #756b87;
-
-        }
-
-
-        input:hover,
-        select:hover {
-
-            border-color:
-                rgba(167, 139, 250, .35);
-
-        }
-
-
-        input:focus,
-        select:focus {
-
-            border-color:
-                var(--purple-light);
-
-            box-shadow:
-
-                0 0 0 3px
-                rgba(139, 92, 246, .12),
-
-                0 0 25px
-                rgba(139, 92, 246, .12);
-
-        }
-
-
-        /* ========================================
-           BUTTONS
-        ======================================== */
-
-        button {
-
-            height: 46px;
-
-            padding:
-                0 18px;
-
-            border: 0;
-
-            border-radius: 12px;
-
-            cursor: pointer;
-
-            font-size: 14px;
-
-            font-weight: 700;
-
-            color: white;
-
-            transition:
-                .2s ease;
-
-        }
-
-
-        button:hover {
-
-            transform:
-                translateY(-2px);
-
-        }
-
-
-        button:active {
-
-            transform:
-                translateY(0);
-
-        }
-
-
-        #birthday-form button[type="submit"] {
-
-            background:
-
-                linear-gradient(
-                    135deg,
-                    #7c3aed,
-                    #a855f7,
-                    #d946ef
-                );
-
-            box-shadow:
-
-                0 8px 25px
-                rgba(139, 92, 246, .28);
-
-        }
-
-
-        #birthday-form button[type="submit"]:hover {
-
-            box-shadow:
-
-                0 12px 35px
-                rgba(168, 85, 247, .42);
-
-        }
-
-
-        #reset {
-
-            background:
-                rgba(255,255,255,.055);
-
-            color:
-                var(--text-soft);
-
-            border:
-                1px solid
-                rgba(167,139,250,.14);
-
-        }
-
-
-        #reset:hover {
-
-            background:
-                rgba(167,139,250,.10);
-
-            color: white;
-
-        }
-
-
-        /* ========================================
-           SOON
-        ======================================== */
-
-        .section {
-
-            margin-top: 28px;
-
-        }
-
-
-        .section-card {
-
-            padding: 22px;
-
-            background:
-
-                linear-gradient(
-                    145deg,
-                    rgba(139,92,246,.09),
-                    rgba(232,121,249,.035)
-                ),
-
-                var(--card);
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius: 20px;
-
-            box-shadow:
-                var(--shadow);
-
-        }
-
-
-        .section-header {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 15px;
-
-            margin-bottom: 15px;
-
-        }
-
-
-        .section-title {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 10px;
-
-            margin: 0;
-
-            font-size: 20px;
-
-        }
-
-
-        .section-icon {
-
-            width: 36px;
-            height: 36px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            border-radius: 10px;
-
-            background:
-                rgba(139,92,246,.14);
-
-        }
-
-
-        .soon-item {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 20px;
-
-            padding: 15px 17px;
-
-            border-radius: 14px;
-
-            background:
-                rgba(139,92,246,.065);
-
-            border:
-                1px solid
-                rgba(167,139,250,.10);
-
-            transition:
-                .2s ease;
-
-        }
-
-
-        .soon-item:hover {
-
-            background:
-                rgba(139,92,246,.12);
-
-            border-color:
-                rgba(167,139,250,.22);
-
-            transform:
-                translateX(3px);
-
-        }
-
-
-        .soon-left {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 10px;
-
-        }
-
-
-        .soon-name {
-
-            font-weight: 700;
-
-        }
-
-
-        .soon-date {
-
-            color:
-                var(--text-muted);
-
-        }
-
-
-        .soon-days {
-
-            color:
-                var(--purple-light);
-
-            font-weight: 700;
-
-            white-space: nowrap;
-
-        }
-
-
-        /* ========================================
-           DOWNLOAD
-        ======================================== */
-
-        .actions {
-
-            display: flex;
-
-            justify-content: center;
-
-            margin-top: 14px;
-
-        }
-
-
-        #download {
-
-            background:
-
-                linear-gradient(
-                    135deg,
-                    #4f46e5,
-                    #7c3aed
-                );
-
-            box-shadow:
-                0 8px 25px
-                rgba(79,70,229,.22);
-
-        }
-
-
-        /* ========================================
-           MONTHS
-        ======================================== */
-
-        #months {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 16px;
-
-            margin-top: 28px;
-
-            padding-bottom: 50px;
-
-        }
-
-
-        .month {
-
-            overflow: hidden;
-
-            background:
-
-                linear-gradient(
-                    145deg,
-                    rgba(139,92,246,.075),
-                    rgba(255,255,255,.015)
-                ),
-
-                var(--card);
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius: 18px;
-
-            box-shadow:
-
-                0 8px 25px
-                rgba(0,0,0,.22);
-
-            transition:
-                .25s ease;
-
-        }
-
-
-        .month:hover {
-
-            transform:
-                translateY(-4px);
-
-            border-color:
-                rgba(167,139,250,.28);
-
-            box-shadow:
-
-                0 15px 40px
-                rgba(0,0,0,.3),
-
-                0 0 25px
-                rgba(139,92,246,.08);
-
-        }
-
-
-        .month-title {
-
-            padding:
-                15px 17px;
-
-            font-size: 15px;
-
-            font-weight: 700;
-
-            color:
-                #ddd6fe;
-
-            background:
-
-                linear-gradient(
-                    90deg,
-                    rgba(139,92,246,.13),
-                    rgba(232,121,249,.045)
-                );
-
-            border-bottom:
-                1px solid
-                rgba(167,139,250,.10);
-
-        }
-
-
-        .month-list {
-
-            list-style: none;
-
-            margin: 0;
-
-            padding: 6px;
-
-        }
-
-
-        /* ========================================
-           PERSON
-        ======================================== */
-
-        .person {
-
-            display: grid;
-
-            grid-template-columns:
-                42px 1fr;
-
-            column-gap: 10px;
-
-            align-items: center;
-
-            padding: 10px;
-
-            border-radius: 12px;
-
-            transition:
-                background .2s ease;
-
-        }
-
-
-        .person:hover {
-
-            background:
-                rgba(139,92,246,.085);
-
-        }
-
-
-        .person-day {
-
-            width: 38px;
-            height: 38px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            border-radius: 10px;
-
-            font-weight: 800;
-
-            color:
-                #ddd6fe;
-
-            background:
-
-                linear-gradient(
-                    135deg,
-                    rgba(139,92,246,.20),
-                    rgba(99,102,241,.12)
-                );
-
-            border:
-                1px solid
-                rgba(167,139,250,.15);
-
-        }
-
-
-        .person-content {
-
-            min-width: 0;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 8px;
-
-        }
-
-
-        .person-name {
-
-            overflow: hidden;
-
-            text-overflow: ellipsis;
-
-            white-space: nowrap;
-
-            font-weight: 600;
-
-            color:
-                var(--text);
-
-        }
-
-
-        .person-age {
-
-            grid-column: 2;
-
-            color:
-                var(--text-muted);
-
-            font-size: 12px;
-
-        }
-
-
-        /* ========================================
-           DELETE
-        ======================================== */
-
-        .delete-person {
-
-            flex-shrink: 0;
-
-            width: 27px;
-            height: 27px;
-
-            padding: 0;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            border-radius: 8px;
-
-            color:
-                #d8b4fe;
-
-            background:
-                rgba(232,121,249,.07);
-
-            border:
-                1px solid
-                rgba(232,121,249,.12);
-
-            font-size: 19px;
-
-            line-height: 1;
-
-            opacity: 0;
-
-            transform:
-                scale(.8);
-
-            transition:
-                .18s ease;
-
-        }
-
-
-        .person:hover .delete-person {
-
-            opacity: 1;
-
-            transform:
-                scale(1);
-
-        }
-
-
-        .delete-person:hover {
-
-            color: white;
-
-            background:
-                rgba(239,68,68,.78);
-
-            border-color:
-                rgba(248,113,113,.5);
-
-            box-shadow:
-                0 0 15px
-                rgba(239,68,68,.22);
-
-        }
-
-
-        /* ========================================
-           EMPTY
-        ======================================== */
-
-        .empty,
-        .month-empty {
-
-            padding: 16px;
-
-            text-align: center;
-
-            color:
-                var(--text-muted);
-
-            font-size: 13px;
-
-        }
-
-
-        /* ========================================
-           FOOTER
-        ======================================== */
-
-        footer {
-
-            padding:
-                5px 0 45px;
-
-            text-align: center;
-
-            color:
-                var(--text-muted);
-
-            font-size: 13px;
-
-        }
-
-
-        /* ========================================
-           SCROLLBAR
-        ======================================== */
-
-        ::-webkit-scrollbar {
-
-            width: 9px;
-
-        }
-
-
-        ::-webkit-scrollbar-track {
-
-            background:
-                #090511;
-
-        }
-
-
-        ::-webkit-scrollbar-thumb {
-
-            border-radius: 10px;
-
-            background:
-
-                linear-gradient(
-                    #6d28d9,
-                    #d946ef
-                );
-
-        }
-
-
-        ::selection {
-
-            background:
-                rgba(139,92,246,.55);
-
-            color: white;
-
-        }
-
-
-        /* ========================================
-           MOBILE
-        ======================================== */
-
-        @media (max-width: 1000px) {
-
-            #birthday-form {
-
-                grid-template-columns:
-                    1fr 1fr 1fr;
-
-            }
-
-        }
-
-
-        @media (max-width: 800px) {
-
-            #months {
-
-                grid-template-columns:
-                    repeat(2, 1fr);
-
-            }
-
-
-            #birthday-form {
-
-                grid-template-columns:
-                    1fr 1fr;
-
-            }
-
-        }
-
-
-        @media (max-width: 560px) {
-
-            .container {
-
-                width:
-                    calc(100% - 20px);
-
-            }
-
-
-            header {
-
-                padding:
-                    35px 0 25px;
-
-            }
-
-
-            header h1 {
-
-                font-size: 36px;
-
-                letter-spacing: -1px;
-
-            }
-
-
-            .logo {
-
-                width: 58px;
-                height: 58px;
-
-                font-size: 27px;
-
-            }
-
-
-            #birthday-form {
-
-                grid-template-columns:
-                    1fr;
-
-            }
-
-
-            #months {
-
-                grid-template-columns:
-                    1fr;
-
-            }
-
-
-            .form-card {
-
-                padding: 15px;
-
-            }
-
-
-            .section-card {
-
-                padding: 16px;
-
-            }
-
-
-            .soon-item {
-
-                flex-direction:
-                    column;
-
-                align-items:
-                    flex-start;
-
-                gap: 7px;
-
-            }
-
-
-            .soon-days {
-
-                align-self:
-                    flex-start;
-
-            }
-
-
-            .delete-person {
-
-                opacity: .65;
-
-                transform:
-                    scale(1);
-
-            }
-
-        }
-
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дни рождения</title>
+
+<style>
+:root {
+    --bg: #0c0715;
+    --card: #181027;
+    --card2: #211538;
+    --purple: #8b5cf6;
+    --purple2: #a855f7;
+    --pink: #e879f9;
+    --text: #f7f3ff;
+    --muted: #968ba9;
+    --border: rgba(167,139,250,.16);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at 10% 0%, rgba(139,92,246,.2), transparent 28%),
+        radial-gradient(circle at 90% 10%, rgba(232,121,249,.12), transparent 25%),
+        radial-gradient(circle at 50% 100%, rgba(99,102,241,.12), transparent 35%),
+        linear-gradient(180deg, #0c0715, #130b20);
+    background-attachment: fixed;
+}
+
+.container {
+    width: min(1100px, calc(100% - 30px));
+    margin: auto;
+}
+
+header {
+    text-align: center;
+    padding: 55px 0 30px;
+}
+
+.logo {
+    width: 68px;
+    height: 68px;
+    margin: auto auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    font-size: 32px;
+    background: linear-gradient(135deg,#6d28d9,#a855f7,#d946ef);
+    box-shadow: 0 12px 40px rgba(139,92,246,.35);
+}
+
+header h1 {
+    margin: 0;
+    font-size: clamp(36px,6vw,54px);
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -2px;
+    background: linear-gradient(135deg,#fff,#c4b5fd,#e879f9);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+header p {
+    margin: 14px auto 0;
+    color: var(--muted);
+}
+
+.form-card,
+.section-card,
+.month {
+    background:
+        linear-gradient(145deg,rgba(139,92,246,.08),rgba(255,255,255,.015)),
+        var(--card);
+    border: 1px solid var(--border);
+    box-shadow: 0 15px 45px rgba(0,0,0,.28);
+}
+
+.form-card {
+    padding: 20px;
+    border-radius: 22px;
+}
+
+.form-title {
+    margin: 0 0 15px;
+    font-size: 17px;
+}
+
+#birthday-form {
+    display: grid;
+    grid-template-columns: 1.5fr .65fr 1fr .7fr auto auto;
+    gap: 10px;
+}
+
+input,
+select {
+    width: 100%;
+    height: 46px;
+    padding: 0 14px;
+    border: 1px solid rgba(167,139,250,.15);
+    border-radius: 12px;
+    outline: none;
+    background: rgba(8,5,17,.6);
+    color: var(--text);
+    font-size: 14px;
+}
+
+input::placeholder {
+    color: #756b87;
+}
+
+input:focus,
+select:focus {
+    border-color: #a78bfa;
+    box-shadow: 0 0 0 3px rgba(139,92,246,.12);
+}
+
+button {
+    height: 46px;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 700;
+    color: white;
+    transition: .2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+#birthday-form button[type="submit"] {
+    background: linear-gradient(135deg,#7c3aed,#a855f7,#d946ef);
+    box-shadow: 0 8px 25px rgba(139,92,246,.28);
+}
+
+#reset {
+    background: rgba(255,255,255,.055);
+    color: #c8c0d8;
+    border: 1px solid rgba(167,139,250,.14);
+}
+
+#reset:hover {
+    background: rgba(167,139,250,.12);
+    color: white;
+}
+
+.section {
+    margin-top: 28px;
+}
+
+.section-card {
+    padding: 22px;
+    border-radius: 20px;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 15px;
+    font-size: 20px;
+}
+
+.section-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(139,92,246,.14);
+}
+
+.soon-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 15px 17px;
+    border-radius: 14px;
+    background: rgba(139,92,246,.07);
+    border: 1px solid rgba(167,139,250,.1);
+}
+
+.soon-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.soon-name {
+    font-weight: 700;
+}
+
+.soon-date {
+    color: var(--muted);
+}
+
+.soon-days {
+    color: #c4b5fd;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.empty {
+    padding: 15px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    margin: 14px 0 0;
+}
+
+#download {
+    background: linear-gradient(135deg,#4f46e5,#7c3aed);
+}
+
+#months {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 16px;
+    margin-top: 28px;
+    padding-bottom: 50px;
+}
+
+.month {
+    overflow: hidden;
+    border-radius: 18px;
+    transition: .25s ease;
+}
+
+.month:hover {
+    transform: translateY(-4px);
+    border-color: rgba(167,139,250,.28);
+}
+
+.month-title {
+    padding: 15px 17px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #ddd6fe;
+    background: linear-gradient(
+        90deg,
+        rgba(139,92,246,.13),
+        rgba(232,121,249,.045)
+    );
+    border-bottom: 1px solid rgba(167,139,250,.1);
+}
+
+.month-list {
+    list-style: none;
+    margin: 0;
+    padding: 6px;
+}
+
+.person {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    column-gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.person:hover {
+    background: rgba(139,92,246,.085);
+}
+
+.person-day {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-weight: 800;
+    color: #ddd6fe;
+    background: linear-gradient(
+        135deg,
+        rgba(139,92,246,.2),
+        rgba(99,102,241,.12)
+    );
+}
+
+.person-content {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.person-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+.person-age {
+    grid-column: 2;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.delete-person {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: #d8b4fe;
+    background: rgba(232,121,249,.07);
+    border: 1px solid rgba(232,121,249,.12);
+    font-size: 19px;
+    opacity: 0;
+    transform: scale(.8);
+}
+
+.person:hover .delete-person {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.delete-person:hover {
+    color: white;
+    background: rgba(239,68,68,.8);
+}
+
+footer {
+    padding: 5px 0 45px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+@media(max-width:1000px) {
+    #birthday-form {
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+@media(max-width:800px) {
+    #months {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    #birthday-form {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media(max-width:560px) {
+    .container {
+        width: calc(100% - 20px);
+    }
+
+    header {
+        padding: 35px 0 25px;
+    }
+
+    #birthday-form {
+        grid-template-columns: 1fr;
+    }
+
+    #months {
+        grid-template-columns: 1fr;
+    }
+
+    .soon-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .delete-person {
+        opacity: .7;
+        transform: scale(1);
+    }
+}
+</style>
 </head>
-
 
 <body>
 
-
 <div class="container">
 
+<header>
+    <div class="logo">🎂</div>
 
-    <!-- ====================================
-         HEADER
-    ===================================== -->
+    <h1>Дни рождения</h1>
 
-    <header>
-
-        <div class="logo">
-            🎂
-        </div>
-
-        <h1>
-            Дни рождения
-        </h1>
-
-        <p>
-            Все важные даты в одном красивом месте
-        </p>
-
-    </header>
+    <p>
+        Все важные даты в одном красивом месте
+    </p>
+</header>
 
 
-    <!-- ====================================
-         FORM
-    ===================================== -->
+<section class="form-card">
 
-    <section class="form-card">
+    <h2 class="form-title">
+        Добавить участника
+    </h2>
 
-        <h2 class="form-title">
-            Добавить участника
+    <form id="birthday-form">
+
+        <input
+            id="name"
+            type="text"
+            placeholder="Имя участника"
+            autocomplete="off"
+            required
+        >
+
+        <input
+            id="day"
+            type="number"
+            min="1"
+            max="31"
+            placeholder="День"
+            required
+        >
+
+        <select id="month"></select>
+
+        <input
+            id="age"
+            type="number"
+            min="0"
+            placeholder="Возраст"
+        >
+
+        <button type="submit">
+            Добавить
+        </button>
+
+        <!-- ЭТА КНОПКА НЕ СБРАСЫВАЕТ СПИСОК -->
+        <button
+            type="button"
+            id="reset"
+        >
+            Сбросить
+        </button>
+
+    </form>
+
+</section>
+
+
+<section class="section">
+
+    <div class="section-card">
+
+        <h2 class="section-title">
+            <span class="section-icon">🎉</span>
+            Скоро
         </h2>
 
-
-        <form id="birthday-form">
-
-            <input
-                id="name"
-                type="text"
-                placeholder="Имя участника"
-                autocomplete="off"
-                required
-            >
-
-
-            <input
-                id="day"
-                type="number"
-                min="1"
-                max="31"
-                placeholder="День"
-                required
-            >
-
-
-            <select id="month">
-            </select>
-
-
-            <input
-                id="age"
-                type="number"
-                min="0"
-                placeholder="Возраст"
-            >
-
-
-            <button
-                type="submit"
-            >
-                Добавить
-            </button>
-
-
-            <button
-                type="button"
-                id="reset"
-            >
-                Сбросить
-            </button>
-
-        </form>
-
-    </section>
-
-
-    <!-- ====================================
-         SOON
-    ===================================== -->
-
-    <section class="section">
-
-        <div class="section-card">
-
-            <div class="section-header">
-
-                <h2 class="section-title">
-
-                    <span class="section-icon">
-                        🎉
-                    </span>
-
-                    Скоро
-
-                </h2>
-
+        <div id="soon-list">
+            <div class="empty">
+                Загрузка...
             </div>
-
-
-            <div id="soon-list">
-
-                <div class="empty">
-                    Загрузка...
-                </div>
-
-            </div>
-
         </div>
-
-    </section>
-
-
-    <!-- ====================================
-         DOWNLOAD
-    ===================================== -->
-
-    <div class="actions">
-
-        <button id="download">
-            ↓ Скачать birthdays.json
-        </button>
 
     </div>
 
-
-    <!-- ====================================
-         MONTHS
-    ===================================== -->
-
-    <main id="months">
-
-        <div class="empty">
-            Загрузка дней рождения...
-        </div>
-
-    </main>
+</section>
 
 
-    <!-- ====================================
-         FOOTER
-    ===================================== -->
+<div class="actions">
 
-    <footer>
+    <button id="download">
+        ↓ Скачать birthdays.json
+    </button>
 
-        Дни рождения · Сделано с 💜
+</div>
 
-    </footer>
 
+<main id="months">
+
+    <div class="empty">
+        Загрузка дней рождения...
+    </div>
+
+</main>
+
+
+<footer>
+    Дни рождения · Сделано с 💜
+</footer>
 
 </div>
 
 
 <script>
 
-    /* ========================================
-       НАСТРОЙКИ
-    ======================================== */
-
-    const MONTHS = [
-
-        "Январь",
-        "Февраль",
-        "Март",
-        "Апрель",
-        "Май",
-        "Июнь",
-        "Июль",
-        "Август",
-        "Сентябрь",
-        "Октябрь",
-        "Ноябрь",
-        "Декабрь"
-
-    ];
-
-
-    const STORAGE_KEY =
-        "birthday-blade-data";
-
-
-    let birthdays = [];
-
-
-    /* ========================================
-       START
-    ======================================== */
-
-    document.addEventListener(
-        "DOMContentLoaded",
-        async () => {
-
-            createMonthSelect();
-
-            await loadBirthdays();
-
-            render();
-
-
-            document
-                .getElementById(
-                    "birthday-form"
-                )
-                .addEventListener(
-                    "submit",
-                    addBirthday
-                );
-
-
-            document
-                .getElementById(
-                    "reset"
-                )
-                .addEventListener(
-                    "click",
-                    resetForm
-                );
-
-
-            document
-                .getElementById(
-                    "download"
-                )
-                .addEventListener(
-                    "click",
-                    downloadJSON
-                );
-
-        }
-    );
-
-
-    /* ========================================
-       LOAD
-    ======================================== */
-
-    async function loadBirthdays() {
-
-        let remote = [];
-
-
-        try {
-
-            const response =
-                await fetch(
-                    "data/birthdays.json",
-                    {
-                        cache: "no-store"
-                    }
-                );
-
-
-            if (response.ok) {
-
-                const data =
-                    await response.json();
-
-
-                if (Array.isArray(data)) {
-
-                    remote = data;
-
-                }
-
-            }
-
-        }
-
-        catch (error) {
-
-            console.warn(
-                "Не удалось загрузить birthdays.json",
-                error
-            );
-
-        }
-
-
-        const local =
-            localStorage.getItem(
-                STORAGE_KEY
-            );
-
-
-        if (local) {
-
-            try {
-
-                const parsed =
-                    JSON.parse(local);
-
-
-                if (
-                    Array.isArray(parsed)
-                ) {
-
-                    birthdays =
-                        cleanData(parsed);
-
-                    return;
-
-                }
-
-            }
-
-            catch (error) {
-
-                console.warn(
-                    "Ошибка локальных данных",
-                    error
-                );
-
-            }
-
-        }
-
-
-        birthdays =
-            cleanData(remote);
-
-    }
-
-
-    /* ========================================
-       CLEAN DATA
-    ======================================== */
-
-    function cleanData(data) {
-
-        return data
-
-            .filter(person => {
-
-                return (
-                    person &&
-                    person.name &&
-                    person.day &&
-                    person.month
-                );
-
-            })
-
-
-            .map(person => {
-
-                const result = {
-
-                    name:
-                        String(person.name),
-
-                    day:
-                        Number(person.day),
-
-                    month:
-                        Number(person.month)
-
-                };
-
-
-                if (
-                    person.age !== undefined &&
-                    person.age !== null &&
-                    person.age !== ""
-                ) {
-
-                    const age =
-                        Number(person.age);
-
-
-                    if (
-                        Number.isInteger(age) &&
-                        age >= 0
-                    ) {
-
-                        result.age = age;
-
-                    }
-
-                }
-
-
-                return result;
-
-            });
-
-    }
-
-
-    /* ========================================
-       MONTH SELECT
-    ======================================== */
-
-    function createMonthSelect() {
-
-        const select =
-            document.getElementById(
-                "month"
-            );
-
-
-        select.innerHTML = "";
-
-
-        MONTHS.forEach(
-            (month, index) => {
-
-                const option =
-                    document.createElement(
-                        "option"
-                    );
-
-
-                option.value =
-                    index + 1;
-
-
-                option.textContent =
-                    month;
-
-
-                select.appendChild(
-                    option
-                );
-
-            }
-        );
-
-    }
-
-
-    /* ========================================
-       RENDER
-    ======================================== */
-
-    function render() {
-
-        renderMonths();
-
-        renderSoon();
-
-    }
-
-
-    /* ========================================
-       MONTHS
-    ======================================== */
-
-    function renderMonths() {
-
-        const container =
-            document.getElementById(
-                "months"
-            );
-
-
-        container.innerHTML = "";
-
-
-        MONTHS.forEach(
-            (monthName, index) => {
-
-                const monthNumber =
-                    index + 1;
-
-
-                const people =
-                    birthdays
-
-                        .filter(person => {
-
-                            return (
-                                Number(person.month)
-                                ===
-                                monthNumber
-                            );
-
-                        })
-
-                        .sort(
-                            compareBirthdays
-                        );
-
-
-                const month =
-                    document.createElement(
-                        "article"
-                    );
-
-
-                month.className =
-                    "month";
-
-
-                const title =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                title.className =
-                    "month-title";
-
-
-                title.textContent =
-                    `${monthName} · ${people.length}`;
-
-
-                const list =
-                    document.createElement(
-                        "ul"
-                    );
-
-
-                list.className =
-                    "month-list";
-
-
-                if (
-                    people.length === 0
-                ) {
-
-                    const empty =
-                        document.createElement(
-                            "li"
-                        );
-
-
-                    empty.className =
-                        "month-empty";
-
-
-                    empty.textContent =
-                        "Пока никого нет.";
-
-
-                    list.appendChild(
-                        empty
-                    );
-
-                }
-
-
-                people.forEach(
-                    person => {
-
-                        list.appendChild(
-                            createPerson(
-                                person
-                            )
-                        );
-
-                    }
-                );
-
-
-                month.appendChild(
-                    title
-                );
-
-
-                month.appendChild(
-                    list
-                );
-
-
-                container.appendChild(
-                    month
-                );
-
-            }
-        );
-
-    }
-
-
-    /* ========================================
-       PERSON
-    ======================================== */
-
-    function createPerson(person) {
-
-        const item =
-            document.createElement(
-                "li"
-            );
-
-
-        item.className =
-            "person";
-
-
-        const day =
-            document.createElement(
-                "div"
-            );
-
-
-        day.className =
-            "person-day";
-
-
-        day.textContent =
-            String(
-                person.day
-            ).padStart(2, "0");
-
-
-        const content =
-            document.createElement(
-                "div"
-            );
-
-
-        content.className =
-            "person-content";
-
-
-        const name =
-            document.createElement(
-                "div"
-            );
-
-
-        name.className =
-            "person-name";
-
-
-        name.textContent =
-            person.name;
-
-
-        const deleteButton =
-            document.createElement(
-                "button"
-            );
-
-
-        deleteButton.type =
-            "button";
-
-
-        deleteButton.className =
-            "delete-person";
-
-
-        deleteButton.textContent =
-            "×";
-
-
-        deleteButton.title =
-            "Удалить";
-
-
-        deleteButton.addEventListener(
-            "click",
-            event => {
-
-                event.preventDefault();
-
-                event.stopPropagation();
-
-                deleteBirthday(
-                    person
-                );
-
-            }
+/* ==========================================
+   НАСТРОЙКИ
+========================================== */
+
+const MONTHS = [
+    "Январь",
+    "Февраль",
+    "Март",
+    "Апрель",
+    "Май",
+    "Июнь",
+    "Июль",
+    "Август",
+    "Сентябрь",
+    "Октябрь",
+    "Ноябрь",
+    "Декабрь"
+];
+
+const STORAGE_KEY = "birthday-blade-data";
+
+let birthdays = [];
+
+
+/* ==========================================
+   ЗАПУСК
+========================================== */
+
+document.addEventListener("DOMContentLoaded", async function() {
+
+    createMonthSelect();
+
+    await loadBirthdays();
+
+    render();
+
+    /*
+       Кнопка добавления
+    */
+
+    document
+        .getElementById("birthday-form")
+        .addEventListener(
+            "submit",
+            addBirthday
         );
 
 
-        content.appendChild(
-            name
-        );
+    /*
+       КНОПКА СБРОСИТЬ
 
+       Она теперь НЕ является частью
+       стандартного reset формы.
 
-        content.appendChild(
-            deleteButton
-        );
+       Все поля очищаем вручную.
+    */
 
+    document
+        .getElementById("reset")
+        .onclick = function() {
 
-        item.appendChild(
-            day
-        );
+            document.getElementById("name").value = "";
 
+            document.getElementById("day").value = "";
 
-        item.appendChild(
-            content
-        );
+            document.getElementById("month").value = "1";
 
+            document.getElementById("age").value = "";
 
-        if (
-            person.age !== undefined
-        ) {
-
-            const age =
-                document.createElement(
-                    "div"
-                );
-
-
-            age.className =
-                "person-age";
-
-
-            age.textContent =
-                `${person.age} ${yearsWord(person.age)}`;
-
-
-            item.appendChild(
-                age
-            );
-
-        }
-
-
-        return item;
-
-    }
-
-
-    /* ========================================
-       DELETE PERSON
-    ======================================== */
-
-    function deleteBirthday(person) {
-
-        const confirmed =
-            confirm(
-                `Удалить ${person.name} из списка?`
-            );
-
-
-        if (!confirmed) {
-
-            return;
-
-        }
-
-
-        birthdays =
-            birthdays.filter(item => {
-
-                return !(
-                    String(item.name)
-                    ===
-                    String(person.name)
-
-                    &&
-
-                    Number(item.day)
-                    ===
-                    Number(person.day)
-
-                    &&
-
-                    Number(item.month)
-                    ===
-                    Number(person.month)
-                );
-
-            });
-
-
-        saveLocal();
-
-        render();
-
-    }
-
-
-    /* ========================================
-       SOON
-    ======================================== */
-
-    function renderSoon() {
-
-        const container =
-            document.getElementById(
-                "soon-list"
-            );
-
-
-        container.innerHTML = "";
-
-
-        if (
-            birthdays.length === 0
-        ) {
-
-            container.innerHTML = `
-                <div class="empty">
-                    Пока нет дней рождения.
-                </div>
-            `;
-
-            return;
-
-        }
-
-
-        const today =
-            new Date();
-
-
-        today.setHours(
-            0,
-            0,
-            0,
-            0
-        );
-
-
-        const upcoming =
-            birthdays
-
-                .map(person => {
-
-                    const date =
-                        nextBirthday(
-                            person,
-                            today
-                        );
-
-
-                    const days =
-                        Math.round(
-                            (
-                                date.getTime()
-                                -
-                                today.getTime()
-                            )
-                            /
-                            86400000
-                        );
-
-
-                    return {
-
-                        person,
-                        date,
-                        days
-
-                    };
-
-                })
-
-
-                .sort((a, b) => {
-
-                    if (
-                        a.days !==
-                        b.days
-                    ) {
-
-                        return (
-                            a.days -
-                            b.days
-                        );
-
-                    }
-
-
-                    return compareBirthdays(
-                        a.person,
-                        b.person
-                    );
-
-                });
-
-
-        /*
-           Показываем ТОЛЬКО
-           самого ближайшего.
-        */
-
-        const next =
-            upcoming[0];
-
-
-        const row =
-            document.createElement(
-                "div"
-            );
-
-
-        row.className =
-            "soon-item";
-
-
-        const left =
-            document.createElement(
-                "div"
-            );
-
-
-        left.className =
-            "soon-left";
-
-
-        const name =
-            document.createElement(
-                "span"
-            );
-
-
-        name.className =
-            "soon-name";
-
-
-        name.textContent =
-            next.person.name;
-
-
-        const date =
-            document.createElement(
-                "span"
-            );
-
-
-        date.className =
-            "soon-date";
-
-
-        date.textContent =
-            `· ${formatDate(next.person)}`;
-
-
-        left.appendChild(
-            name
-        );
-
-
-        left.appendChild(
-            date
-        );
-
-
-        const days =
-            document.createElement(
-                "span"
-            );
-
-
-        days.className =
-            "soon-days";
-
-
-        days.textContent =
-            formatDays(
-                next.days
-            );
-
-
-        row.appendChild(
-            left
-        );
-
-
-        row.appendChild(
-            days
-        );
-
-
-        container.appendChild(
-            row
-        );
-
-    }
-
-
-    /* ========================================
-       NEXT BIRTHDAY
-    ======================================== */
-
-    function nextBirthday(
-        person,
-        today
-    ) {
-
-        const year =
-            today.getFullYear();
-
-
-        let date =
-            new Date(
-                year,
-                Number(person.month) - 1,
-                Number(person.day)
-            );
-
-
-        date.setHours(
-            0,
-            0,
-            0,
-            0
-        );
-
-
-        if (
-            date < today
-        ) {
-
-            date =
-                new Date(
-                    year + 1,
-                    Number(person.month) - 1,
-                    Number(person.day)
-                );
-
-
-            date.setHours(
-                0,
-                0,
-                0,
-                0
-            );
-
-        }
-
-
-        return date;
-
-    }
-
-
-    /* ========================================
-       ADD
-    ======================================== */
-
-    function addBirthday(event) {
-
-        event.preventDefault();
-
-
-        const name =
-            document
-                .getElementById("name")
-                .value
-                .trim();
-
-
-        const day =
-            Number(
-                document
-                    .getElementById("day")
-                    .value
-            );
-
-
-        const month =
-            Number(
-                document
-                    .getElementById("month")
-                    .value
-            );
-
-
-        const ageInput =
-            document
-                .getElementById("age")
-                .value;
-
-
-        if (!name) {
-
-            alert(
-                "Введите имя."
-            );
-
-            return;
-
-        }
-
-
-        const maxDay =
-            new Date(
-                2024,
-                month,
-                0
-            ).getDate();
-
-
-        if (
-            !Number.isInteger(day)
-            ||
-            day < 1
-            ||
-            day > maxDay
-        ) {
-
-            alert(
-                "Введите правильный день."
-            );
-
-            return;
-
-        }
-
-
-        const birthday = {
-
-            name,
-            day,
-            month
+            document.getElementById("name").focus();
 
         };
 
 
-        if (
-            ageInput !== ""
-        ) {
+    /*
+       Скачать JSON
+    */
 
-            const age =
-                Number(ageInput);
+    document
+        .getElementById("download")
+        .addEventListener(
+            "click",
+            downloadJSON
+        );
+
+});
 
 
-            if (
-                !Number.isInteger(age)
-                ||
-                age < 0
-            ) {
+/* ==========================================
+   ЗАГРУЗКА ДАННЫХ
+========================================== */
 
-                alert(
-                    "Введите правильный возраст."
-                );
+async function loadBirthdays() {
+
+    let remote = [];
+
+    try {
+
+        const response = await fetch(
+            "data/birthdays.json",
+            {
+                cache: "no-store"
+            }
+        );
+
+        if (response.ok) {
+
+            const data =
+                await response.json();
+
+            if (Array.isArray(data)) {
+                remote = data;
+            }
+
+        }
+
+    } catch(error) {
+
+        console.warn(
+            "Не удалось загрузить birthdays.json",
+            error
+        );
+
+    }
+
+
+    /*
+       Если пользователь уже добавлял
+       свои записи — берём их.
+    */
+
+    const local =
+        localStorage.getItem(
+            STORAGE_KEY
+        );
+
+
+    if (local) {
+
+        try {
+
+            const parsed =
+                JSON.parse(local);
+
+            if (Array.isArray(parsed)) {
+
+                birthdays =
+                    cleanData(parsed);
 
                 return;
 
             }
 
+        } catch(error) {
 
-            birthday.age =
-                age;
+            console.warn(
+                "Ошибка локальных данных",
+                error
+            );
 
         }
-
-
-        birthdays.push(
-            birthday
-        );
-
-
-        birthdays.sort(
-            compareBirthdays
-        );
-
-
-        saveLocal();
-
-        render();
-
-
-        document
-            .getElementById(
-                "birthday-form"
-            )
-            .reset();
-
-
-        window.location.hash =
-            "list";
 
     }
 
 
-    /* ========================================
-       RESET FORM
-    ======================================== */
+    birthdays =
+        cleanData(remote);
 
-    function resetForm() {
+}
 
-        /*
-           ВАЖНО:
 
-           Здесь НЕ удаляются люди.
+/* ==========================================
+   ПРОВЕРКА ДАННЫХ
+========================================== */
 
-           Очищается только форма.
-        */
+function cleanData(data) {
 
-        const form =
-            document.getElementById(
-                "birthday-form"
+    return data
+        .filter(function(person) {
+
+            return (
+                person &&
+                person.name &&
+                person.day &&
+                person.month
             );
 
+        })
+        .map(function(person) {
 
-        if (!form) {
+            const result = {
+
+                name: String(person.name),
+
+                day: Number(person.day),
+
+                month: Number(person.month)
+
+            };
+
+
+            if (
+                person.age !== undefined &&
+                person.age !== null &&
+                person.age !== ""
+            ) {
+
+                const age =
+                    Number(person.age);
+
+                if (
+                    Number.isInteger(age) &&
+                    age >= 0
+                ) {
+
+                    result.age = age;
+
+                }
+
+            }
+
+
+            return result;
+
+        });
+
+}
+
+
+/* ==========================================
+   МЕСЯЦЫ В SELECT
+========================================== */
+
+function createMonthSelect() {
+
+    const select =
+        document.getElementById("month");
+
+    select.innerHTML = "";
+
+
+    MONTHS.forEach(function(month,index) {
+
+        const option =
+            document.createElement("option");
+
+        option.value =
+            index + 1;
+
+        option.textContent =
+            month;
+
+        select.appendChild(option);
+
+    });
+
+}
+
+
+/* ==========================================
+   ОБЩИЙ RENDER
+========================================== */
+
+function render() {
+
+    renderMonths();
+
+    renderSoon();
+
+}
+
+
+/* ==========================================
+   МЕСЯЦЫ
+========================================== */
+
+function renderMonths() {
+
+    const container =
+        document.getElementById("months");
+
+    container.innerHTML = "";
+
+
+    MONTHS.forEach(function(monthName,index) {
+
+        const monthNumber =
+            index + 1;
+
+
+        const people =
+            birthdays
+                .filter(function(person) {
+
+                    return (
+                        Number(person.month)
+                        ===
+                        monthNumber
+                    );
+
+                })
+                .sort(compareBirthdays);
+
+
+        const month =
+            document.createElement("article");
+
+        month.className = "month";
+
+
+        const title =
+            document.createElement("div");
+
+        title.className =
+            "month-title";
+
+        title.textContent =
+            `${monthName} · ${people.length}`;
+
+
+        const list =
+            document.createElement("ul");
+
+        list.className =
+            "month-list";
+
+
+        if (people.length === 0) {
+
+            const empty =
+                document.createElement("li");
+
+            empty.className =
+                "empty";
+
+            empty.textContent =
+                "Пока никого нет.";
+
+            list.appendChild(empty);
+
+        }
+
+
+        people.forEach(function(person) {
+
+            list.appendChild(
+                createPerson(person)
+            );
+
+        });
+
+
+        month.appendChild(title);
+
+        month.appendChild(list);
+
+        container.appendChild(month);
+
+    });
+
+}
+
+
+/* ==========================================
+   СОЗДАНИЕ УЧАСТНИКА
+========================================== */
+
+function createPerson(person) {
+
+    const item =
+        document.createElement("li");
+
+    item.className = "person";
+
+
+    const day =
+        document.createElement("div");
+
+    day.className =
+        "person-day";
+
+    day.textContent =
+        String(person.day).padStart(2,"0");
+
+
+    const content =
+        document.createElement("div");
+
+    content.className =
+        "person-content";
+
+
+    const name =
+        document.createElement("div");
+
+    name.className =
+        "person-name";
+
+    name.textContent =
+        person.name;
+
+
+    /*
+       Крестик удаления
+    */
+
+    const deleteButton =
+        document.createElement("button");
+
+    deleteButton.type =
+        "button";
+
+    deleteButton.className =
+        "delete-person";
+
+    deleteButton.textContent =
+        "×";
+
+    deleteButton.title =
+        "Удалить участника";
+
+
+    deleteButton.onclick =
+        function(event) {
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+            deleteBirthday(person);
+
+        };
+
+
+    content.appendChild(name);
+
+    content.appendChild(deleteButton);
+
+
+    item.appendChild(day);
+
+    item.appendChild(content);
+
+
+    if (person.age !== undefined) {
+
+        const age =
+            document.createElement("div");
+
+        age.className =
+            "person-age";
+
+        age.textContent =
+            `${person.age} ${yearsWord(person.age)}`;
+
+        item.appendChild(age);
+
+    }
+
+
+    return item;
+
+}
+
+
+/* ==========================================
+   УДАЛЕНИЕ ОТДЕЛЬНОГО ЧЕЛОВЕКА
+========================================== */
+
+function deleteBirthday(person) {
+
+    const confirmed =
+        confirm(
+            `Удалить ${person.name} из списка?`
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    birthdays =
+        birthdays.filter(function(item) {
+
+            return !(
+                String(item.name) ===
+                String(person.name)
+
+                &&
+
+                Number(item.day) ===
+                Number(person.day)
+
+                &&
+
+                Number(item.month) ===
+                Number(person.month)
+            );
+
+        });
+
+
+    saveLocal();
+
+    render();
+
+}
+
+
+/* ==========================================
+   СКОРО
+========================================== */
+
+function renderSoon() {
+
+    const container =
+        document.getElementById(
+            "soon-list"
+        );
+
+    container.innerHTML = "";
+
+
+    if (birthdays.length === 0) {
+
+        container.innerHTML = `
+            <div class="empty">
+                Пока нет дней рождения.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    const today =
+        new Date();
+
+    today.setHours(0,0,0,0);
+
+
+    const upcoming =
+        birthdays
+            .map(function(person) {
+
+                const date =
+                    nextBirthday(
+                        person,
+                        today
+                    );
+
+
+                const days =
+                    Math.round(
+                        (
+                            date.getTime()
+                            -
+                            today.getTime()
+                        )
+                        /
+                        86400000
+                    );
+
+
+                return {
+                    person,
+                    date,
+                    days
+                };
+
+            })
+            .sort(function(a,b) {
+
+                if (a.days !== b.days) {
+                    return a.days - b.days;
+                }
+
+                return compareBirthdays(
+                    a.person,
+                    b.person
+                );
+
+            });
+
+
+    /*
+       В "Скоро" показывается
+       только БЛИЖАЙШИЙ человек.
+    */
+
+    const next =
+        upcoming[0];
+
+
+    const row =
+        document.createElement("div");
+
+    row.className =
+        "soon-item";
+
+
+    const left =
+        document.createElement("div");
+
+    left.className =
+        "soon-left";
+
+
+    const name =
+        document.createElement("span");
+
+    name.className =
+        "soon-name";
+
+    name.textContent =
+        next.person.name;
+
+
+    const date =
+        document.createElement("span");
+
+    date.className =
+        "soon-date";
+
+    date.textContent =
+        `· ${formatDate(next.person)}`;
+
+
+    left.appendChild(name);
+
+    left.appendChild(date);
+
+
+    const days =
+        document.createElement("span");
+
+    days.className =
+        "soon-days";
+
+    days.textContent =
+        formatDays(next.days);
+
+
+    row.appendChild(left);
+
+    row.appendChild(days);
+
+
+    container.appendChild(row);
+
+}
+
+
+/* ==========================================
+   БЛИЖАЙШИЙ ДЕНЬ РОЖДЕНИЯ
+========================================== */
+
+function nextBirthday(person,today) {
+
+    const year =
+        today.getFullYear();
+
+
+    let date =
+        new Date(
+            year,
+            Number(person.month)-1,
+            Number(person.day)
+        );
+
+
+    date.setHours(0,0,0,0);
+
+
+    if (date < today) {
+
+        date =
+            new Date(
+                year + 1,
+                Number(person.month)-1,
+                Number(person.day)
+            );
+
+        date.setHours(0,0,0,0);
+
+    }
+
+
+    return date;
+
+}
+
+
+/* ==========================================
+   ДОБАВЛЕНИЕ
+========================================== */
+
+function addBirthday(event) {
+
+    event.preventDefault();
+
+
+    const name =
+        document
+            .getElementById("name")
+            .value
+            .trim();
+
+
+    const day =
+        Number(
+            document
+                .getElementById("day")
+                .value
+        );
+
+
+    const month =
+        Number(
+            document
+                .getElementById("month")
+                .value
+        );
+
+
+    const ageInput =
+        document
+            .getElementById("age")
+            .value;
+
+
+    if (!name) {
+
+        alert("Введите имя.");
+
+        return;
+
+    }
+
+
+    const maxDay =
+        new Date(
+            2024,
+            month,
+            0
+        ).getDate();
+
+
+    if (
+        !Number.isInteger(day)
+        ||
+        day < 1
+        ||
+        day > maxDay
+    ) {
+
+        alert(
+            "Введите правильный день."
+        );
+
+        return;
+
+    }
+
+
+    const birthday = {
+        name,
+        day,
+        month
+    };
+
+
+    if (ageInput !== "") {
+
+        const age =
+            Number(ageInput);
+
+
+        if (
+            !Number.isInteger(age)
+            ||
+            age < 0
+        ) {
+
+            alert(
+                "Введите правильный возраст."
+            );
 
             return;
 
         }
 
 
-        form.reset();
-
-
-        document
-            .getElementById(
-                "month"
-            )
-            .value = "1";
-
-
-        document
-            .getElementById(
-                "name"
-            )
-            .focus();
+        birthday.age =
+            age;
 
     }
 
 
-    /* ========================================
-       LOCAL STORAGE
-    ======================================== */
-
-    function saveLocal() {
-
-        localStorage.setItem(
-
-            STORAGE_KEY,
-
-            JSON.stringify(
-                birthdays,
-                null,
-                2
-            )
-
-        );
-
-    }
+    birthdays.push(birthday);
 
 
-    /* ========================================
-       DOWNLOAD JSON
-    ======================================== */
-
-    function downloadJSON() {
-
-        const json =
-            JSON.stringify(
-                birthdays,
-                null,
-                2
-            );
+    birthdays.sort(
+        compareBirthdays
+    );
 
 
-        const blob =
-            new Blob(
-                [json],
-                {
-                    type:
-                        "application/json"
-                }
-            );
+    saveLocal();
+
+    render();
 
 
-        const url =
-            URL.createObjectURL(
-                blob
-            );
+    /*
+       После добавления
+       форма полностью очищается.
+    */
+
+    clearForm();
 
 
-        const link =
-            document.createElement(
-                "a"
-            );
+    window.location.hash =
+        "list";
+
+}
 
 
-        link.href =
-            url;
+/* ==========================================
+   ОЧИСТКА ФОРМЫ
+========================================== */
+
+function clearForm() {
+
+    document.getElementById("name").value = "";
+
+    document.getElementById("day").value = "";
+
+    document.getElementById("month").value = "1";
+
+    document.getElementById("age").value = "";
+
+}
 
 
-        link.download =
-            "birthdays.json";
+/* ==========================================
+   СОХРАНЕНИЕ
+========================================== */
+
+function saveLocal() {
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(
+            birthdays,
+            null,
+            2
+        )
+    );
+
+}
 
 
-        document.body.appendChild(
-            link
+/* ==========================================
+   СКАЧИВАНИЕ JSON
+========================================== */
+
+function downloadJSON() {
+
+    const json =
+        JSON.stringify(
+            birthdays,
+            null,
+            2
         );
 
 
-        link.click();
-
-
-        link.remove();
-
-
-        URL.revokeObjectURL(
-            url
+    const blob =
+        new Blob(
+            [json],
+            {
+                type:
+                    "application/json"
+            }
         );
 
+
+    const url =
+        URL.createObjectURL(blob);
+
+
+    const link =
+        document.createElement("a");
+
+
+    link.href = url;
+
+    link.download =
+        "birthdays.json";
+
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    link.remove();
+
+
+    URL.revokeObjectURL(url);
+
+}
+
+
+/* ==========================================
+   СОРТИРОВКА
+========================================== */
+
+function compareBirthdays(a,b) {
+
+    const monthA =
+        Number(a.month);
+
+    const monthB =
+        Number(b.month);
+
+
+    if (monthA !== monthB) {
+        return monthA - monthB;
     }
 
 
-    /* ========================================
-       SORT
-    ======================================== */
+    const dayA =
+        Number(a.day);
 
-    function compareBirthdays(a, b) {
-
-        const monthA =
-            Number(a.month);
+    const dayB =
+        Number(b.day);
 
 
-        const monthB =
-            Number(b.month);
-
-
-        if (
-            monthA !== monthB
-        ) {
-
-            return (
-                monthA -
-                monthB
-            );
-
-        }
-
-
-        const dayA =
-            Number(a.day);
-
-
-        const dayB =
-            Number(b.day);
-
-
-        if (
-            dayA !== dayB
-        ) {
-
-            return (
-                dayA -
-                dayB
-            );
-
-        }
-
-
-        return String(a.name)
-            .localeCompare(
-                String(b.name),
-                "ru"
-            );
-
+    if (dayA !== dayB) {
+        return dayA - dayB;
     }
 
 
-    /* ========================================
-       DATE
-    ======================================== */
-
-    function formatDate(person) {
-
-        return (
-
-            String(
-                person.day
-            ).padStart(2, "0")
-
-            +
-
-            "."
-
-            +
-
-            String(
-                person.month
-            ).padStart(2, "0")
-
+    return String(a.name)
+        .localeCompare(
+            String(b.name),
+            "ru"
         );
 
+}
+
+
+/* ==========================================
+   ДАТА
+========================================== */
+
+function formatDate(person) {
+
+    return (
+        String(person.day).padStart(2,"0")
+        +
+        "."
+        +
+        String(person.month).padStart(2,"0")
+    );
+
+}
+
+
+/* ==========================================
+   ДНИ
+========================================== */
+
+function formatDays(days) {
+
+    if (days === 0) {
+        return "сегодня 🎉";
     }
 
 
-    /* ========================================
-       DAYS
-    ======================================== */
-
-    function formatDays(days) {
-
-        if (
-            days === 0
-        ) {
-
-            return "сегодня 🎉";
-
-        }
-
-
-        if (
-            days === 1
-        ) {
-
-            return "завтра";
-
-        }
-
-
-        return (
-            `через ${days} ${daysWord(days)}`
-        );
-
+    if (days === 1) {
+        return "завтра";
     }
 
 
-    function daysWord(number) {
+    return (
+        `через ${days} ${daysWord(days)}`
+    );
 
-        const n =
-            Math.abs(number)
-            % 100;
-
-
-        const last =
-            n % 10;
+}
 
 
-        if (
-            n >= 11 &&
-            n <= 19
-        ) {
+function daysWord(number) {
 
-            return "дней";
+    const n =
+        Math.abs(number) % 100;
 
-        }
-
-
-        if (
-            last === 1
-        ) {
-
-            return "день";
-
-        }
+    const last =
+        n % 10;
 
 
-        if (
-            last >= 2 &&
-            last <= 4
-        ) {
-
-            return "дня";
-
-        }
-
-
+    if (
+        n >= 11 &&
+        n <= 19
+    ) {
         return "дней";
-
     }
 
 
-    /* ========================================
-       YEARS
-    ======================================== */
-
-    function yearsWord(number) {
-
-        const n =
-            Math.abs(number)
-            % 100;
+    if (last === 1) {
+        return "день";
+    }
 
 
-        const last =
-            n % 10;
+    if (
+        last >= 2 &&
+        last <= 4
+    ) {
+        return "дня";
+    }
 
 
-        if (
-            n >= 11 &&
-            n <= 19
-        ) {
+    return "дней";
 
-            return "лет";
-
-        }
+}
 
 
-        if (
-            last === 1
-        ) {
+/* ==========================================
+   ВОЗРАСТ
+========================================== */
 
-            return "год";
+function yearsWord(number) {
 
-        }
+    const n =
+        Math.abs(number) % 100;
 
-
-        if (
-            last >= 2 &&
-            last <= 4
-        ) {
-
-            return "года";
-
-        }
+    const last =
+        n % 10;
 
 
+    if (
+        n >= 11 &&
+        n <= 19
+    ) {
         return "лет";
-
     }
+
+
+    if (last === 1) {
+        return "год";
+    }
+
+
+    if (
+        last >= 2 &&
+        last <= 4
+    ) {
+        return "года";
+    }
+
+
+    return "лет";
+
+}
 
 </script>
 
-
 </body>
-
 </html>
