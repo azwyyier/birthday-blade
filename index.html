@@ -2,35 +2,25 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
 <title>Дни рождения</title>
 
 <style>
-:root {
-    --bg: #08040f;
-    --bg2: #10071b;
-    --card: #171022;
-    --card2: #1d1430;
-
-    --purple: #8b5cf6;
-    --purple-light: #a78bfa;
-    --violet: #7c3aed;
-    --pink: #d946ef;
-
-    --text: #faf7ff;
-    --muted: #9d91b0;
-
-    --border: rgba(167, 139, 250, .15);
-    --border-hover: rgba(167, 139, 250, .35);
-}
-
 * {
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+:root {
+    --bg: #090511;
+    --card: #171022;
+    --card2: #1e1530;
+    --purple: #8b5cf6;
+    --purple2: #a855f7;
+    --pink: #d946ef;
+    --text: #faf7ff;
+    --muted: #9c91ad;
+    --border: rgba(167,139,250,.16);
 }
 
 body {
@@ -41,7 +31,6 @@ body {
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
-        Roboto,
         Arial,
         sans-serif;
 
@@ -49,46 +38,37 @@ body {
 
     background:
         radial-gradient(
-            circle at 5% 0%,
-            rgba(139, 92, 246, .22),
-            transparent 28%
+            circle at 10% 0%,
+            rgba(139,92,246,.25),
+            transparent 30%
         ),
         radial-gradient(
-            circle at 95% 5%,
-            rgba(217, 70, 239, .14),
+            circle at 90% 0%,
+            rgba(217,70,239,.16),
             transparent 25%
-        ),
-        radial-gradient(
-            circle at 50% 100%,
-            rgba(124, 58, 237, .14),
-            transparent 35%
         ),
         linear-gradient(
             180deg,
-            var(--bg),
-            var(--bg2)
+            #090511,
+            #10071a
         );
-
-    background-attachment: fixed;
 }
 
 .container {
-    width: min(1100px, calc(100% - 30px));
-    margin: 0 auto;
+    width: min(1100px, calc(100% - 24px));
+    margin: auto;
 }
 
-/* ==============================
-   HEADER
-============================== */
+/* HEADER */
 
 header {
     text-align: center;
-    padding: 55px 0 30px;
+    padding: 50px 0 30px;
 }
 
 .logo {
-    width: 70px;
-    height: 70px;
+    width: 68px;
+    height: 68px;
 
     margin: 0 auto 18px;
 
@@ -96,7 +76,7 @@ header {
     align-items: center;
     justify-content: center;
 
-    border-radius: 21px;
+    border-radius: 20px;
 
     font-size: 32px;
 
@@ -110,25 +90,20 @@ header {
 
     box-shadow:
         0 15px 45px
-        rgba(139, 92, 246, .35);
+        rgba(139,92,246,.35);
 }
 
-header h1 {
+h1 {
     margin: 0;
 
-    font-size:
-        clamp(38px, 6vw, 56px);
-
-    line-height: 1.05;
-
-    font-weight: 800;
+    font-size: clamp(38px,6vw,56px);
 
     letter-spacing: -2px;
 
     background:
         linear-gradient(
             135deg,
-            #ffffff,
+            white,
             #c4b5fd,
             #e879f9
         );
@@ -140,58 +115,67 @@ header h1 {
 }
 
 header p {
-    margin: 14px auto 0;
-
     color: var(--muted);
-
-    font-size: 15px;
 }
 
-/* ==============================
-   CARDS
-============================== */
+/* CARDS */
 
-.form-card,
-.section-card,
-.month {
+.card {
     background:
         linear-gradient(
             145deg,
-            rgba(139, 92, 246, .08),
-            rgba(255, 255, 255, .015)
+            rgba(139,92,246,.08),
+            rgba(255,255,255,.015)
         ),
         var(--card);
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
+
+    border-radius: 20px;
+
+    padding: 20px;
 
     box-shadow:
-        0 15px 45px rgba(0, 0, 0, .28);
+        0 15px 45px rgba(0,0,0,.3);
 }
 
-/* ==============================
-   FORM
-============================== */
+/* TOKEN */
 
-.form-card {
-    padding: 20px;
-    border-radius: 22px;
+.token-box {
+    margin-bottom: 20px;
 }
+
+.token-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.token-row {
+    display: flex;
+    gap: 10px;
+}
+
+.token-row input {
+    flex: 1;
+}
+
+/* FORM */
 
 .form-title {
-    margin: 0 0 15px;
-
-    font-size: 17px;
+    margin-bottom: 14px;
     font-weight: 700;
 }
 
-#birthday-form {
+form {
     display: grid;
 
     grid-template-columns:
         1.5fr
-        .65fr
+        .7fr
         1fr
-        .8fr
+        .9fr
         auto
         auto;
 
@@ -203,69 +187,54 @@ select {
     width: 100%;
     height: 46px;
 
-    padding: 0 14px;
+    padding: 0 13px;
+
+    border-radius: 12px;
 
     border:
         1px solid
-        rgba(167, 139, 250, .15);
-
-    border-radius: 12px;
+        rgba(167,139,250,.16);
 
     outline: none;
 
     background:
-        rgba(8, 5, 17, .65);
+        rgba(5,3,10,.65);
 
-    color: var(--text);
-
-    font-size: 14px;
-
-    transition: .2s ease;
-}
-
-input::placeholder {
-    color: #756b87;
+    color: white;
 }
 
 input:focus,
 select:focus {
-    border-color:
-        var(--purple-light);
+    border-color: var(--purple);
 
     box-shadow:
         0 0 0 3px
-        rgba(139, 92, 246, .12);
+        rgba(139,92,246,.12);
 }
 
 button {
     height: 46px;
 
-    padding: 0 18px;
-
     border: 0;
 
     border-radius: 12px;
 
-    cursor: pointer;
-
-    font-weight: 700;
+    padding: 0 18px;
 
     color: white;
 
-    transition: .2s ease;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .2s;
 }
 
 button:hover {
     transform: translateY(-2px);
 }
 
-button:disabled {
-    opacity: .55;
-    cursor: wait;
-    transform: none;
-}
-
-#birthday-form button[type="submit"] {
+.primary {
     background:
         linear-gradient(
             135deg,
@@ -273,115 +242,55 @@ button:disabled {
             #a855f7,
             #d946ef
         );
-
-    box-shadow:
-        0 8px 25px
-        rgba(139, 92, 246, .28);
 }
 
-#reset {
+.secondary {
     background:
-        rgba(255, 255, 255, .055);
-
-    color: #c8c0d8;
-
-    border:
-        1px solid
-        rgba(167, 139, 250, .14);
+        rgba(255,255,255,.06);
 }
-
-/* ==============================
-   STATUS
-============================== */
 
 .status {
-    margin-top: 12px;
+    min-height: 22px;
 
-    min-height: 20px;
+    margin-top: 12px;
 
     text-align: center;
 
-    font-size: 13px;
-
     color: var(--muted);
+
+    font-size: 13px;
 }
 
-.status.success {
+.success {
     color: #c4b5fd;
 }
 
-.status.error {
-    color: #fda4af;
+.error {
+    color: #fb7185;
 }
 
-/* ==============================
-   SECTION
-============================== */
+/* SOON */
 
 .section {
-    margin-top: 28px;
+    margin-top: 24px;
 }
 
-.section-card {
-    padding: 22px;
-    border-radius: 20px;
+.section h2 {
+    margin-top: 0;
 }
 
-.section-title {
-    display: flex;
-    align-items: center;
-
-    gap: 10px;
-
-    margin: 0 0 15px;
-
-    font-size: 20px;
-}
-
-.section-icon {
-    width: 36px;
-    height: 36px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 10px;
-
-    background:
-        rgba(139, 92, 246, .14);
-}
-
-/* ==============================
-   SOON
-============================== */
-
-.soon-item {
+.soon {
     display: flex;
 
     align-items: center;
     justify-content: space-between;
 
-    gap: 15px;
+    padding: 15px;
 
-    padding: 15px 17px;
-
-    border-radius: 14px;
+    border-radius: 13px;
 
     background:
-        rgba(139, 92, 246, .07);
-
-    border:
-        1px solid
-        rgba(167, 139, 250, .1);
-}
-
-.soon-left {
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
+        rgba(139,92,246,.07);
 }
 
 .soon-name {
@@ -390,49 +299,25 @@ button:disabled {
 
 .soon-date {
     color: var(--muted);
+    margin-left: 8px;
 }
 
 .soon-days {
     color: #c4b5fd;
-
     font-weight: 700;
-
-    white-space: nowrap;
 }
 
-/* ==============================
-   ACTIONS
-============================== */
-
-.actions {
-    display: flex;
-    justify-content: center;
-
-    margin: 14px 0 0;
-}
-
-#download {
-    background:
-        linear-gradient(
-            135deg,
-            #4f46e5,
-            #7c3aed
-        );
-}
-
-/* ==============================
-   MONTHS
-============================== */
+/* MONTHS */
 
 #months {
     display: grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3,1fr);
 
-    gap: 16px;
+    gap: 15px;
 
-    margin-top: 28px;
+    margin-top: 25px;
 
     padding-bottom: 30px;
 }
@@ -440,22 +325,16 @@ button:disabled {
 .month {
     overflow: hidden;
 
+    background: var(--card);
+
+    border:
+        1px solid var(--border);
+
     border-radius: 18px;
-
-    transition: .25s ease;
-}
-
-.month:hover {
-    transform: translateY(-4px);
-
-    border-color:
-        var(--border-hover);
 }
 
 .month-title {
-    padding: 15px 17px;
-
-    font-size: 15px;
+    padding: 15px;
 
     font-weight: 700;
 
@@ -464,13 +343,9 @@ button:disabled {
     background:
         linear-gradient(
             90deg,
-            rgba(139, 92, 246, .13),
-            rgba(232, 121, 249, .045)
+            rgba(139,92,246,.14),
+            rgba(217,70,239,.04)
         );
-
-    border-bottom:
-        1px solid
-        rgba(167, 139, 250, .1);
 }
 
 .month-list {
@@ -480,33 +355,25 @@ button:disabled {
     padding: 6px;
 }
 
-/* ==============================
-   PERSON
-============================== */
-
 .person {
     display: grid;
 
     grid-template-columns:
         42px 1fr;
 
-    column-gap: 10px;
-
-    align-items: center;
+    gap: 10px;
 
     padding: 10px;
 
     border-radius: 12px;
-
-    transition: .2s ease;
 }
 
 .person:hover {
     background:
-        rgba(139, 92, 246, .085);
+        rgba(139,92,246,.08);
 }
 
-.person-day {
+.day {
     width: 38px;
     height: 38px;
 
@@ -517,30 +384,28 @@ button:disabled {
 
     border-radius: 10px;
 
-    font-weight: 800;
-
     color: #ddd6fe;
 
     background:
-        linear-gradient(
-            135deg,
-            rgba(139, 92, 246, .2),
-            rgba(99, 102, 241, .12)
-        );
+        rgba(139,92,246,.16);
+
+    font-weight: 800;
 }
 
-.person-content {
+.person-main {
     min-width: 0;
+}
 
+.person-top {
     display: flex;
 
     align-items: center;
     justify-content: space-between;
 
-    gap: 8px;
+    gap: 5px;
 }
 
-.person-name {
+.name {
     overflow: hidden;
 
     text-overflow: ellipsis;
@@ -550,132 +415,53 @@ button:disabled {
     font-weight: 600;
 }
 
-.person-age {
-    grid-column: 2;
+.age {
+    margin-top: 3px;
 
     color: var(--muted);
 
     font-size: 12px;
 }
 
-/* ==============================
-   DELETE
-============================== */
+.person-buttons {
+    display: flex;
 
-.delete-person {
-    flex-shrink: 0;
+    gap: 4px;
+}
 
+.icon-btn {
     width: 28px;
     height: 28px;
 
     padding: 0;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 8px;
-
-    color: #d8b4fe;
-
-    background:
-        rgba(232, 121, 249, .07);
-
-    border:
-        1px solid
-        rgba(232, 121, 249, .12);
-
-    font-size: 19px;
 
     opacity: 0;
 
-    transform: scale(.8);
-}
-
-.person:hover .delete-person {
-    opacity: 1;
-
-    transform: scale(1);
-}
-
-.delete-person:hover {
-    color: white;
-
     background:
-        rgba(239, 68, 68, .8);
-}
-
-/* ==============================
-   EDIT
-============================== */
-
-.edit-person {
-    flex-shrink: 0;
-
-    width: 28px;
-    height: 28px;
-
-    padding: 0;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 8px;
+        rgba(139,92,246,.1);
 
     color: #c4b5fd;
-
-    background:
-        rgba(139, 92, 246, .08);
-
-    font-size: 14px;
-
-    opacity: 0;
-
-    transform: scale(.8);
 }
 
-.person:hover .edit-person {
+.person:hover .icon-btn {
     opacity: 1;
-
-    transform: scale(1);
 }
 
-.edit-person:hover {
-    background:
-        rgba(139, 92, 246, .35);
+.delete:hover {
+    background: #dc2626;
 }
-
-/* ==============================
-   FOOTER
-============================== */
 
 footer {
-    padding: 15px 0 45px;
-
     text-align: center;
+
+    padding:
+        15px 0 45px;
 
     color: #a78bfa;
 
     font-size: 13px;
 
     font-weight: 700;
-
-    letter-spacing: .3px;
-}
-
-/* ==============================
-   LOADING
-============================== */
-
-.loading {
-    padding: 25px;
-
-    text-align: center;
-
-    color: var(--muted);
 }
 
 .empty {
@@ -688,66 +474,43 @@ footer {
     font-size: 13px;
 }
 
-/* ==============================
-   MOBILE
-============================== */
+@media(max-width:900px) {
 
-@media(max-width: 1000px) {
-
-    #birthday-form {
+    form {
         grid-template-columns:
-            repeat(3, 1fr);
-    }
-}
-
-@media(max-width: 800px) {
-
-    #months {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    #birthday-form {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-}
-
-@media(max-width: 560px) {
-
-    .container {
-        width:
-            calc(100% - 20px);
-    }
-
-    header {
-        padding:
-            35px 0 25px;
-    }
-
-    #birthday-form {
-        grid-template-columns:
-            1fr;
+            repeat(3,1fr);
     }
 
     #months {
         grid-template-columns:
-            1fr;
+            repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px) {
+
+    form {
+        grid-template-columns: 1fr;
     }
 
-    .soon-item {
-        flex-direction:
-            column;
-
-        align-items:
-            flex-start;
+    #months {
+        grid-template-columns: 1fr;
     }
 
-    .delete-person,
-    .edit-person {
-        opacity: .7;
+    .token-row {
+        flex-direction: column;
+    }
 
-        transform: scale(1);
+    .soon {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 8px;
+    }
+
+    .icon-btn {
+        opacity: .8;
     }
 }
 </style>
@@ -759,13 +522,9 @@ footer {
 
 <header>
 
-    <div class="logo">
-        🎂
-    </div>
+    <div class="logo">🎂</div>
 
-    <h1>
-        Дни рождения
-    </h1>
+    <h1>Дни рождения</h1>
 
     <p>
         Все важные даты в одном красивом месте
@@ -774,19 +533,52 @@ footer {
 </header>
 
 
-<section class="form-card">
+<!-- TOKEN -->
 
-    <h2 class="form-title">
+<div class="card token-box">
+
+    <div class="token-title">
+        🔑 Подключение к GitHub
+    </div>
+
+    <div class="token-row">
+
+        <input
+            id="token"
+            type="password"
+            placeholder="Вставь GitHub Token"
+        >
+
+        <button
+            class="primary"
+            id="connect"
+        >
+            Подключить
+        </button>
+
+    </div>
+
+    <div
+        id="token-status"
+        class="status"
+    ></div>
+
+</div>
+
+
+<!-- FORM -->
+
+<div class="card">
+
+    <div class="form-title">
         Добавить участника
-    </h2>
+    </div>
 
-    <form id="birthday-form">
+    <form id="form">
 
         <input
             id="name"
-            type="text"
             placeholder="Имя участника"
-            autocomplete="off"
             required
         >
 
@@ -802,7 +594,7 @@ footer {
         <select id="month"></select>
 
         <input
-            id="birthYear"
+            id="year"
             type="number"
             min="1900"
             max="2100"
@@ -810,11 +602,15 @@ footer {
             required
         >
 
-        <button type="submit">
+        <button
+            class="primary"
+            type="submit"
+        >
             Добавить
         </button>
 
         <button
+            class="secondary"
             type="button"
             id="reset"
         >
@@ -828,52 +624,35 @@ footer {
         class="status"
     ></div>
 
-</section>
+</div>
 
 
-<section class="section">
+<!-- SOON -->
 
-    <div class="section-card">
+<div class="section card">
 
-        <h2 class="section-title">
+    <h2>
+        🎉 Скоро
+    </h2>
 
-            <span class="section-icon">
-                🎉
-            </span>
-
-            Скоро
-
-        </h2>
-
-        <div id="soon-list">
-
-            <div class="loading">
-                Загрузка...
-            </div>
-
+    <div id="soon">
+        <div class="empty">
+            Подключение к GitHub...
         </div>
-
     </div>
-
-</section>
-
-
-<div class="actions">
-
-    <button id="download">
-        ↓ Скачать birthdays.json
-    </button>
 
 </div>
 
 
-<main id="months">
+<!-- MONTHS -->
 
-    <div class="loading">
-        Загрузка дней рождения...
+<div id="months">
+
+    <div class="card empty">
+        Подключение к GitHub...
     </div>
 
-</main>
+</div>
 
 
 <footer>
@@ -885,44 +664,40 @@ footer {
 
 <script>
 
-/* =========================================================
-   GITHUB НАСТРОЙКИ
-   =========================================================
+/* =========================================
+   GITHUB
+========================================= */
 
-   ЗАМЕНИ ТОЛЬКО ЭТИ 4 ЗНАЧЕНИЯ.
-*/
+const OWNER = "azwyyier";
+const REPO = "birthday-blade";
+const FILE = "data/birthdays.json";
+const BRANCH = "main";
 
-
-const GITHUB_OWNER =
-    "azwyyier";
-
-
-const GITHUB_REPO =
-    "birthday-blade";
-
-
-const GITHUB_FILE =
-    "data/birthdays.json";
-
-
-const GITHUB_BRANCH =
-    "main";
-
-
-const GITHUB_TOKEN =
-    "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";
-
-
-/* =========================================================
-   ОСТАЛЬНОЙ КОД
-========================================================= */
-
-const API_BASE =
+const API =
     "https://api.github.com";
 
 
-const MONTHS = [
+/* =========================================
+   STATE
+========================================= */
 
+let token =
+    localStorage.getItem(
+        "github_token"
+    ) || "";
+
+let birthdays = [];
+
+let sha = null;
+
+let busy = false;
+
+
+/* =========================================
+   MONTHS
+========================================= */
+
+const MONTHS = [
     "Январь",
     "Февраль",
     "Март",
@@ -935,86 +710,94 @@ const MONTHS = [
     "Октябрь",
     "Ноябрь",
     "Декабрь"
-
 ];
 
 
-let birthdays = [];
+const monthSelect =
+    document.getElementById(
+        "month"
+    );
 
-let fileSha = null;
 
-let saving = false;
+MONTHS.forEach(
+    (month, index) => {
 
-
-/* =========================================================
-   DOM
-========================================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    async () => {
-
-        createMonthSelect();
-
-        document
-            .getElementById("birthday-form")
-            .addEventListener(
-                "submit",
-                addBirthday
+        const option =
+            document.createElement(
+                "option"
             );
 
+        option.value =
+            index + 1;
 
-        document
-            .getElementById("reset")
-            .addEventListener(
-                "click",
-                clearForm
-            );
+        option.textContent =
+            month;
 
-
-        document
-            .getElementById("download")
-            .addEventListener(
-                "click",
-                downloadJSON
-            );
-
-
-        await loadBirthdays();
-
+        monthSelect.appendChild(
+            option
+        );
     }
 );
 
 
-/* =========================================================
-   STATUS
-========================================================= */
+/* =========================================
+   TOKEN
+========================================= */
 
-function setStatus(
-    text,
-    type = ""
-) {
-
-    const element =
-        document.getElementById(
-            "status"
-        );
+const tokenInput =
+    document.getElementById(
+        "token"
+    );
 
 
-    element.textContent =
-        text;
+if (token) {
 
+    tokenInput.value =
+        token;
 
-    element.className =
-        "status " + type;
+    load();
+
 }
 
 
-/* =========================================================
-   GITHUB API
-========================================================= */
+document
+    .getElementById("connect")
+    .addEventListener(
+        "click",
+        async () => {
 
-function githubHeaders() {
+            const value =
+                tokenInput
+                    .value
+                    .trim();
+
+            if (!value) {
+
+                showToken(
+                    "Вставь GitHub Token",
+                    true
+                );
+
+                return;
+            }
+
+            token = value;
+
+            localStorage.setItem(
+                "github_token",
+                token
+            );
+
+            await load();
+        }
+    );
+
+
+/* =========================================
+   HEADERS
+========================================= */
+
+function headers() {
 
     return {
 
@@ -1022,36 +805,35 @@ function githubHeaders() {
             "application/vnd.github+json",
 
         "Authorization":
-            `Bearer ${GITHUB_TOKEN}`,
+            "Bearer " + token,
 
         "X-GitHub-Api-Version":
-            "2026-03-10"
+            "2026-03-10",
 
+        "Content-Type":
+            "application/json"
     };
 }
 
 
-/* =========================================================
-   GET FILE FROM GITHUB
-========================================================= */
+/* =========================================
+   GET FILE
+========================================= */
 
-async function getGitHubFile() {
+async function getFile() {
 
     const url =
-        `${API_BASE}/repos/` +
-        `${GITHUB_OWNER}/` +
-        `${GITHUB_REPO}/contents/` +
-        `${GITHUB_FILE}?ref=${encodeURIComponent(
-            GITHUB_BRANCH
-        )}`;
-
+        `${API}/repos/` +
+        `${OWNER}/` +
+        `${REPO}/contents/` +
+        `${FILE}?ref=${BRANCH}`;
 
     const response =
         await fetch(
             url,
             {
                 headers:
-                    githubHeaders(),
+                    headers(),
 
                 cache:
                     "no-store"
@@ -1061,227 +843,142 @@ async function getGitHubFile() {
 
     if (!response.ok) {
 
+        if (
+            response.status === 401
+        ) {
+
+            throw new Error(
+                "GitHub отклонил Token (401). Создай новый Fine-grained token."
+            );
+        }
+
+        if (
+            response.status === 404
+        ) {
+
+            throw new Error(
+                "GitHub не нашёл birthdays.json."
+            );
+        }
+
         throw new Error(
-            `GitHub GET error: ${response.status}`
+            `GitHub ошибка ${response.status}`
         );
     }
 
 
-    return await response.json();
+    return response.json();
 }
 
 
-/* =========================================================
-   LOAD BIRTHDAYS
-========================================================= */
+/* =========================================
+   LOAD
+========================================= */
 
-async function loadBirthdays() {
+async function load() {
+
+    if (!token) {
+
+        return;
+    }
+
 
     try {
 
-        if (
-            !GITHUB_TOKEN ||
-            GITHUB_TOKEN.includes(
-                "ВСТАВЬ"
-            )
-        ) {
-
-            throw new Error(
-                "Не указан GitHub Token."
-            );
-        }
+        showToken(
+            "Подключение...",
+            false
+        );
 
 
         const file =
-            await getGitHubFile();
+            await getFile();
 
 
-        fileSha =
+        sha =
             file.sha;
 
 
-        const decoded =
-            decodeBase64Utf8(
+        const text =
+            decode(
                 file.content
             );
 
 
-        const data =
-            JSON.parse(decoded);
+        birthdays =
+            JSON.parse(text);
 
 
         if (
-            !Array.isArray(data)
+            !Array.isArray(
+                birthdays
+            )
         ) {
 
             throw new Error(
-                "birthdays.json должен содержать массив."
+                "birthdays.json должен быть массивом."
             );
         }
-
-
-        birthdays =
-            normalizeData(data);
 
 
         render();
 
 
-        setStatus(
-            `Загружено участников: ${birthdays.length}`,
-            "success"
+        showToken(
+            "✓ GitHub подключён",
+            false
         );
 
 
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            error
+        );
 
 
-        birthdays = [];
-
-
-        document
-            .getElementById("months")
-            .innerHTML = `
-                <div class="loading">
-                    Не удалось загрузить birthdays.json.
-                    <br><br>
-                    Проверь GitHub Token,
-                    репозиторий и путь к файлу.
-                </div>
-            `;
-
-
-        setStatus(
+        showToken(
             error.message,
-            "error"
+            true
         );
     }
 }
 
 
-/* =========================================================
-   NORMALIZE
-========================================================= */
+/* =========================================
+   SAVE
+========================================= */
 
-function normalizeData(data) {
-
-    return data
-        .filter(
-            person =>
-                person &&
-                person.name &&
-                person.day &&
-                person.month &&
-                person.birthYear
-        )
-        .map(
-            person => ({
-
-                name:
-                    String(
-                        person.name
-                    ),
-
-                day:
-                    Number(
-                        person.day
-                    ),
-
-                month:
-                    Number(
-                        person.month
-                    ),
-
-                birthYear:
-                    Number(
-                        person.birthYear
-                    )
-
-            })
-        );
-}
-
-
-/* =========================================================
-   MONTH SELECT
-========================================================= */
-
-function createMonthSelect() {
-
-    const select =
-        document.getElementById(
-            "month"
-        );
-
-
-    select.innerHTML = "";
-
-
-    MONTHS.forEach(
-        (month, index) => {
-
-            const option =
-                document.createElement(
-                    "option"
-                );
-
-
-            option.value =
-                index + 1;
-
-
-            option.textContent =
-                month;
-
-
-            select.appendChild(
-                option
-            );
-
-        }
-    );
-}
-
-
-/* =========================================================
-   SAVE TO GITHUB
-========================================================= */
-
-async function saveToGitHub(
-    commitMessage
+async function save(
+    message
 ) {
 
-    if (saving) {
+    if (busy) {
 
         throw new Error(
-            "Подожди, предыдущая операция ещё выполняется."
+            "Подожди завершения предыдущей операции."
         );
     }
 
 
-    saving = true;
+    busy = true;
 
 
     try {
 
         /*
-           Перед сохранением заново получаем SHA.
-
-           Это важно, если другой человек
-           только что изменил файл.
+           Получаем свежий SHA.
         */
 
-        const latest =
-            await getGitHubFile();
+        const current =
+            await getFile();
 
 
-        fileSha =
-            latest.sha;
+        sha =
+            current.sha;
 
 
-        const json =
+        const content =
             JSON.stringify(
                 birthdays,
                 null,
@@ -1289,48 +986,31 @@ async function saveToGitHub(
             ) + "\n";
 
 
-        const encoded =
-            encodeBase64Utf8(
-                json
-            );
-
-
-        const url =
-            `${API_BASE}/repos/` +
-            `${GITHUB_OWNER}/` +
-            `${GITHUB_REPO}/contents/` +
-            `${GITHUB_FILE}`;
-
-
         const response =
             await fetch(
-                url,
+                `${API}/repos/${OWNER}/${REPO}/contents/${FILE}`,
                 {
 
                     method:
                         "PUT",
 
-                    headers: {
-                        ...githubHeaders(),
-
-                        "Content-Type":
-                            "application/json"
-                    },
+                    headers:
+                        headers(),
 
                     body:
                         JSON.stringify({
 
-                            message:
-                                commitMessage,
+                            message,
 
                             content:
-                                encoded,
+                                encode(
+                                    content
+                                ),
 
-                            sha:
-                                fileSha,
+                            sha,
 
                             branch:
-                                GITHUB_BRANCH
+                                BRANCH
 
                         })
                 }
@@ -1343,346 +1023,345 @@ async function saveToGitHub(
 
         if (!response.ok) {
 
-            console.error(
-                result
-            );
-
-
             throw new Error(
                 result.message ||
-                `GitHub error: ${response.status}`
+                `Ошибка GitHub ${response.status}`
             );
         }
 
 
-        fileSha =
+        sha =
             result.content.sha;
 
 
     } finally {
 
-        saving = false;
+        busy = false;
     }
 }
 
 
-/* =========================================================
+/* =========================================
    ADD
-========================================================= */
+========================================= */
 
-async function addBirthday(
-    event
-) {
+document
+    .getElementById("form")
+    .addEventListener(
+        "submit",
+        async event => {
 
-    event.preventDefault();
-
-
-    const name =
-        document
-            .getElementById("name")
-            .value
-            .trim();
+            event.preventDefault();
 
 
-    const day =
-        Number(
-            document
-                .getElementById("day")
-                .value
-        );
+            if (!token) {
+
+                alert(
+                    "Сначала подключи GitHub."
+                );
+
+                return;
+            }
 
 
-    const month =
-        Number(
-            document
-                .getElementById("month")
-                .value
-        );
+            const name =
+                document
+                    .getElementById("name")
+                    .value
+                    .trim();
 
 
-    const birthYear =
-        Number(
-            document
-                .getElementById("birthYear")
-                .value
-        );
+            const day =
+                Number(
+                    document
+                        .getElementById("day")
+                        .value
+                );
 
 
-    if (!name) {
-
-        alert(
-            "Введите имя."
-        );
-
-        return;
-    }
+            const month =
+                Number(
+                    document
+                        .getElementById("month")
+                        .value
+                );
 
 
-    if (
-        !Number.isInteger(day) ||
-        day < 1 ||
-        day > daysInMonth(month)
-    ) {
-
-        alert(
-            "Введите правильный день."
-        );
-
-        return;
-    }
+            const birthYear =
+                Number(
+                    document
+                        .getElementById("year")
+                        .value
+                );
 
 
-    const currentYear =
-        new Date()
-            .getFullYear();
+            if (
+                !name
+            ) {
+
+                alert(
+                    "Введите имя."
+                );
+
+                return;
+            }
 
 
-    if (
-        !Number.isInteger(
-            birthYear
-        ) ||
+            if (
+                day < 1 ||
+                day >
+                daysInMonth(month)
+            ) {
 
-        birthYear < 1900 ||
+                alert(
+                    "Неправильный день."
+                );
 
-        birthYear > currentYear
-    ) {
-
-        alert(
-            "Введите правильный год рождения."
-        );
-
-        return;
-    }
+                return;
+            }
 
 
-    const birthday = {
-
-        name,
-
-        day,
-
-        month,
-
-        birthYear
-
-    };
+            const currentYear =
+                new Date()
+                    .getFullYear();
 
 
-    birthdays.push(
-        birthday
-    );
+            if (
+                birthYear <
+                    1900 ||
+                birthYear >
+                    currentYear
+            ) {
+
+                alert(
+                    "Неправильный год рождения."
+                );
+
+                return;
+            }
 
 
-    birthdays.sort(
-        compareBirthdays
-    );
+            const person = {
+
+                name,
+
+                day,
+
+                month,
+
+                birthYear
+            };
 
 
-    render();
-
-
-    setStatus(
-        "Сохраняем в GitHub...",
-        ""
-    );
-
-
-    try {
-
-        await saveToGitHub(
-            `Добавлен день рождения: ${name}`
-        );
-
-
-        clearForm();
-
-
-        setStatus(
-            `${name} добавлен в birthdays.json`,
-            "success"
-        );
-
-
-        /*
-           Повторно загружаем файл,
-           чтобы убедиться, что версия
-           на GitHub актуальна.
-        */
-
-        await refreshFromGitHub();
-
-
-    } catch (error) {
-
-        console.error(error);
-
-
-        /*
-           Если сохранение не удалось,
-           удаляем локально добавленную
-           запись обратно.
-        */
-
-        birthdays =
-            birthdays.filter(
-                person =>
-                    person !== birthday
+            birthdays.push(
+                person
             );
 
 
-        render();
+            sort();
 
 
-        setStatus(
-            "Ошибка сохранения: " +
-            error.message,
-            "error"
-        );
+            render();
 
 
-        alert(
-            "Не удалось сохранить запись в GitHub.\n\n" +
-            error.message
-        );
-    }
-}
+            status(
+                "Сохраняем...",
+                false
+            );
 
 
-/* =========================================================
+            try {
+
+                await save(
+                    `Добавлен день рождения: ${name}`
+                );
+
+
+                document
+                    .getElementById(
+                        "form"
+                    )
+                    .reset();
+
+
+                monthSelect.value =
+                    "1";
+
+
+                status(
+                    "✓ Сохранено в GitHub",
+                    false
+                );
+
+
+            } catch (error) {
+
+                birthdays =
+                    birthdays.filter(
+                        x =>
+                            x !== person
+                    );
+
+
+                render();
+
+
+                status(
+                    error.message,
+                    true
+                );
+
+                alert(
+                    error.message
+                );
+            }
+
+        }
+    );
+
+
+/* =========================================
+   RESET
+========================================= */
+
+document
+    .getElementById("reset")
+    .addEventListener(
+        "click",
+        () => {
+
+            document
+                .getElementById(
+                    "form"
+                )
+                .reset();
+
+            monthSelect.value =
+                "1";
+
+            document
+                .getElementById(
+                    "name"
+                )
+                .focus();
+
+            status(
+                "",
+                false
+            );
+        }
+    );
+
+
+/* =========================================
    DELETE
-========================================================= */
+========================================= */
 
-async function deleteBirthday(
+async function remove(
     person
 ) {
 
-    const confirmed =
-        confirm(
+    if (
+        !confirm(
             `Удалить ${person.name}?`
-        );
+        )
+    ) {
 
-
-    if (!confirmed) {
         return;
     }
 
 
-    const oldData =
+    const old =
         [...birthdays];
 
 
     birthdays =
         birthdays.filter(
-            item =>
-                item !== person
+            x =>
+                x !== person
         );
 
 
     render();
 
 
-    setStatus(
-        "Удаляем из GitHub...",
-        ""
+    status(
+        "Удаляем...",
+        false
     );
 
 
     try {
 
-        await saveToGitHub(
+        await save(
             `Удалён день рождения: ${person.name}`
         );
 
 
-        setStatus(
-            `${person.name} удалён`,
-            "success"
+        status(
+            "✓ Запись удалена",
+            false
         );
-
-
-        await refreshFromGitHub();
 
 
     } catch (error) {
 
-        console.error(error);
-
-
         birthdays =
-            oldData;
-
+            old;
 
         render();
 
-
-        setStatus(
-            "Ошибка удаления: " +
+        status(
             error.message,
-            "error"
+            true
         );
 
-
         alert(
-            "Не удалось удалить запись.\n\n" +
             error.message
         );
     }
 }
 
 
-/* =========================================================
+/* =========================================
    EDIT
-========================================================= */
+========================================= */
 
-async function editBirthday(
+async function edit(
     person
 ) {
 
-    const newName =
+    const name =
         prompt(
-            "Имя участника:",
+            "Имя:",
             person.name
         );
 
 
     if (
-        newName === null
+        name === null
     ) {
 
         return;
     }
 
 
-    const cleanName =
-        newName.trim();
-
-
-    if (!cleanName) {
-
-        alert(
-            "Имя не может быть пустым."
-        );
-
-        return;
-    }
-
-
-    const newDay =
+    const day =
         prompt(
-            "День рождения:",
+            "День:",
             person.day
         );
 
 
     if (
-        newDay === null
+        day === null
     ) {
 
         return;
     }
 
 
-    const newMonth =
+    const month =
         prompt(
             "Месяц (1-12):",
             person.month
@@ -1690,14 +1369,14 @@ async function editBirthday(
 
 
     if (
-        newMonth === null
+        month === null
     ) {
 
         return;
     }
 
 
-    const newYear =
+    const year =
         prompt(
             "Год рождения:",
             person.birthYear
@@ -1705,34 +1384,27 @@ async function editBirthday(
 
 
     if (
-        newYear === null
+        year === null
     ) {
 
         return;
     }
 
 
-    const day =
-        Number(newDay);
+    const newDay =
+        Number(day);
 
+    const newMonth =
+        Number(month);
 
-    const month =
-        Number(newMonth);
-
-
-    const birthYear =
-        Number(newYear);
-
-
-    const currentYear =
-        new Date()
-            .getFullYear();
+    const newYear =
+        Number(year);
 
 
     if (
-        !Number.isInteger(day) ||
-        day < 1 ||
-        day > daysInMonth(month)
+        newDay < 1 ||
+        newDay >
+        daysInMonth(newMonth)
     ) {
 
         alert(
@@ -1743,150 +1415,62 @@ async function editBirthday(
     }
 
 
-    if (
-        !Number.isInteger(month) ||
-        month < 1 ||
-        month > 12
-    ) {
-
-        alert(
-            "Неправильный месяц."
-        );
-
-        return;
-    }
-
-
-    if (
-        !Number.isInteger(
-            birthYear
-        ) ||
-
-        birthYear < 1900 ||
-
-        birthYear > currentYear
-    ) {
-
-        alert(
-            "Неправильный год рождения."
-        );
-
-        return;
-    }
-
-
-    const oldName =
-        person.name;
+    const old = {
+        ...person
+    };
 
 
     person.name =
-        cleanName;
-
+        name.trim();
 
     person.day =
-        day;
-
+        newDay;
 
     person.month =
-        month;
-
+        newMonth;
 
     person.birthYear =
-        birthYear;
+        newYear;
 
 
-    birthdays.sort(
-        compareBirthdays
-    );
-
+    sort();
 
     render();
-
-
-    setStatus(
-        "Сохраняем изменения...",
-        ""
-    );
 
 
     try {
 
-        await saveToGitHub(
-            `Изменён день рождения: ${oldName}`
+        await save(
+            `Изменён день рождения: ${person.name}`
         );
 
 
-        setStatus(
-            "Изменения сохранены",
-            "success"
+        status(
+            "✓ Изменения сохранены",
+            false
         );
-
-
-        await refreshFromGitHub();
 
 
     } catch (error) {
 
-        console.error(error);
-
-
-        /*
-           Если ошибка,
-           перезагружаем актуальную
-           версию с GitHub.
-        */
-
-        await refreshFromGitHub();
-
-
-        setStatus(
-            "Ошибка изменения: " +
-            error.message,
-            "error"
+        Object.assign(
+            person,
+            old
         );
 
+        render();
 
-        alert(
-            "Не удалось изменить запись.\n\n" +
-            error.message
+        status(
+            error.message,
+            true
         );
     }
 }
 
 
-/* =========================================================
-   REFRESH
-========================================================= */
-
-async function refreshFromGitHub() {
-
-    const file =
-        await getGitHubFile();
-
-
-    fileSha =
-        file.sha;
-
-
-    const decoded =
-        decodeBase64Utf8(
-            file.content
-        );
-
-
-    birthdays =
-        normalizeData(
-            JSON.parse(decoded)
-        );
-
-
-    render();
-}
-
-
-/* =========================================================
+/* =========================================
    RENDER
-========================================================= */
+========================================= */
 
 function render() {
 
@@ -1896,9 +1480,9 @@ function render() {
 }
 
 
-/* =========================================================
+/* =========================================
    MONTHS
-========================================================= */
+========================================= */
 
 function renderMonths() {
 
@@ -1928,32 +1512,25 @@ function renderMonths() {
                             monthNumber
                     )
                     .sort(
-                        compareBirthdays
+                        compare
                     );
 
 
-            const month =
-                document.createElement(
-                    "article"
-                );
-
-
-            month.className =
-                "month";
-
-
-            const title =
+            const article =
                 document.createElement(
                     "div"
                 );
 
 
-            title.className =
-                "month-title";
+            article.className =
+                "month";
 
 
-            title.textContent =
-                `${monthName} · ${people.length}`;
+            article.innerHTML = `
+                <div class="month-title">
+                    ${monthName} · ${people.length}
+                </div>
+            `;
 
 
             const list =
@@ -1970,23 +1547,11 @@ function renderMonths() {
                 people.length === 0
             ) {
 
-                const empty =
-                    document.createElement(
-                        "li"
-                    );
-
-
-                empty.className =
-                    "empty";
-
-
-                empty.textContent =
-                    "Пока никого нет.";
-
-
-                list.appendChild(
-                    empty
-                );
+                list.innerHTML = `
+                    <li class="empty">
+                        Пока никого нет.
+                    </li>
+                `;
             }
 
 
@@ -1994,39 +1559,32 @@ function renderMonths() {
                 person => {
 
                     list.appendChild(
-                        createPersonElement(
+                        personElement(
                             person
                         )
                     );
-
                 }
             );
 
 
-            month.appendChild(
-                title
-            );
-
-
-            month.appendChild(
+            article.appendChild(
                 list
             );
 
 
             container.appendChild(
-                month
+                article
             );
-
         }
     );
 }
 
 
-/* =========================================================
+/* =========================================
    PERSON
-========================================================= */
+========================================= */
 
-function createPersonElement(
+function personElement(
     person
 ) {
 
@@ -2040,258 +1598,80 @@ function createPersonElement(
         "person";
 
 
-    const day =
-        document.createElement(
-            "div"
-        );
+    const age =
+        getAge(person);
 
 
-    day.className =
-        "person-day";
+    item.innerHTML = `
+        <div class="day">
+            ${String(person.day).padStart(2,"0")}
+        </div>
 
+        <div class="person-main">
 
-    day.textContent =
-        String(person.day)
-            .padStart(2, "0");
+            <div class="person-top">
 
+                <div class="name">
+                    ${escapeHtml(person.name)}
+                </div>
 
-    const content =
-        document.createElement(
-            "div"
-        );
+                <div class="person-buttons">
 
+                    <button
+                        class="icon-btn"
+                        title="Изменить"
+                    >
+                        ✎
+                    </button>
 
-    content.className =
-        "person-content";
+                    <button
+                        class="icon-btn delete"
+                        title="Удалить"
+                    >
+                        ×
+                    </button>
 
+                </div>
 
-    const name =
-        document.createElement(
-            "div"
-        );
+            </div>
 
+            <div class="age">
+                ${age} ${years(age)}
+            </div>
 
-    name.className =
-        "person-name";
-
-
-    name.textContent =
-        person.name;
+        </div>
+    `;
 
 
     const buttons =
-        document.createElement(
-            "div"
+        item.querySelectorAll(
+            ".icon-btn"
         );
 
 
-    buttons.style.display =
-        "flex";
+    buttons[0].onclick =
+        () =>
+            edit(person);
 
 
-    buttons.style.gap =
-        "5px";
-
-
-    const editButton =
-        document.createElement(
-            "button"
-        );
-
-
-    editButton.type =
-        "button";
-
-
-    editButton.className =
-        "edit-person";
-
-
-    editButton.textContent =
-        "✎";
-
-
-    editButton.title =
-        "Изменить";
-
-
-    editButton.addEventListener(
-        "click",
-        event => {
-
-            event.preventDefault();
-
-            event.stopPropagation();
-
-            editBirthday(
-                person
-            );
-        }
-    );
-
-
-    const deleteButton =
-        document.createElement(
-            "button"
-        );
-
-
-    deleteButton.type =
-        "button";
-
-
-    deleteButton.className =
-        "delete-person";
-
-
-    deleteButton.textContent =
-        "×";
-
-
-    deleteButton.title =
-        "Удалить";
-
-
-    deleteButton.addEventListener(
-        "click",
-        event => {
-
-            event.preventDefault();
-
-            event.stopPropagation();
-
-            deleteBirthday(
-                person
-            );
-        }
-    );
-
-
-    buttons.appendChild(
-        editButton
-    );
-
-
-    buttons.appendChild(
-        deleteButton
-    );
-
-
-    content.appendChild(
-        name
-    );
-
-
-    content.appendChild(
-        buttons
-    );
-
-
-    item.appendChild(
-        day
-    );
-
-
-    item.appendChild(
-        content
-    );
-
-
-    const age =
-        getCurrentAge(
-            person
-        );
-
-
-    const ageElement =
-        document.createElement(
-            "div"
-        );
-
-
-    ageElement.className =
-        "person-age";
-
-
-    ageElement.textContent =
-        `${age} ${yearsWord(age)}`;
-
-
-    item.appendChild(
-        ageElement
-    );
+    buttons[1].onclick =
+        () =>
+            remove(person);
 
 
     return item;
 }
 
 
-/* =========================================================
-   AGE
-========================================================= */
-
-function getCurrentAge(
-    person
-) {
-
-    const today =
-        new Date();
-
-
-    const currentYear =
-        today.getFullYear();
-
-
-    let age =
-        currentYear -
-        Number(person.birthYear);
-
-
-    const birthday =
-        new Date(
-            currentYear,
-            Number(person.month) - 1,
-            Number(person.day)
-        );
-
-
-    today.setHours(
-        0,
-        0,
-        0,
-        0
-    );
-
-
-    birthday.setHours(
-        0,
-        0,
-        0,
-        0
-    );
-
-
-    if (
-        today < birthday
-    ) {
-
-        age--;
-    }
-
-
-    return age;
-}
-
-
-/* =========================================================
+/* =========================================
    SOON
-========================================================= */
+========================================= */
 
 function renderSoon() {
 
     const container =
         document.getElementById(
-            "soon-list"
+            "soon"
         );
 
 
@@ -2304,10 +1684,9 @@ function renderSoon() {
 
         container.innerHTML = `
             <div class="empty">
-                Пока нет дней рождения.
+                Пока нет записей.
             </div>
         `;
-
 
         return;
     }
@@ -2318,10 +1697,7 @@ function renderSoon() {
 
 
     today.setHours(
-        0,
-        0,
-        0,
-        0
+        0,0,0,0
     );
 
 
@@ -2340,9 +1716,8 @@ function renderSoon() {
                     const days =
                         Math.round(
                             (
-                                date.getTime()
-                                -
-                                today.getTime()
+                                date -
+                                today
                             )
                             /
                             86400000
@@ -2350,18 +1725,13 @@ function renderSoon() {
 
 
                     return {
-
                         person,
-
-                        date,
-
                         days
-
                     };
                 }
             )
             .sort(
-                (a, b) =>
+                (a,b) =>
                     a.days -
                     b.days
             );
@@ -2371,124 +1741,97 @@ function renderSoon() {
         upcoming[0];
 
 
-    const row =
-        document.createElement(
-            "div"
-        );
+    container.innerHTML = `
+        <div class="soon">
 
+            <div>
 
-    row.className =
-        "soon-item";
+                <span class="soon-name">
+                    ${escapeHtml(next.person.name)}
+                </span>
 
+                <span class="soon-date">
+                    · ${formatDate(next.person)}
+                </span>
 
-    const left =
-        document.createElement(
-            "div"
-        );
+            </div>
 
+            <div class="soon-days">
+                ${formatDays(next.days)}
+            </div>
 
-    left.className =
-        "soon-left";
-
-
-    const name =
-        document.createElement(
-            "span"
-        );
-
-
-    name.className =
-        "soon-name";
-
-
-    name.textContent =
-        next.person.name;
-
-
-    const date =
-        document.createElement(
-            "span"
-        );
-
-
-    date.className =
-        "soon-date";
-
-
-    date.textContent =
-        `· ${formatDate(
-            next.person
-        )}`;
-
-
-    left.appendChild(
-        name
-    );
-
-
-    left.appendChild(
-        date
-    );
-
-
-    const days =
-        document.createElement(
-            "span"
-        );
-
-
-    days.className =
-        "soon-days";
-
-
-    days.textContent =
-        formatDays(
-            next.days
-        );
-
-
-    row.appendChild(
-        left
-    );
-
-
-    row.appendChild(
-        days
-    );
-
-
-    container.appendChild(
-        row
-    );
+        </div>
+    `;
 }
 
 
-/* =========================================================
-   NEXT BIRTHDAY
-========================================================= */
+/* =========================================
+   AGE
+========================================= */
+
+function getAge(
+    person
+) {
+
+    const today =
+        new Date();
+
+
+    let age =
+        today.getFullYear()
+        -
+        person.birthYear;
+
+
+    const birthday =
+        new Date(
+            today.getFullYear(),
+            person.month - 1,
+            person.day
+        );
+
+
+    birthday.setHours(
+        0,0,0,0
+    );
+
+
+    today.setHours(
+        0,0,0,0
+    );
+
+
+    if (
+        today < birthday
+    ) {
+
+        age--;
+    }
+
+
+    return age;
+}
+
+
+/* =========================================
+   NEXT
+========================================= */
 
 function nextBirthday(
     person,
     today
 ) {
 
-    const year =
-        today.getFullYear();
-
-
     let date =
         new Date(
-            year,
-            Number(person.month) - 1,
-            Number(person.day)
+            today.getFullYear(),
+            person.month - 1,
+            person.day
         );
 
 
     date.setHours(
-        0,
-        0,
-        0,
-        0
+        0,0,0,0
     );
 
 
@@ -2498,17 +1841,13 @@ function nextBirthday(
 
         date =
             new Date(
-                year + 1,
-                Number(person.month) - 1,
-                Number(person.day)
+                today.getFullYear() + 1,
+                person.month - 1,
+                person.day
             );
 
-
         date.setHours(
-            0,
-            0,
-            0,
-            0
+            0,0,0,0
         );
     }
 
@@ -2517,173 +1856,46 @@ function nextBirthday(
 }
 
 
-/* =========================================================
-   CLEAR FORM
-========================================================= */
+/* =========================================
+   HELPERS
+========================================= */
 
-function clearForm() {
+function compare(a,b) {
 
-    document
-        .getElementById("name")
-        .value = "";
+    if (
+        a.month !== b.month
+    ) {
 
-
-    document
-        .getElementById("day")
-        .value = "";
+        return a.month - b.month;
+    }
 
 
-    document
-        .getElementById("month")
-        .value = "1";
+    if (
+        a.day !== b.day
+    ) {
+
+        return a.day - b.day;
+    }
 
 
-    document
-        .getElementById("birthYear")
-        .value = "";
-
-
-    document
-        .getElementById("name")
-        .focus();
-
-
-    setStatus("");
-}
-
-
-/* =========================================================
-   DOWNLOAD JSON
-========================================================= */
-
-function downloadJSON() {
-
-    const json =
-        JSON.stringify(
-            birthdays,
-            null,
-            2
-        );
-
-
-    const blob =
-        new Blob(
-            [json],
-            {
-                type:
-                    "application/json"
-            }
-        );
-
-
-    const url =
-        URL.createObjectURL(
-            blob
-        );
-
-
-    const link =
-        document.createElement(
-            "a"
-        );
-
-
-    link.href =
-        url;
-
-
-    link.download =
-        "birthdays.json";
-
-
-    document.body.appendChild(
-        link
-    );
-
-
-    link.click();
-
-
-    link.remove();
-
-
-    URL.revokeObjectURL(
-        url
+    return a.name.localeCompare(
+        b.name,
+        "ru"
     );
 }
 
 
-/* =========================================================
-   SORT
-========================================================= */
+function sort() {
 
-function compareBirthdays(
-    a,
-    b
-) {
-
-    const monthA =
-        Number(a.month);
-
-
-    const monthB =
-        Number(b.month);
-
-
-    if (
-        monthA !== monthB
-    ) {
-
-        return (
-            monthA -
-            monthB
-        );
-    }
-
-
-    const dayA =
-        Number(a.day);
-
-
-    const dayB =
-        Number(b.day);
-
-
-    if (
-        dayA !== dayB
-    ) {
-
-        return (
-            dayA -
-            dayB
-        );
-    }
-
-
-    return String(a.name)
-        .localeCompare(
-            String(b.name),
-            "ru"
-        );
+    birthdays.sort(
+        compare
+    );
 }
 
-
-/* =========================================================
-   DAYS IN MONTH
-========================================================= */
 
 function daysInMonth(
     month
 ) {
-
-    if (
-        month < 1 ||
-        month > 12
-    ) {
-
-        return 0;
-    }
-
 
     return new Date(
         2024,
@@ -2693,37 +1905,23 @@ function daysInMonth(
 }
 
 
-/* =========================================================
-   FORMAT DATE
-========================================================= */
-
 function formatDate(
     person
 ) {
 
     return (
-
         String(
             person.day
-        ).padStart(2, "0")
-
+        ).padStart(2,"0")
         +
-
         "."
-
         +
-
         String(
             person.month
-        ).padStart(2, "0")
-
+        ).padStart(2,"0")
     );
 }
 
-
-/* =========================================================
-   FORMAT DAYS
-========================================================= */
 
 function formatDays(
     days
@@ -2731,34 +1929,21 @@ function formatDays(
 
     if (
         days === 0
-    ) {
-
-        return "сегодня 🎉";
-    }
-
+    ) return "сегодня 🎉";
 
     if (
         days === 1
-    ) {
+    ) return "завтра";
 
-        return "завтра";
-    }
-
-
-    return (
-        `через ${days} ${daysWord(days)}`
-    );
+    return `через ${days} ${daysWord(days)}`;
 }
 
 
 function daysWord(
-    number
+    n
 ) {
 
-    const n =
-        Math.abs(number)
-        % 100;
-
+    n = Math.abs(n) % 100;
 
     const last =
         n % 10;
@@ -2767,45 +1952,29 @@ function daysWord(
     if (
         n >= 11 &&
         n <= 19
-    ) {
-
-        return "дней";
-    }
+    ) return "дней";
 
 
     if (
         last === 1
-    ) {
-
-        return "день";
-    }
+    ) return "день";
 
 
     if (
         last >= 2 &&
         last <= 4
-    ) {
-
-        return "дня";
-    }
+    ) return "дня";
 
 
     return "дней";
 }
 
 
-/* =========================================================
-   YEARS WORD
-========================================================= */
-
-function yearsWord(
-    number
+function years(
+    n
 ) {
 
-    const n =
-        Math.abs(number)
-        % 100;
-
+    n = Math.abs(n) % 100;
 
     const last =
         n % 10;
@@ -2814,38 +1983,107 @@ function yearsWord(
     if (
         n >= 11 &&
         n <= 19
-    ) {
-
-        return "лет";
-    }
+    ) return "лет";
 
 
     if (
         last === 1
-    ) {
-
-        return "год";
-    }
+    ) return "год";
 
 
     if (
         last >= 2 &&
         last <= 4
-    ) {
-
-        return "года";
-    }
+    ) return "года";
 
 
     return "лет";
 }
 
 
-/* =========================================================
-   UTF-8 BASE64
-========================================================= */
+function status(
+    text,
+    error
+) {
 
-function encodeBase64Utf8(
+    const element =
+        document.getElementById(
+            "status"
+        );
+
+
+    element.textContent =
+        text;
+
+
+    element.className =
+        "status " +
+        (
+            error
+                ? "error"
+                : "success"
+        );
+}
+
+
+function showToken(
+    text,
+    error
+) {
+
+    const element =
+        document.getElementById(
+            "token-status"
+        );
+
+
+    element.textContent =
+        text;
+
+
+    element.className =
+        "status " +
+        (
+            error
+                ? "error"
+                : "success"
+        );
+}
+
+
+function escapeHtml(
+    value
+) {
+
+    return String(value)
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
+}
+
+
+/* =========================================
+   BASE64 UTF-8
+========================================= */
+
+function encode(
     text
 ) {
 
@@ -2857,26 +2095,18 @@ function encodeBase64Utf8(
     let binary = "";
 
 
-    const chunkSize =
-        0x8000;
-
-
     for (
         let i = 0;
         i < bytes.length;
-        i += chunkSize
+        i += 0x8000
     ) {
-
-        const chunk =
-            bytes.subarray(
-                i,
-                i + chunkSize
-            );
-
 
         binary +=
             String.fromCharCode(
-                ...chunk
+                ...bytes.subarray(
+                    i,
+                    i + 0x8000
+                )
             );
     }
 
@@ -2887,14 +2117,14 @@ function encodeBase64Utf8(
 }
 
 
-function decodeBase64Utf8(
+function decode(
     base64
 ) {
 
     const binary =
         atob(
             base64.replace(
-                /\n/g,
+               (/\n/g),
                 ""
             )
         );
@@ -2908,11 +2138,8 @@ function decodeBase64Utf8(
         );
 
 
-    return new TextDecoder(
-        "utf-8"
-    ).decode(
-        bytes
-    );
+    return new TextDecoder()
+        .decode(bytes);
 }
 
 </script>
