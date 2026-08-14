@@ -8,8 +8,8 @@
 
 <style>
 :root {
-    --bg: #090512;
-    --bg2: #11081d;
+    --bg: #08040f;
+    --bg2: #10071b;
     --card: #171022;
     --card2: #1d1430;
 
@@ -22,7 +22,7 @@
     --muted: #9d91b0;
 
     --border: rgba(167, 139, 250, .15);
-    --border-hover: rgba(167, 139, 250, .3);
+    --border-hover: rgba(167, 139, 250, .35);
 }
 
 * {
@@ -77,7 +77,9 @@ body {
     margin: 0 auto;
 }
 
-/* HEADER */
+/* ==============================
+   HEADER
+============================== */
 
 header {
     text-align: center;
@@ -107,13 +109,15 @@ header {
         );
 
     box-shadow:
-        0 15px 45px rgba(139, 92, 246, .35);
+        0 15px 45px
+        rgba(139, 92, 246, .35);
 }
 
 header h1 {
     margin: 0;
 
-    font-size: clamp(38px, 6vw, 56px);
+    font-size:
+        clamp(38px, 6vw, 56px);
 
     line-height: 1.05;
 
@@ -143,7 +147,9 @@ header p {
     font-size: 15px;
 }
 
-/* CARDS */
+/* ==============================
+   CARDS
+============================== */
 
 .form-card,
 .section-card,
@@ -162,7 +168,9 @@ header p {
         0 15px 45px rgba(0, 0, 0, .28);
 }
 
-/* FORM */
+/* ==============================
+   FORM
+============================== */
 
 .form-card {
     padding: 20px;
@@ -183,14 +191,12 @@ header p {
         1.5fr
         .65fr
         1fr
-        .7fr
+        .8fr
         auto
         auto;
 
     gap: 10px;
 }
-
-/* INPUTS */
 
 input,
 select {
@@ -223,14 +229,13 @@ input::placeholder {
 
 input:focus,
 select:focus {
-    border-color: var(--purple-light);
+    border-color:
+        var(--purple-light);
 
     box-shadow:
         0 0 0 3px
         rgba(139, 92, 246, .12);
 }
-
-/* BUTTONS */
 
 button {
     height: 46px;
@@ -252,6 +257,12 @@ button {
 
 button:hover {
     transform: translateY(-2px);
+}
+
+button:disabled {
+    opacity: .55;
+    cursor: wait;
+    transform: none;
 }
 
 #birthday-form button[type="submit"] {
@@ -279,14 +290,33 @@ button:hover {
         rgba(167, 139, 250, .14);
 }
 
-#reset:hover {
-    background:
-        rgba(167, 139, 250, .12);
+/* ==============================
+   STATUS
+============================== */
 
-    color: white;
+.status {
+    margin-top: 12px;
+
+    min-height: 20px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    color: var(--muted);
 }
 
-/* SECTIONS */
+.status.success {
+    color: #c4b5fd;
+}
+
+.status.error {
+    color: #fda4af;
+}
+
+/* ==============================
+   SECTION
+============================== */
 
 .section {
     margin-top: 28px;
@@ -322,7 +352,9 @@ button:hover {
         rgba(139, 92, 246, .14);
 }
 
-/* SOON */
+/* ==============================
+   SOON
+============================== */
 
 .soon-item {
     display: flex;
@@ -368,17 +400,9 @@ button:hover {
     white-space: nowrap;
 }
 
-.empty {
-    padding: 15px;
-
-    text-align: center;
-
-    color: var(--muted);
-
-    font-size: 13px;
-}
-
-/* DOWNLOAD */
+/* ==============================
+   ACTIONS
+============================== */
 
 .actions {
     display: flex;
@@ -396,7 +420,9 @@ button:hover {
         );
 }
 
-/* MONTHS */
+/* ==============================
+   MONTHS
+============================== */
 
 #months {
     display: grid;
@@ -454,7 +480,9 @@ button:hover {
     padding: 6px;
 }
 
-/* PERSON */
+/* ==============================
+   PERSON
+============================== */
 
 .person {
     display: grid;
@@ -530,7 +558,9 @@ button:hover {
     font-size: 12px;
 }
 
-/* DELETE */
+/* ==============================
+   DELETE
+============================== */
 
 .delete-person {
     flex-shrink: 0;
@@ -565,6 +595,7 @@ button:hover {
 
 .person:hover .delete-person {
     opacity: 1;
+
     transform: scale(1);
 }
 
@@ -575,7 +606,51 @@ button:hover {
         rgba(239, 68, 68, .8);
 }
 
-/* FOOTER */
+/* ==============================
+   EDIT
+============================== */
+
+.edit-person {
+    flex-shrink: 0;
+
+    width: 28px;
+    height: 28px;
+
+    padding: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    color: #c4b5fd;
+
+    background:
+        rgba(139, 92, 246, .08);
+
+    font-size: 14px;
+
+    opacity: 0;
+
+    transform: scale(.8);
+}
+
+.person:hover .edit-person {
+    opacity: 1;
+
+    transform: scale(1);
+}
+
+.edit-person:hover {
+    background:
+        rgba(139, 92, 246, .35);
+}
+
+/* ==============================
+   FOOTER
+============================== */
 
 footer {
     padding: 15px 0 45px;
@@ -591,9 +666,34 @@ footer {
     letter-spacing: .3px;
 }
 
-/* MOBILE */
+/* ==============================
+   LOADING
+============================== */
+
+.loading {
+    padding: 25px;
+
+    text-align: center;
+
+    color: var(--muted);
+}
+
+.empty {
+    padding: 15px;
+
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+/* ==============================
+   MOBILE
+============================== */
 
 @media(max-width: 1000px) {
+
     #birthday-form {
         grid-template-columns:
             repeat(3, 1fr);
@@ -601,6 +701,7 @@ footer {
 }
 
 @media(max-width: 800px) {
+
     #months {
         grid-template-columns:
             repeat(2, 1fr);
@@ -613,6 +714,7 @@ footer {
 }
 
 @media(max-width: 560px) {
+
     .container {
         width:
             calc(100% - 20px);
@@ -624,21 +726,27 @@ footer {
     }
 
     #birthday-form {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
     #months {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .soon-item {
-        flex-direction: column;
+        flex-direction:
+            column;
 
-        align-items: flex-start;
+        align-items:
+            flex-start;
     }
 
-    .delete-person {
+    .delete-person,
+    .edit-person {
         opacity: .7;
+
         transform: scale(1);
     }
 }
@@ -694,10 +802,12 @@ footer {
         <select id="month"></select>
 
         <input
-            id="age"
+            id="birthYear"
             type="number"
-            min="0"
-            placeholder="Возраст"
+            min="1900"
+            max="2100"
+            placeholder="Год рождения"
+            required
         >
 
         <button type="submit">
@@ -712,6 +822,11 @@ footer {
         </button>
 
     </form>
+
+    <div
+        id="status"
+        class="status"
+    ></div>
 
 </section>
 
@@ -732,7 +847,7 @@ footer {
 
         <div id="soon-list">
 
-            <div class="empty">
+            <div class="loading">
                 Загрузка...
             </div>
 
@@ -754,7 +869,7 @@ footer {
 
 <main id="months">
 
-    <div class="empty">
+    <div class="loading">
         Загрузка дней рождения...
     </div>
 
@@ -770,11 +885,44 @@ footer {
 
 <script>
 
-/* =========================================
-   НАСТРОЙКИ
-========================================= */
+/* =========================================================
+   GITHUB НАСТРОЙКИ
+   =========================================================
+
+   ЗАМЕНИ ТОЛЬКО ЭТИ 4 ЗНАЧЕНИЯ.
+*/
+
+
+const GITHUB_OWNER =
+    "azwyyier";
+
+
+const GITHUB_REPO =
+    "birthday-blade";
+
+
+const GITHUB_FILE =
+    "data/birthdays.json";
+
+
+const GITHUB_BRANCH =
+    "main";
+
+
+const GITHUB_TOKEN =
+    "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";
+
+
+/* =========================================================
+   ОСТАЛЬНОЙ КОД
+========================================================= */
+
+const API_BASE =
+    "https://api.github.com";
+
 
 const MONTHS = [
+
     "Январь",
     "Февраль",
     "Март",
@@ -787,26 +935,26 @@ const MONTHS = [
     "Октябрь",
     "Ноябрь",
     "Декабрь"
+
 ];
 
-const STORAGE_KEY = "birthday-blade-data";
 
 let birthdays = [];
 
+let fileSha = null;
 
-/* =========================================
-   ЗАПУСК
-========================================= */
+let saving = false;
+
+
+/* =========================================================
+   DOM
+========================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
     async () => {
 
         createMonthSelect();
-
-        await loadBirthdays();
-
-        render();
 
         document
             .getElementById("birthday-form")
@@ -815,6 +963,7 @@ document.addEventListener(
                 addBirthday
             );
 
+
         document
             .getElementById("reset")
             .addEventListener(
@@ -822,274 +971,242 @@ document.addEventListener(
                 clearForm
             );
 
+
         document
             .getElementById("download")
             .addEventListener(
                 "click",
                 downloadJSON
             );
+
+
+        await loadBirthdays();
+
     }
 );
 
 
-/* =========================================
-   ЗАГРУЗКА
-========================================= */
+/* =========================================================
+   STATUS
+========================================================= */
 
-async function loadBirthdays() {
+function setStatus(
+    text,
+    type = ""
+) {
 
-    let remote = [];
-
-    try {
-
-        const response = await fetch(
-            "data/birthdays.json",
-            {
-                cache: "no-store"
-            }
-        );
-
-        if (response.ok) {
-
-            const data =
-                await response.json();
-
-            if (Array.isArray(data)) {
-                remote = data;
-            }
-        }
-
-    } catch (error) {
-
-        console.warn(
-            "Не удалось загрузить birthdays.json",
-            error
-        );
-    }
-
-
-    const local =
-        localStorage.getItem(
-            STORAGE_KEY
+    const element =
+        document.getElementById(
+            "status"
         );
 
 
-    if (local) {
-
-        try {
-
-            const parsed =
-                JSON.parse(local);
-
-            if (Array.isArray(parsed)) {
-
-                birthdays =
-                    normalizeData(parsed);
-
-                /*
-                   Обновляем localStorage после
-                   нормализации старых записей.
-                */
-
-                saveLocal();
-
-                return;
-            }
-
-        } catch (error) {
-
-            console.warn(
-                "Ошибка локальных данных",
-                error
-            );
-        }
-    }
+    element.textContent =
+        text;
 
 
-    birthdays =
-        normalizeData(remote);
-
-    saveLocal();
+    element.className =
+        "status " + type;
 }
 
 
-/* =========================================
-   НОРМАЛИЗАЦИЯ СТАРЫХ ДАННЫХ
-========================================= */
+/* =========================================================
+   GITHUB API
+========================================================= */
+
+function githubHeaders() {
+
+    return {
+
+        "Accept":
+            "application/vnd.github+json",
+
+        "Authorization":
+            `Bearer ${GITHUB_TOKEN}`,
+
+        "X-GitHub-Api-Version":
+            "2026-03-10"
+
+    };
+}
+
+
+/* =========================================================
+   GET FILE FROM GITHUB
+========================================================= */
+
+async function getGitHubFile() {
+
+    const url =
+        `${API_BASE}/repos/` +
+        `${GITHUB_OWNER}/` +
+        `${GITHUB_REPO}/contents/` +
+        `${GITHUB_FILE}?ref=${encodeURIComponent(
+            GITHUB_BRANCH
+        )}`;
+
+
+    const response =
+        await fetch(
+            url,
+            {
+                headers:
+                    githubHeaders(),
+
+                cache:
+                    "no-store"
+            }
+        );
+
+
+    if (!response.ok) {
+
+        throw new Error(
+            `GitHub GET error: ${response.status}`
+        );
+    }
+
+
+    return await response.json();
+}
+
+
+/* =========================================================
+   LOAD BIRTHDAYS
+========================================================= */
+
+async function loadBirthdays() {
+
+    try {
+
+        if (
+            !GITHUB_TOKEN ||
+            GITHUB_TOKEN.includes(
+                "ВСТАВЬ"
+            )
+        ) {
+
+            throw new Error(
+                "Не указан GitHub Token."
+            );
+        }
+
+
+        const file =
+            await getGitHubFile();
+
+
+        fileSha =
+            file.sha;
+
+
+        const decoded =
+            decodeBase64Utf8(
+                file.content
+            );
+
+
+        const data =
+            JSON.parse(decoded);
+
+
+        if (
+            !Array.isArray(data)
+        ) {
+
+            throw new Error(
+                "birthdays.json должен содержать массив."
+            );
+        }
+
+
+        birthdays =
+            normalizeData(data);
+
+
+        render();
+
+
+        setStatus(
+            `Загружено участников: ${birthdays.length}`,
+            "success"
+        );
+
+
+    } catch (error) {
+
+        console.error(error);
+
+
+        birthdays = [];
+
+
+        document
+            .getElementById("months")
+            .innerHTML = `
+                <div class="loading">
+                    Не удалось загрузить birthdays.json.
+                    <br><br>
+                    Проверь GitHub Token,
+                    репозиторий и путь к файлу.
+                </div>
+            `;
+
+
+        setStatus(
+            error.message,
+            "error"
+        );
+    }
+}
+
+
+/* =========================================================
+   NORMALIZE
+========================================================= */
 
 function normalizeData(data) {
 
     return data
-        .filter(person => {
-
-            return (
+        .filter(
+            person =>
                 person &&
                 person.name &&
                 person.day &&
-                person.month
-            );
+                person.month &&
+                person.birthYear
+        )
+        .map(
+            person => ({
 
-        })
-        .map(person => {
+                name:
+                    String(
+                        person.name
+                    ),
 
-            const result = {
+                day:
+                    Number(
+                        person.day
+                    ),
 
-                name: String(person.name),
+                month:
+                    Number(
+                        person.month
+                    ),
 
-                day: Number(person.day),
+                birthYear:
+                    Number(
+                        person.birthYear
+                    )
 
-                month: Number(person.month)
-
-            };
-
-
-            /*
-               Если birthYear уже существует —
-               оставляем его.
-            */
-
-            if (
-                person.birthYear !== undefined &&
-                person.birthYear !== null &&
-                person.birthYear !== ""
-            ) {
-
-                result.birthYear =
-                    Number(person.birthYear);
-
-                return result;
-            }
-
-
-            /*
-               Старый формат с age.
-
-               Здесь очень важно:
-               age означает возраст ЧЕЛОВЕКА
-               НА МОМЕНТ СОЗДАНИЯ ЗАПИСИ.
-
-               Если день рождения в этом году
-               уже прошёл, год рождения:
-
-                   currentYear - age
-
-               Если ещё не прошёл:
-
-                   currentYear - age - 1
-            */
-
-            if (
-                person.age !== undefined &&
-                person.age !== null &&
-                person.age !== ""
-            ) {
-
-                const age =
-                    Number(person.age);
-
-
-                if (
-                    Number.isInteger(age) &&
-                    age >= 0
-                ) {
-
-                    result.birthYear =
-                        calculateBirthYear(
-                            age,
-                            result.day,
-                            result.month
-                        );
-                }
-            }
-
-
-            return result;
-
-        });
-}
-
-
-/* =========================================
-   ПРАВИЛЬНОЕ ОПРЕДЕЛЕНИЕ ГОДА РОЖДЕНИЯ
-
-   Например:
-
-   Сегодня: 14.08.2026
-   ДР:      25.05
-   Возраст: 17
-
-   День рождения уже был.
-
-   Значит:
-
-   2026 - 17 = 2009
-
-
-   Если:
-
-   Сегодня: 14.08.2026
-   ДР:      25.12
-   Возраст: 17
-
-   День рождения ещё впереди.
-
-   Значит:
-
-   2026 - 17 - 1 = 2008
-========================================= */
-
-function calculateBirthYear(
-    age,
-    day,
-    month
-) {
-
-    const today =
-        new Date();
-
-    const currentYear =
-        today.getFullYear();
-
-
-    const birthdayThisYear =
-        new Date(
-            currentYear,
-            Number(month) - 1,
-            Number(day)
+            })
         );
-
-
-    today.setHours(
-        0,
-        0,
-        0,
-        0
-    );
-
-    birthdayThisYear.setHours(
-        0,
-        0,
-        0,
-        0
-    );
-
-
-    if (
-        birthdayThisYear <= today
-    ) {
-
-        return currentYear - age;
-
-    }
-
-
-    return currentYear - age - 1;
 }
 
 
-/* =========================================
-   МЕСЯЦЫ
-========================================= */
+/* =========================================================
+   MONTH SELECT
+========================================================= */
 
 function createMonthSelect() {
 
@@ -1097,6 +1214,7 @@ function createMonthSelect() {
         document.getElementById(
             "month"
         );
+
 
     select.innerHTML = "";
 
@@ -1109,23 +1227,666 @@ function createMonthSelect() {
                     "option"
                 );
 
+
             option.value =
                 index + 1;
+
 
             option.textContent =
                 month;
 
+
             select.appendChild(
                 option
             );
+
         }
     );
 }
 
 
-/* =========================================
-   РЕНДЕР
-========================================= */
+/* =========================================================
+   SAVE TO GITHUB
+========================================================= */
+
+async function saveToGitHub(
+    commitMessage
+) {
+
+    if (saving) {
+
+        throw new Error(
+            "Подожди, предыдущая операция ещё выполняется."
+        );
+    }
+
+
+    saving = true;
+
+
+    try {
+
+        /*
+           Перед сохранением заново получаем SHA.
+
+           Это важно, если другой человек
+           только что изменил файл.
+        */
+
+        const latest =
+            await getGitHubFile();
+
+
+        fileSha =
+            latest.sha;
+
+
+        const json =
+            JSON.stringify(
+                birthdays,
+                null,
+                2
+            ) + "\n";
+
+
+        const encoded =
+            encodeBase64Utf8(
+                json
+            );
+
+
+        const url =
+            `${API_BASE}/repos/` +
+            `${GITHUB_OWNER}/` +
+            `${GITHUB_REPO}/contents/` +
+            `${GITHUB_FILE}`;
+
+
+        const response =
+            await fetch(
+                url,
+                {
+
+                    method:
+                        "PUT",
+
+                    headers: {
+                        ...githubHeaders(),
+
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            message:
+                                commitMessage,
+
+                            content:
+                                encoded,
+
+                            sha:
+                                fileSha,
+
+                            branch:
+                                GITHUB_BRANCH
+
+                        })
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            console.error(
+                result
+            );
+
+
+            throw new Error(
+                result.message ||
+                `GitHub error: ${response.status}`
+            );
+        }
+
+
+        fileSha =
+            result.content.sha;
+
+
+    } finally {
+
+        saving = false;
+    }
+}
+
+
+/* =========================================================
+   ADD
+========================================================= */
+
+async function addBirthday(
+    event
+) {
+
+    event.preventDefault();
+
+
+    const name =
+        document
+            .getElementById("name")
+            .value
+            .trim();
+
+
+    const day =
+        Number(
+            document
+                .getElementById("day")
+                .value
+        );
+
+
+    const month =
+        Number(
+            document
+                .getElementById("month")
+                .value
+        );
+
+
+    const birthYear =
+        Number(
+            document
+                .getElementById("birthYear")
+                .value
+        );
+
+
+    if (!name) {
+
+        alert(
+            "Введите имя."
+        );
+
+        return;
+    }
+
+
+    if (
+        !Number.isInteger(day) ||
+        day < 1 ||
+        day > daysInMonth(month)
+    ) {
+
+        alert(
+            "Введите правильный день."
+        );
+
+        return;
+    }
+
+
+    const currentYear =
+        new Date()
+            .getFullYear();
+
+
+    if (
+        !Number.isInteger(
+            birthYear
+        ) ||
+
+        birthYear < 1900 ||
+
+        birthYear > currentYear
+    ) {
+
+        alert(
+            "Введите правильный год рождения."
+        );
+
+        return;
+    }
+
+
+    const birthday = {
+
+        name,
+
+        day,
+
+        month,
+
+        birthYear
+
+    };
+
+
+    birthdays.push(
+        birthday
+    );
+
+
+    birthdays.sort(
+        compareBirthdays
+    );
+
+
+    render();
+
+
+    setStatus(
+        "Сохраняем в GitHub...",
+        ""
+    );
+
+
+    try {
+
+        await saveToGitHub(
+            `Добавлен день рождения: ${name}`
+        );
+
+
+        clearForm();
+
+
+        setStatus(
+            `${name} добавлен в birthdays.json`,
+            "success"
+        );
+
+
+        /*
+           Повторно загружаем файл,
+           чтобы убедиться, что версия
+           на GitHub актуальна.
+        */
+
+        await refreshFromGitHub();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+
+        /*
+           Если сохранение не удалось,
+           удаляем локально добавленную
+           запись обратно.
+        */
+
+        birthdays =
+            birthdays.filter(
+                person =>
+                    person !== birthday
+            );
+
+
+        render();
+
+
+        setStatus(
+            "Ошибка сохранения: " +
+            error.message,
+            "error"
+        );
+
+
+        alert(
+            "Не удалось сохранить запись в GitHub.\n\n" +
+            error.message
+        );
+    }
+}
+
+
+/* =========================================================
+   DELETE
+========================================================= */
+
+async function deleteBirthday(
+    person
+) {
+
+    const confirmed =
+        confirm(
+            `Удалить ${person.name}?`
+        );
+
+
+    if (!confirmed) {
+        return;
+    }
+
+
+    const oldData =
+        [...birthdays];
+
+
+    birthdays =
+        birthdays.filter(
+            item =>
+                item !== person
+        );
+
+
+    render();
+
+
+    setStatus(
+        "Удаляем из GitHub...",
+        ""
+    );
+
+
+    try {
+
+        await saveToGitHub(
+            `Удалён день рождения: ${person.name}`
+        );
+
+
+        setStatus(
+            `${person.name} удалён`,
+            "success"
+        );
+
+
+        await refreshFromGitHub();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+
+        birthdays =
+            oldData;
+
+
+        render();
+
+
+        setStatus(
+            "Ошибка удаления: " +
+            error.message,
+            "error"
+        );
+
+
+        alert(
+            "Не удалось удалить запись.\n\n" +
+            error.message
+        );
+    }
+}
+
+
+/* =========================================================
+   EDIT
+========================================================= */
+
+async function editBirthday(
+    person
+) {
+
+    const newName =
+        prompt(
+            "Имя участника:",
+            person.name
+        );
+
+
+    if (
+        newName === null
+    ) {
+
+        return;
+    }
+
+
+    const cleanName =
+        newName.trim();
+
+
+    if (!cleanName) {
+
+        alert(
+            "Имя не может быть пустым."
+        );
+
+        return;
+    }
+
+
+    const newDay =
+        prompt(
+            "День рождения:",
+            person.day
+        );
+
+
+    if (
+        newDay === null
+    ) {
+
+        return;
+    }
+
+
+    const newMonth =
+        prompt(
+            "Месяц (1-12):",
+            person.month
+        );
+
+
+    if (
+        newMonth === null
+    ) {
+
+        return;
+    }
+
+
+    const newYear =
+        prompt(
+            "Год рождения:",
+            person.birthYear
+        );
+
+
+    if (
+        newYear === null
+    ) {
+
+        return;
+    }
+
+
+    const day =
+        Number(newDay);
+
+
+    const month =
+        Number(newMonth);
+
+
+    const birthYear =
+        Number(newYear);
+
+
+    const currentYear =
+        new Date()
+            .getFullYear();
+
+
+    if (
+        !Number.isInteger(day) ||
+        day < 1 ||
+        day > daysInMonth(month)
+    ) {
+
+        alert(
+            "Неправильный день."
+        );
+
+        return;
+    }
+
+
+    if (
+        !Number.isInteger(month) ||
+        month < 1 ||
+        month > 12
+    ) {
+
+        alert(
+            "Неправильный месяц."
+        );
+
+        return;
+    }
+
+
+    if (
+        !Number.isInteger(
+            birthYear
+        ) ||
+
+        birthYear < 1900 ||
+
+        birthYear > currentYear
+    ) {
+
+        alert(
+            "Неправильный год рождения."
+        );
+
+        return;
+    }
+
+
+    const oldName =
+        person.name;
+
+
+    person.name =
+        cleanName;
+
+
+    person.day =
+        day;
+
+
+    person.month =
+        month;
+
+
+    person.birthYear =
+        birthYear;
+
+
+    birthdays.sort(
+        compareBirthdays
+    );
+
+
+    render();
+
+
+    setStatus(
+        "Сохраняем изменения...",
+        ""
+    );
+
+
+    try {
+
+        await saveToGitHub(
+            `Изменён день рождения: ${oldName}`
+        );
+
+
+        setStatus(
+            "Изменения сохранены",
+            "success"
+        );
+
+
+        await refreshFromGitHub();
+
+
+    } catch (error) {
+
+        console.error(error);
+
+
+        /*
+           Если ошибка,
+           перезагружаем актуальную
+           версию с GitHub.
+        */
+
+        await refreshFromGitHub();
+
+
+        setStatus(
+            "Ошибка изменения: " +
+            error.message,
+            "error"
+        );
+
+
+        alert(
+            "Не удалось изменить запись.\n\n" +
+            error.message
+        );
+    }
+}
+
+
+/* =========================================================
+   REFRESH
+========================================================= */
+
+async function refreshFromGitHub() {
+
+    const file =
+        await getGitHubFile();
+
+
+    fileSha =
+        file.sha;
+
+
+    const decoded =
+        decodeBase64Utf8(
+            file.content
+        );
+
+
+    birthdays =
+        normalizeData(
+            JSON.parse(decoded)
+        );
+
+
+    render();
+}
+
+
+/* =========================================================
+   RENDER
+========================================================= */
 
 function render() {
 
@@ -1135,9 +1896,9 @@ function render() {
 }
 
 
-/* =========================================
-   МЕСЯЦЫ
-========================================= */
+/* =========================================================
+   MONTHS
+========================================================= */
 
 function renderMonths() {
 
@@ -1145,6 +1906,7 @@ function renderMonths() {
         document.getElementById(
             "months"
         );
+
 
     container.innerHTML = "";
 
@@ -1160,8 +1922,9 @@ function renderMonths() {
                 birthdays
                     .filter(
                         person =>
-                            Number(person.month)
-                            ===
+                            Number(
+                                person.month
+                            ) ===
                             monthNumber
                     )
                     .sort(
@@ -1174,6 +1937,7 @@ function renderMonths() {
                     "article"
                 );
 
+
             month.className =
                 "month";
 
@@ -1183,8 +1947,10 @@ function renderMonths() {
                     "div"
                 );
 
+
             title.className =
                 "month-title";
+
 
             title.textContent =
                 `${monthName} · ${people.length}`;
@@ -1194,6 +1960,7 @@ function renderMonths() {
                 document.createElement(
                     "ul"
                 );
+
 
             list.className =
                 "month-list";
@@ -1208,11 +1975,14 @@ function renderMonths() {
                         "li"
                     );
 
+
                 empty.className =
                     "empty";
 
+
                 empty.textContent =
                     "Пока никого нет.";
+
 
                 list.appendChild(
                     empty
@@ -1233,34 +2003,52 @@ function renderMonths() {
             );
 
 
-            month.appendChild(title);
+            month.appendChild(
+                title
+            );
 
-            month.appendChild(list);
 
-            container.appendChild(month);
+            month.appendChild(
+                list
+            );
+
+
+            container.appendChild(
+                month
+            );
+
         }
     );
 }
 
 
-/* =========================================
-   ЧЕЛОВЕК
-========================================= */
+/* =========================================================
+   PERSON
+========================================================= */
 
-function createPersonElement(person) {
+function createPersonElement(
+    person
+) {
 
     const item =
-        document.createElement("li");
+        document.createElement(
+            "li"
+        );
+
 
     item.className =
         "person";
 
 
     const day =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     day.className =
         "person-day";
+
 
     day.textContent =
         String(person.day)
@@ -1268,36 +2056,100 @@ function createPersonElement(person) {
 
 
     const content =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     content.className =
         "person-content";
 
 
     const name =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
+
 
     name.className =
         "person-name";
+
 
     name.textContent =
         person.name;
 
 
+    const buttons =
+        document.createElement(
+            "div"
+        );
+
+
+    buttons.style.display =
+        "flex";
+
+
+    buttons.style.gap =
+        "5px";
+
+
+    const editButton =
+        document.createElement(
+            "button"
+        );
+
+
+    editButton.type =
+        "button";
+
+
+    editButton.className =
+        "edit-person";
+
+
+    editButton.textContent =
+        "✎";
+
+
+    editButton.title =
+        "Изменить";
+
+
+    editButton.addEventListener(
+        "click",
+        event => {
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+            editBirthday(
+                person
+            );
+        }
+    );
+
+
     const deleteButton =
-        document.createElement("button");
+        document.createElement(
+            "button"
+        );
+
 
     deleteButton.type =
         "button";
 
+
     deleteButton.className =
         "delete-person";
+
 
     deleteButton.textContent =
         "×";
 
+
     deleteButton.title =
-        "Удалить участника";
+        "Удалить";
 
 
     deleteButton.addEventListener(
@@ -1308,83 +2160,83 @@ function createPersonElement(person) {
 
             event.stopPropagation();
 
-            deleteBirthday(person);
-
+            deleteBirthday(
+                person
+            );
         }
     );
 
 
-    content.appendChild(name);
+    buttons.appendChild(
+        editButton
+    );
 
-    content.appendChild(
+
+    buttons.appendChild(
         deleteButton
     );
 
 
-    item.appendChild(day);
+    content.appendChild(
+        name
+    );
 
-    item.appendChild(content);
+
+    content.appendChild(
+        buttons
+    );
 
 
-    /*
-       Возраст всегда рассчитывается
-       заново из birthYear.
+    item.appendChild(
+        day
+    );
 
-       Поэтому он изменится только
-       в день рождения.
-    */
+
+    item.appendChild(
+        content
+    );
+
 
     const age =
-        getCurrentAge(person);
-
-
-    if (age !== null) {
-
-        const ageElement =
-            document.createElement("div");
-
-        ageElement.className =
-            "person-age";
-
-        ageElement.textContent =
-            `${age} ${yearsWord(age)}`;
-
-        item.appendChild(
-            ageElement
+        getCurrentAge(
+            person
         );
-    }
+
+
+    const ageElement =
+        document.createElement(
+            "div"
+        );
+
+
+    ageElement.className =
+        "person-age";
+
+
+    ageElement.textContent =
+        `${age} ${yearsWord(age)}`;
+
+
+    item.appendChild(
+        ageElement
+    );
 
 
     return item;
 }
 
 
-/* =========================================
-   ТЕКУЩИЙ ВОЗРАСТ
+/* =========================================================
+   AGE
+========================================================= */
 
-   Это ключевая функция.
-
-   Она НЕ прибавляет возраст просто
-   потому, что дата прошла.
-
-   Она считает реальный возраст
-   по году рождения.
-========================================= */
-
-function getCurrentAge(person) {
-
-    if (
-        person.birthYear === undefined ||
-        person.birthYear === null ||
-        person.birthYear === ""
-    ) {
-
-        return null;
-    }
-
+function getCurrentAge(
+    person
+) {
 
     const today =
         new Date();
+
 
     const currentYear =
         today.getFullYear();
@@ -1395,20 +2247,12 @@ function getCurrentAge(person) {
         Number(person.birthYear);
 
 
-    const birthdayThisYear =
+    const birthday =
         new Date(
             currentYear,
             Number(person.month) - 1,
             Number(person.day)
         );
-
-
-    birthdayThisYear.setHours(
-        0,
-        0,
-        0,
-        0
-    );
 
 
     today.setHours(
@@ -1419,13 +2263,16 @@ function getCurrentAge(person) {
     );
 
 
-    /*
-       Если день рождения ещё НЕ наступил,
-       текущий возраст на один меньше.
-    */
+    birthday.setHours(
+        0,
+        0,
+        0,
+        0
+    );
+
 
     if (
-        today < birthdayThisYear
+        today < birthday
     ) {
 
         age--;
@@ -1436,69 +2283,9 @@ function getCurrentAge(person) {
 }
 
 
-/* =========================================
-   УДАЛЕНИЕ
-========================================= */
-
-function deleteBirthday(person) {
-
-    const confirmed =
-        confirm(
-            `Удалить ${person.name} из списка?`
-        );
-
-
-    if (!confirmed) {
-        return;
-    }
-
-
-    /*
-       Удаляем конкретную запись.
-
-       Не трогаем остальных.
-    */
-
-    birthdays =
-        birthdays.filter(
-            item => !(
-                String(item.name)
-                ===
-                String(person.name)
-
-                &&
-
-                Number(item.day)
-                ===
-                Number(person.day)
-
-                &&
-
-                Number(item.month)
-                ===
-                Number(person.month)
-
-                &&
-
-                Number(item.birthYear)
-                ===
-                Number(person.birthYear)
-            )
-        );
-
-
-    saveLocal();
-
-    render();
-}
-
-
-/* =========================================
-   СКОРО
-
-   Показывается только человек,
-   чей день рождения наступит первым.
-========================================= */
+/* =========================================================
+   SOON
+========================================================= */
 
 function renderSoon() {
 
@@ -1506,6 +2293,7 @@ function renderSoon() {
         document.getElementById(
             "soon-list"
         );
+
 
     container.innerHTML = "";
 
@@ -1520,12 +2308,14 @@ function renderSoon() {
             </div>
         `;
 
+
         return;
     }
 
 
     const today =
         new Date();
+
 
     today.setHours(
         0,
@@ -1537,54 +2327,43 @@ function renderSoon() {
 
     const upcoming =
         birthdays
-            .map(person => {
+            .map(
+                person => {
 
-                const date =
-                    nextBirthday(
-                        person,
-                        today
-                    );
-
-
-                const days =
-                    Math.round(
-                        (
-                            date.getTime()
-                            -
-                            today.getTime()
-                        )
-                        /
-                        86400000
-                    );
-
-
-                return {
-                    person,
-                    date,
-                    days
-                };
-
-            })
-            .sort(
-                (a, b) => {
-
-                    if (
-                        a.days !==
-                        b.days
-                    ) {
-
-                        return (
-                            a.days -
-                            b.days
+                    const date =
+                        nextBirthday(
+                            person,
+                            today
                         );
-                    }
 
 
-                    return compareBirthdays(
-                        a.person,
-                        b.person
-                    );
+                    const days =
+                        Math.round(
+                            (
+                                date.getTime()
+                                -
+                                today.getTime()
+                            )
+                            /
+                            86400000
+                        );
+
+
+                    return {
+
+                        person,
+
+                        date,
+
+                        days
+
+                    };
                 }
+            )
+            .sort(
+                (a, b) =>
+                    a.days -
+                    b.days
             );
 
 
@@ -1597,6 +2376,7 @@ function renderSoon() {
             "div"
         );
 
+
     row.className =
         "soon-item";
 
@@ -1605,6 +2385,7 @@ function renderSoon() {
         document.createElement(
             "div"
         );
+
 
     left.className =
         "soon-left";
@@ -1615,8 +2396,10 @@ function renderSoon() {
             "span"
         );
 
+
     name.className =
         "soon-name";
+
 
     name.textContent =
         next.person.name;
@@ -1627,8 +2410,10 @@ function renderSoon() {
             "span"
         );
 
+
     date.className =
         "soon-date";
+
 
     date.textContent =
         `· ${formatDate(
@@ -1636,9 +2421,14 @@ function renderSoon() {
         )}`;
 
 
-    left.appendChild(name);
+    left.appendChild(
+        name
+    );
 
-    left.appendChild(date);
+
+    left.appendChild(
+        date
+    );
 
 
     const days =
@@ -1646,8 +2436,10 @@ function renderSoon() {
             "span"
         );
 
+
     days.className =
         "soon-days";
+
 
     days.textContent =
         formatDays(
@@ -1655,18 +2447,25 @@ function renderSoon() {
         );
 
 
-    row.appendChild(left);
+    row.appendChild(
+        left
+    );
 
-    row.appendChild(days);
+
+    row.appendChild(
+        days
+    );
 
 
-    container.appendChild(row);
+    container.appendChild(
+        row
+    );
 }
 
 
-/* =========================================
-   БЛИЖАЙШИЙ ДЕНЬ РОЖДЕНИЯ
-========================================= */
+/* =========================================================
+   NEXT BIRTHDAY
+========================================================= */
 
 function nextBirthday(
     person,
@@ -1704,6 +2503,7 @@ function nextBirthday(
                 Number(person.day)
             );
 
+
         date.setHours(
             0,
             0,
@@ -1717,178 +2517,9 @@ function nextBirthday(
 }
 
 
-/* =========================================
-   ДОБАВЛЕНИЕ
-
-   ВАЖНО:
-
-   Если сейчас человеку 17,
-   мы сначала определяем его
-   настоящий birthYear.
-
-   После этого возраст больше
-   не хранится как постоянное число.
-========================================= */
-
-function addBirthday(event) {
-
-    event.preventDefault();
-
-
-    const name =
-        document
-            .getElementById("name")
-            .value
-            .trim();
-
-
-    const day =
-        Number(
-            document
-                .getElementById("day")
-                .value
-        );
-
-
-    const month =
-        Number(
-            document
-                .getElementById("month")
-                .value
-        );
-
-
-    const ageValue =
-        document
-            .getElementById("age")
-            .value;
-
-
-    if (!name) {
-
-        alert(
-            "Введите имя."
-        );
-
-        return;
-    }
-
-
-    const maxDay =
-        new Date(
-            2024,
-            month,
-            0
-        ).getDate();
-
-
-    if (
-        !Number.isInteger(day) ||
-        day < 1 ||
-        day > maxDay
-    ) {
-
-        alert(
-            "Введите правильный день."
-        );
-
-        return;
-    }
-
-
-    const birthday = {
-
-        name,
-        day,
-        month
-    };
-
-
-    /*
-       Возраст вводится именно
-       текущий.
-
-       Например:
-
-       сегодня 14.08.2026
-       ДР 25.05
-       возраст 17
-
-       birthYear = 2009
-
-       сайт сразу покажет 17.
-    */
-
-    if (
-        ageValue !== ""
-    ) {
-
-        const age =
-            Number(ageValue);
-
-
-        if (
-            !Number.isInteger(age) ||
-            age < 0
-        ) {
-
-            alert(
-                "Введите правильный возраст."
-            );
-
-            return;
-        }
-
-
-        birthday.birthYear =
-            calculateBirthYear(
-                age,
-                day,
-                month
-            );
-    }
-
-
-    birthdays.push(
-        birthday
-    );
-
-
-    birthdays.sort(
-        compareBirthdays
-    );
-
-
-    saveLocal();
-
-    render();
-
-    clearForm();
-
-
-    /*
-       После добавления
-       сразу прокручиваем к списку.
-    */
-
-    window.location.hash =
-        "list";
-}
-
-
-/* =========================================
-   СБРОС ФОРМЫ
-
-   ВАЖНО:
-
-   НИ ОДНА запись не удаляется.
-
-   Очищаются только поля:
-   имя
-   день
-   месяц
-   возраст
-========================================= */
+/* =========================================================
+   CLEAR FORM
+========================================================= */
 
 function clearForm() {
 
@@ -1908,36 +2539,22 @@ function clearForm() {
 
 
     document
-        .getElementById("age")
+        .getElementById("birthYear")
         .value = "";
 
 
     document
         .getElementById("name")
         .focus();
+
+
+    setStatus("");
 }
 
 
-/* =========================================
-   СОХРАНЕНИЕ
-========================================= */
-
-function saveLocal() {
-
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(
-            birthdays,
-            null,
-            2
-        )
-    );
-}
-
-
-/* =========================================
-   СКАЧИВАНИЕ JSON
-========================================= */
+/* =========================================================
+   DOWNLOAD JSON
+========================================================= */
 
 function downloadJSON() {
 
@@ -1974,6 +2591,7 @@ function downloadJSON() {
     link.href =
         url;
 
+
     link.download =
         "birthdays.json";
 
@@ -1995,14 +2613,18 @@ function downloadJSON() {
 }
 
 
-/* =========================================
-   СОРТИРОВКА
-========================================= */
+/* =========================================================
+   SORT
+========================================================= */
 
-function compareBirthdays(a, b) {
+function compareBirthdays(
+    a,
+    b
+) {
 
     const monthA =
         Number(a.month);
+
 
     const monthB =
         Number(b.month);
@@ -2021,6 +2643,7 @@ function compareBirthdays(a, b) {
 
     const dayA =
         Number(a.day);
+
 
     const dayB =
         Number(b.day);
@@ -2045,15 +2668,44 @@ function compareBirthdays(a, b) {
 }
 
 
-/* =========================================
-   ДАТА
-========================================= */
+/* =========================================================
+   DAYS IN MONTH
+========================================================= */
 
-function formatDate(person) {
+function daysInMonth(
+    month
+) {
+
+    if (
+        month < 1 ||
+        month > 12
+    ) {
+
+        return 0;
+    }
+
+
+    return new Date(
+        2024,
+        month,
+        0
+    ).getDate();
+}
+
+
+/* =========================================================
+   FORMAT DATE
+========================================================= */
+
+function formatDate(
+    person
+) {
 
     return (
-        String(person.day)
-            .padStart(2, "0")
+
+        String(
+            person.day
+        ).padStart(2, "0")
 
         +
 
@@ -2061,25 +2713,37 @@ function formatDate(person) {
 
         +
 
-        String(person.month)
-            .padStart(2, "0")
+        String(
+            person.month
+        ).padStart(2, "0")
+
     );
 }
 
 
-/* =========================================
-   ДНИ
-========================================= */
+/* =========================================================
+   FORMAT DAYS
+========================================================= */
 
-function formatDays(days) {
+function formatDays(
+    days
+) {
 
-    if (days === 0) {
+    if (
+        days === 0
+    ) {
+
         return "сегодня 🎉";
     }
 
-    if (days === 1) {
+
+    if (
+        days === 1
+    ) {
+
         return "завтра";
     }
+
 
     return (
         `через ${days} ${daysWord(days)}`
@@ -2087,10 +2751,14 @@ function formatDays(days) {
 }
 
 
-function daysWord(number) {
+function daysWord(
+    number
+) {
 
     const n =
-        Math.abs(number) % 100;
+        Math.abs(number)
+        % 100;
+
 
     const last =
         n % 10;
@@ -2105,7 +2773,10 @@ function daysWord(number) {
     }
 
 
-    if (last === 1) {
+    if (
+        last === 1
+    ) {
+
         return "день";
     }
 
@@ -2123,14 +2794,18 @@ function daysWord(number) {
 }
 
 
-/* =========================================
-   ГОД / ГОДА / ЛЕТ
-========================================= */
+/* =========================================================
+   YEARS WORD
+========================================================= */
 
-function yearsWord(number) {
+function yearsWord(
+    number
+) {
 
     const n =
-        Math.abs(number) % 100;
+        Math.abs(number)
+        % 100;
+
 
     const last =
         n % 10;
@@ -2145,7 +2820,10 @@ function yearsWord(number) {
     }
 
 
-    if (last === 1) {
+    if (
+        last === 1
+    ) {
+
         return "год";
     }
 
@@ -2160,6 +2838,81 @@ function yearsWord(number) {
 
 
     return "лет";
+}
+
+
+/* =========================================================
+   UTF-8 BASE64
+========================================================= */
+
+function encodeBase64Utf8(
+    text
+) {
+
+    const bytes =
+        new TextEncoder()
+            .encode(text);
+
+
+    let binary = "";
+
+
+    const chunkSize =
+        0x8000;
+
+
+    for (
+        let i = 0;
+        i < bytes.length;
+        i += chunkSize
+    ) {
+
+        const chunk =
+            bytes.subarray(
+                i,
+                i + chunkSize
+            );
+
+
+        binary +=
+            String.fromCharCode(
+                ...chunk
+            );
+    }
+
+
+    return btoa(
+        binary
+    );
+}
+
+
+function decodeBase64Utf8(
+    base64
+) {
+
+    const binary =
+        atob(
+            base64.replace(
+                /\n/g,
+                ""
+            )
+        );
+
+
+    const bytes =
+        Uint8Array.from(
+            binary,
+            char =>
+                char.charCodeAt(0)
+        );
+
+
+    return new TextDecoder(
+        "utf-8"
+    ).decode(
+        bytes
+    );
 }
 
 </script>
