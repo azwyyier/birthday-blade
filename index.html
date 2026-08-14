@@ -749,6 +749,19 @@ footer {
         ↓ Скачать birthdays.json
     </button>
 
+    <div
+        id="sync-status"
+        style="
+            width: 100%;
+            text-align: center;
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 12px;
+        "
+    >
+        Общий список
+    </div>
+
 </div>
 
 
@@ -789,9 +802,16 @@ const MONTHS = [
     "Декабрь"
 ];
 
-const STORAGE_KEY = "birthday-blade-data";
+// URL твоего Cloudflare Worker.
+// После создания Worker замени это значение на его адрес.
+const API_URL = "https://YOUR-WORKER.workers.dev";
 
 let birthdays = [];
+
+// Последовательная очередь сохранений.
+// Она не даёт двум быстрым изменениям из одного браузера перезаписать
+// друг друга в неправильном порядке.
+let saveQueue = Promise.resolve();
 
 
 /* =========================================
@@ -838,8 +858,46 @@ document.addEventListener(
 
 async function loadBirthdays() {
 
-    let remote = [];
+    try {
 
+        const response = await fetch(
+            `${API_URL}/birthdays`,
+            {
+                cache: "no-store"
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error(
+                `API вернул HTTP ${response.status}`
+            );
+        }
+
+        const data = await response.json();
+
+        if (!Array.isArray(data)) {
+            throw new Error(
+                "Сервер вернул не массив дней рождения"
+            );
+        }
+
+        birthdays = normalizeData(data);
+        setSyncStatus("Общий список ✓");
+
+        return;
+
+    } catch (error) {
+
+        console.warn(
+            "Не удалось загрузить общий список. Использую резервный birthdays.json.",
+            error
+        );
+    }
+
+
+    // Резервный режим:
+    // если Worker временно недоступен, сайт всё равно может показать
+    // последнюю версию статического JSON из репозитория.
     try {
 
         const response = await fetch(
@@ -855,63 +913,22 @@ async function loadBirthdays() {
                 await response.json();
 
             if (Array.isArray(data)) {
-                remote = data;
+                birthdays = normalizeData(data);
+                return;
             }
         }
 
     } catch (error) {
 
         console.warn(
-            "Не удалось загрузить birthdays.json",
+            "Не удалось загрузить резервный birthdays.json",
             error
         );
     }
 
 
-    const local =
-        localStorage.getItem(
-            STORAGE_KEY
-        );
-
-
-    if (local) {
-
-        try {
-
-            const parsed =
-                JSON.parse(local);
-
-            if (Array.isArray(parsed)) {
-
-                birthdays =
-                    normalizeData(parsed);
-
-                /*
-                   Обновляем localStorage после
-                   нормализации старых записей.
-                */
-
-                saveLocal();
-
-                return;
-            }
-
-        } catch (error) {
-
-            console.warn(
-                "Ошибка локальных данных",
-                error
-            );
-        }
-    }
-
-
-    birthdays =
-        normalizeData(remote);
-
-    saveLocal();
+    birthdays = [];
 }
-
 
 /* =========================================
    НОРМАЛИЗАЦИЯ СТАРЫХ ДАННЫХ
@@ -1440,7 +1457,7 @@ function getCurrentAge(person) {
    УДАЛЕНИЕ
 ========================================= */
 
-function deleteBirthday(person) {
+async function deleteBirthday(person) {
 
     const confirmed =
         confirm(
@@ -1487,9 +1504,17 @@ function deleteBirthday(person) {
         );
 
 
-    saveLocal();
-
     render();
+
+    try {
+        await saveShared();
+    } catch (error) {
+        alert(
+            "Не удалось сохранить удаление на сервере. " +
+            "Проверь подключение к интернету."
+        );
+        console.error(error);
+    }
 }
 
 
@@ -1730,7 +1755,7 @@ function nextBirthday(
    не хранится как постоянное число.
 ========================================= */
 
-function addBirthday(event) {
+async function addBirthday(event) {
 
     event.preventDefault();
 
@@ -1859,11 +1884,19 @@ function addBirthday(event) {
     );
 
 
-    saveLocal();
-
     render();
 
     clearForm();
+
+    try {
+        await saveShared();
+    } catch (error) {
+        alert(
+            "Не удалось сохранить изменение на сервере. " +
+            "Проверь подключение к интернету."
+        );
+        console.error(error);
+    }
 
 
     /*
@@ -1918,22 +1951,73 @@ function clearForm() {
 }
 
 
+function setSyncStatus(message) {
+
+    const element =
+        document.getElementById("sync-status");
+
+    if (element) {
+        element.textContent = message;
+    }
+}
+
+
 /* =========================================
    СОХРАНЕНИЕ
 ========================================= */
 
-function saveLocal() {
+async function saveShared() {
 
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(
-            birthdays,
-            null,
-            2
-        )
-    );
+    setSyncStatus("Сохранение...");
+
+    const dataToSave = normalizeData(birthdays);
+
+    // Сохраняем запросы последовательно.
+    // Если пользователь быстро сделал несколько изменений,
+    // они отправятся в том же порядке.
+    saveQueue = saveQueue.then(async () => {
+
+        const response = await fetch(
+            `${API_URL}/birthdays`,
+            {
+                method: "PUT",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(
+                    dataToSave,
+                    null,
+                    2
+                )
+            }
+        );
+
+        if (!response.ok) {
+
+            let message =
+                `API вернул HTTP ${response.status}`;
+
+            try {
+                const errorData =
+                    await response.json();
+
+                if (errorData.error) {
+                    message =
+                        errorData.error;
+                }
+            } catch (_) {}
+
+            throw new Error(message);
+        }
+
+        birthdays = dataToSave;
+        setSyncStatus("Сохранено для всех ✓");
+    });
+
+    return saveQueue;
 }
-
 
 /* =========================================
    СКАЧИВАНИЕ JSON
