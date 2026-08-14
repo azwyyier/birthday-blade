@@ -3,1231 +3,2041 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Дни рождения</title>
 
 <style>
+
 :root {
-  --bg: #f7f7f5;
-  --card: #fff;
-  --text: #171717;
-  --muted: #777;
-  --border: #e6e6e3;
-  --soon: #fff7d6;
-  --soon-border: #eadb91;
-  --danger: #fff0f0;
-  --danger-text: #b42318;
-  --radius: 14px;
+    --background: #f7f7f5;
+    --white: #ffffff;
+    --text: #171717;
+    --muted: #777777;
+    --border: #e4e4e1;
+
+    --soon-background: #fff8d9;
+    --soon-border: #eadb88;
+    --soon-text: #79691e;
+
+    --danger-background: #fff0f0;
+    --danger-text: #b42318;
+
+    --radius: 14px;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    Helvetica,
-    Arial,
-    sans-serif;
-  font-size: 16px;
-  line-height: 1.55;
+    margin: 0;
+
+    background: var(--background);
+    color: var(--text);
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    font-size: 16px;
+    line-height: 1.5;
 }
 
 .container {
-  width: min(900px, calc(100% - 32px));
-  margin: 0 auto;
+    width: min(900px, calc(100% - 32px));
+    margin: 0 auto;
 }
 
-/* HEADER */
+
+/* =========================
+   HEADER
+========================= */
 
 .header {
-  padding: 42px 0 34px;
-  border-bottom: 1px solid var(--border);
-  background: #fff;
+    padding: 42px 0 34px;
+
+    background: var(--white);
+
+    border-bottom:
+        1px solid var(--border);
 }
 
 .eyebrow {
-  margin-bottom: 10px;
-  color: var(--muted);
-  font-size: 14px;
+    margin-bottom: 8px;
+
+    color: var(--muted);
+
+    font-size: 14px;
 }
 
 h1 {
-  margin: 0 0 10px;
-  font-size: clamp(32px, 6vw, 46px);
-  line-height: 1.05;
-  letter-spacing: -1.5px;
+    margin: 0 0 10px;
+
+    font-size: clamp(34px, 6vw, 48px);
+
+    line-height: 1.05;
+
+    letter-spacing: -1.8px;
 }
 
-.header p {
-  max-width: 650px;
-  margin: 0;
-  color: var(--muted);
-  font-size: 15px;
+.header-description {
+    max-width: 680px;
+
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 15px;
 }
 
-nav {
-  display: flex;
-  gap: 18px;
-  margin-top: 22px;
+.navigation {
+    display: flex;
+
+    gap: 18px;
+
+    margin-top: 22px;
 }
 
-nav a {
-  color: var(--text);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  font-size: 14px;
+.navigation a {
+    color: var(--text);
+
+    font-size: 14px;
+
+    text-decoration: underline;
+
+    text-underline-offset: 3px;
 }
 
-/* MAIN */
+
+/* =========================
+   MAIN
+========================= */
 
 main {
-  padding: 32px 0 70px;
+    padding: 34px 0 70px;
 }
 
 section {
-  margin-bottom: 42px;
+    margin-bottom: 42px;
 }
 
 h2 {
-  margin: 0 0 16px;
-  font-size: 22px;
-  line-height: 1.2;
-  letter-spacing: -.4px;
+    margin: 0 0 16px;
+
+    font-size: 23px;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.5px;
 }
 
-/* SOON */
+
+/* =========================
+   SOON
+========================= */
 
 .soon-section {
-  padding: 20px;
-  border: 1px solid var(--soon-border);
-  border-radius: var(--radius);
-  background: var(--soon);
+    padding: 20px;
+
+    background: var(--soon-background);
+
+    border:
+        1px solid var(--soon-border);
+
+    border-radius: var(--radius);
 }
 
 .soon-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
 }
 
 .soon-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 12px;
-  border-radius: 9px;
-  background: rgba(255,255,255,.65);
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 11px 14px;
+
+    background: rgba(255,255,255,.7);
+
+    border-radius: 9px;
 }
 
 .soon-name {
-  font-weight: 600;
+    font-weight: 650;
 }
 
 .soon-date {
-  color: #6d6234;
-  font-size: 14px;
+    color: var(--soon-text);
+
+    font-size: 14px;
 }
 
 .soon-days {
-  color: #7a6b22;
-  font-size: 13px;
+    flex-shrink: 0;
+
+    color: var(--soon-text);
+
+    font-size: 14px;
 }
 
-/* MONTHS */
+
+/* =========================
+   MONTHS
+========================= */
 
 .months {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
 }
 
 .month {
-  overflow: hidden;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--card);
+    overflow: hidden;
+
+    background: var(--white);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius);
 }
 
 .month-title {
-  padding: 14px 16px;
-  border-bottom: 1px solid var(--border);
-  font-weight: 700;
+    padding: 14px 16px;
+
+    border-bottom:
+        1px solid var(--border);
+
+    font-weight: 700;
 }
 
 .month-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+    margin: 0;
+
+    padding: 0;
+
+    list-style: none;
 }
 
 .person {
-  display: grid;
-  grid-template-columns: 55px 1fr auto;
-  gap: 10px;
-  align-items: center;
-  padding: 11px 16px;
-  border-bottom: 1px solid #f0f0ee;
+    display: grid;
+
+    grid-template-columns:
+        55px
+        minmax(0, 1fr);
+
+    gap: 10px;
+
+    align-items: center;
+
+    padding: 11px 16px;
+
+    border-bottom:
+        1px solid #f0f0ee;
 }
 
 .person:last-child {
-  border-bottom: 0;
+    border-bottom: 0;
 }
 
 .person-day {
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
+    color: var(--muted);
+
+    font-variant-numeric:
+        tabular-nums;
 }
 
 .person-name {
-  min-width: 0;
-  font-weight: 600;
-  overflow-wrap: anywhere;
-}
+    min-width: 0;
 
-.person-info {
-  color: var(--muted);
-  font-size: 13px;
-  text-align: right;
+    font-weight: 600;
+
+    overflow-wrap: anywhere;
 }
 
 .month-empty {
-  padding: 15px 16px;
-  color: #aaa;
-  font-size: 14px;
+    padding: 15px 16px;
+
+    color: #aaa;
+
+    font-size: 14px;
 }
 
-/* ADD */
+
+/* =========================
+   ADD FORM
+========================= */
 
 .add-section {
-  padding: 24px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--card);
+    padding: 24px;
+
+    background: var(--white);
+
+    border:
+        1px solid var(--border);
+
+    border-radius: var(--radius);
 }
 
 .description {
-  margin: -6px 0 22px;
-  color: var(--muted);
-  font-size: 14px;
+    margin: -6px 0 22px;
+
+    color: var(--muted);
+
+    font-size: 14px;
 }
 
 .form-row {
-  display: grid;
-  grid-template-columns: 1fr 120px 170px;
-  gap: 14px;
-  margin-bottom: 16px;
-}
+    display: grid;
 
-.form-row.second {
-  grid-template-columns: 170px 1fr;
+    grid-template-columns:
+        minmax(0, 1fr)
+        120px
+        170px;
+
+    gap: 14px;
+
+    margin-bottom: 16px;
 }
 
 label {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  font-size: 14px;
-  font-weight: 600;
-}
+    display: flex;
 
-label small {
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 400;
+    flex-direction: column;
+
+    gap: 6px;
+
+    font-size: 14px;
+
+    font-weight: 600;
 }
 
 input,
 select {
-  width: 100%;
-  height: 43px;
-  padding: 0 12px;
-  border: 1px solid #d9d9d5;
-  border-radius: 9px;
-  background: #fff;
-  color: var(--text);
-  outline: none;
-  font: inherit;
-  font-size: 14px;
+    width: 100%;
+
+    height: 43px;
+
+    padding: 0 12px;
+
+    background: #fff;
+
+    color: var(--text);
+
+    border:
+        1px solid #d9d9d5;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    font: inherit;
+
+    font-size: 14px;
 }
 
 input:focus,
 select:focus {
-  border-color: #888;
-  box-shadow: 0 0 0 3px rgba(0,0,0,.06);
+    border-color: #888;
+
+    box-shadow:
+        0 0 0 3px rgba(0,0,0,.06);
 }
 
 .actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-  margin-top: 22px;
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin-top: 22px;
 }
 
 button {
-  min-height: 42px;
-  padding: 0 15px;
-  border: 1px solid transparent;
-  border-radius: 9px;
-  cursor: pointer;
-  font: inherit;
-  font-size: 14px;
-  font-weight: 600;
+    min-height: 42px;
+
+    padding: 0 15px;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    font: inherit;
+
+    font-size: 14px;
+
+    font-weight: 600;
 }
 
 .primary {
-  background: #111;
-  color: #fff;
+    background: #111;
+
+    color: #fff;
+
+    border: 1px solid #111;
 }
 
 .secondary {
-  border-color: #d8d8d5;
-  background: #fff;
-  color: var(--text);
+    background: #fff;
+
+    color: var(--text);
+
+    border:
+        1px solid #d8d8d5;
 }
 
 .danger {
-  border-color: #f0caca;
-  background: var(--danger);
-  color: var(--danger-text);
+    background: var(--danger-background);
+
+    color: var(--danger-text);
+
+    border:
+        1px solid #f0caca;
 }
 
-/* INSTRUCTIONS */
+
+/* =========================
+   INSTRUCTIONS
+========================= */
 
 .instructions ol {
-  margin: 0;
-  padding-left: 23px;
-  color: #444;
+    margin: 0;
+
+    padding-left: 23px;
+
+    color: #444;
 }
 
 .instructions li {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
-code {
-  padding: 2px 5px;
-  border-radius: 5px;
-  background: #ececea;
-  font-family: monospace;
-  font-size: .88em;
-}
 
-.data-info {
-  margin-top: 20px;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer {
-  padding: 25px 0;
-  border-top: 1px solid var(--border);
-  color: var(--muted);
-  font-size: 13px;
+    padding: 25px 0;
+
+    color: var(--muted);
+
+    border-top:
+        1px solid var(--border);
+
+    font-size: 13px;
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 700px) {
-  .container {
-    width: min(100% - 24px, 900px);
-  }
 
-  .header {
-    padding: 30px 0 26px;
-  }
+    .container {
+        width:
+            calc(100% - 24px);
+    }
 
-  .months {
-    grid-template-columns: 1fr;
-  }
+    .header {
+        padding:
+            30px 0 26px;
+    }
 
-  .form-row,
-  .form-row.second {
-    grid-template-columns: 1fr;
-  }
+    .months {
+        grid-template-columns: 1fr;
+    }
 
-  .add-section {
-    padding: 18px;
-  }
+    .form-row {
+        grid-template-columns: 1fr;
+    }
 
-  .person {
-    grid-template-columns: 42px 1fr;
-  }
+    .add-section {
+        padding: 18px;
+    }
 
-  .person-info {
-    grid-column: 2;
-    text-align: left;
-  }
+    .soon-item {
+        align-items: flex-start;
 
-  .soon-item {
-    align-items: flex-start;
-    flex-direction: column;
-  }
+        flex-direction: column;
 
-  .actions {
-    flex-direction: column;
-  }
+        gap: 5px;
+    }
 
-  button {
-    width: 100%;
-  }
+    .actions {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
+
 <header class="header">
-  <div class="container">
 
-    <div class="eyebrow">Общий календарь</div>
+    <div class="container">
 
-    <h1>Дни рождения</h1>
+        <div class="eyebrow">
+            Общий календарь
+        </div>
 
-    <p>
-      Список по месяцам. Добавляй людей на сайте —
-      чтобы изменения увидели все, сохрани JSON в GitHub.
-    </p>
+        <h1>
+            Дни рождения
+        </h1>
 
-    <nav>
-      <a href="#add">Добавить</a>
-      <a href="#list">К списку</a>
-    </nav>
+        <p class="header-description">
+            Список по месяцам. Добавляй людей на сайте.
+        </p>
 
-  </div>
+        <nav class="navigation">
+
+            <a href="#add">
+                Добавить
+            </a>
+
+            <a href="#list">
+                К списку
+            </a>
+
+        </nav>
+
+    </div>
+
 </header>
 
 
 <main class="container">
 
-  <section class="soon-section">
 
-    <h2>Скоро</h2>
+    <!-- =====================
+         SOON
+    ====================== -->
 
-    <div id="soon-list" class="soon-list">
-      <div>Загрузка...</div>
-    </div>
+    <section class="soon-section">
 
-  </section>
+        <h2>
+            Скоро
+        </h2>
 
-
-  <section id="list">
-
-    <h2>Все дни рождения</h2>
-
-    <div id="months" class="months"></div>
-
-  </section>
-
-
-  <section id="add" class="add-section">
-
-    <h2>Добавить день рождения</h2>
-
-    <p class="description">
-      Сразу появится у тебя. Данные сохраняются
-      в браузере этого устройства.
-    </p>
-
-    <form id="birthday-form">
-
-      <div class="form-row">
-
-        <label>
-          <span>Ник / имя</span>
-
-          <input
-            id="name"
-            type="text"
-            placeholder="например Villi"
-            required
-          >
-        </label>
-
-
-        <label>
-          <span>День</span>
-
-          <input
-            id="day"
-            type="number"
-            min="1"
-            max="31"
-            placeholder="7"
-            required
-          >
-        </label>
-
-
-        <label>
-          <span>Месяц</span>
-
-          <select id="month"></select>
-        </label>
-
-      </div>
-
-
-      <div class="form-row second">
-
-        <label>
-          <span>Возраст</span>
-
-          <input
-            id="age"
-            type="number"
-            min="0"
-            placeholder="17"
-          >
-
-          <small>необязательно</small>
-        </label>
-
-
-        <label>
-          <span>Заметка</span>
-
-          <input
-            id="note"
-            type="text"
-            placeholder="скоро / ..."
-          >
-        </label>
-
-      </div>
-
-
-      <div class="actions">
-
-        <button
-          type="submit"
-          class="primary"
+        <div
+            id="soon-list"
+            class="soon-list"
         >
-          Добавить в список
-        </button>
+            Загрузка...
+        </div>
+
+    </section>
 
 
-        <button
-          type="button"
-          id="download"
-          class="secondary"
-        >
-          Скачать JSON
-        </button>
+    <!-- =====================
+         ALL BIRTHDAYS
+    ====================== -->
+
+    <section id="list">
+
+        <h2>
+            Все дни рождения
+        </h2>
+
+        <div
+            id="months"
+            class="months"
+        ></div>
+
+    </section>
 
 
-        <button
-          type="button"
-          id="reset"
-          class="danger"
-        >
-          Сбросить
-        </button>
+    <!-- =====================
+         ADD
+    ====================== -->
 
-      </div>
+    <section
+        id="add"
+        class="add-section"
+    >
 
-    </form>
+        <h2>
+            Добавить день рождения
+        </h2>
 
-  </section>
+        <p class="description">
+            Добавь имя, день и месяц.
+            Возраст указывать необязательно.
+        </p>
 
 
-  <section class="instructions">
+        <form id="birthday-form">
 
-    <h2>Как пользоваться</h2>
 
-    <ol>
+            <div class="form-row">
 
-      <li>
-        Заполни имя, день, месяц и при желании возраст.
-      </li>
 
-      <li>
-        Нажми «Добавить в список».
-      </li>
+                <label>
 
-      <li>
-        День рождения сохранится в этом браузере.
-      </li>
+                    Имя
 
-      <li>
-        Если хочешь перенести список на другое устройство,
-        нажми «Скачать JSON».
-      </li>
+                    <input
+                        id="name"
+                        type="text"
+                        placeholder="например Villi"
+                        autocomplete="off"
+                        required
+                    >
 
-    </ol>
+                </label>
 
-  </section>
+
+                <label>
+
+                    День
+
+                    <input
+                        id="day"
+                        type="number"
+                        min="1"
+                        max="31"
+                        placeholder="7"
+                        required
+                    >
+
+                </label>
+
+
+                <label>
+
+                    Месяц
+
+                    <select id="month">
+                    </select>
+
+                </label>
+
+
+            </div>
+
+
+            <div class="form-row">
+
+
+                <label>
+
+                    Возраст
+
+                    <input
+                        id="age"
+                        type="number"
+                        min="0"
+                        placeholder="17"
+                    >
+
+                </label>
+
+
+            </div>
+
+
+            <div class="actions">
+
+
+                <button
+                    type="submit"
+                    class="primary"
+                >
+                    Добавить в список
+                </button>
+
+
+                <button
+                    type="button"
+                    id="download"
+                    class="secondary"
+                >
+                    Скачать JSON
+                </button>
+
+
+                <button
+                    type="button"
+                    id="reset"
+                    class="danger"
+                >
+                    Сбросить
+                </button>
+
+
+            </div>
+
+
+        </form>
+
+    </section>
+
+
+    <!-- =====================
+         INSTRUCTIONS
+    ====================== -->
+
+    <section class="instructions">
+
+        <h2>
+            Как пользоваться
+        </h2>
+
+        <ol>
+
+            <li>
+                Заполни имя, день и месяц.
+            </li>
+
+            <li>
+                При желании укажи возраст.
+            </li>
+
+            <li>
+                Нажми «Добавить в список».
+            </li>
+
+            <li>
+                Запись сохранится в браузере.
+            </li>
+
+            <li>
+                Чтобы обновить общий JSON,
+                скачай его и замени
+                <code>data/birthdays.json</code>
+                на GitHub.
+            </li>
+
+        </ol>
+
+    </section>
+
 
 </main>
 
 
 <footer>
-  <div class="container">
-    Дни рождения
-  </div>
+
+    <div class="container">
+
+        Дни рождения
+
+    </div>
+
 </footer>
 
 
 <script>
 
+
+/* =========================
+   SETTINGS
+========================= */
+
 const MONTHS = [
-  "Январь",
-  "Февраль",
-  "Март",
-  "Апрель",
-  "Май",
-  "Июнь",
-  "Июль",
-  "Август",
-  "Сентябрь",
-  "Октябрь",
-  "Ноябрь",
-  "Декабрь"
+
+    "Январь",
+    "Февраль",
+    "Март",
+    "Апрель",
+    "Май",
+    "Июнь",
+    "Июль",
+    "Август",
+    "Сентябрь",
+    "Октябрь",
+    "Ноябрь",
+    "Декабрь"
+
 ];
 
-const STORAGE_KEY = "birthday-blade-data";
+
+const STORAGE_KEY =
+    "birthday-blade-data";
+
 
 let birthdays = [];
 
 
-/* ЗАПУСК */
+/* =========================
+   START
+========================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener(
+    "DOMContentLoaded",
+    async () => {
 
-  createMonthSelect();
+        createMonthSelect();
 
-  loadData();
+        await loadBirthdays();
 
-  document
-    .getElementById("birthday-form")
-    .addEventListener("submit", addBirthday);
-
-  document
-    .getElementById("download")
-    .addEventListener("click", downloadJSON);
-
-  document
-    .getElementById("reset")
-    .addEventListener("click", resetData);
-
-});
+        render();
 
 
-/* ЗАГРУЗКА */
+        document
+            .getElementById("birthday-form")
+            .addEventListener(
+                "submit",
+                addBirthday
+            );
 
-function loadData() {
 
-  const saved = localStorage.getItem(STORAGE_KEY);
+        document
+            .getElementById("download")
+            .addEventListener(
+                "click",
+                downloadJSON
+            );
 
-  if (saved) {
+
+        document
+            .getElementById("reset")
+            .addEventListener(
+                "click",
+                resetData
+            );
+
+    }
+);
+
+
+/* =========================
+   LOAD DATA
+========================= */
+
+async function loadBirthdays() {
+
+
+    /*
+       Сначала пытаемся загрузить
+       birthdays.json из GitHub.
+    */
 
     try {
 
-      const parsed = JSON.parse(saved);
+        const response =
+            await fetch(
+                "data/birthdays.json",
+                {
+                    cache: "no-store"
+                }
+            );
 
-      if (Array.isArray(parsed)) {
-        birthdays = parsed;
-      }
+
+        if (response.ok) {
+
+            const data =
+                await response.json();
+
+
+            if (Array.isArray(data)) {
+
+                birthdays = cleanData(data);
+
+            }
+
+        }
 
     } catch (error) {
 
-      console.error(error);
-
-      birthdays = [];
-
-    }
-
-  } else {
-
-    birthdays = [
-      {
-        name: "abquelby_fxn",
-        day: 10,
-        month: 3,
-        age: 17,
-        note: "скоро"
-      }
-    ];
-
-    saveData();
-
-  }
-
-  render();
-
-}
-
-
-/* МЕСЯЦЫ */
-
-function createMonthSelect() {
-
-  const select =
-    document.getElementById("month");
-
-  MONTHS.forEach((month, index) => {
-
-    const option =
-      document.createElement("option");
-
-    option.value = index + 1;
-    option.textContent = month;
-
-    select.appendChild(option);
-
-  });
-
-}
-
-
-/* ОТРИСОВКА */
-
-function render() {
-
-  renderMonths();
-
-  renderSoon();
-
-}
-
-
-/* МЕСЯЦЫ */
-
-function renderMonths() {
-
-  const container =
-    document.getElementById("months");
-
-  container.innerHTML = "";
-
-  MONTHS.forEach((monthName, index) => {
-
-    const monthNumber = index + 1;
-
-    const people =
-      birthdays
-        .filter(person =>
-          Number(person.month) === monthNumber
-        )
-        .sort((a, b) =>
-          Number(a.day) - Number(b.day)
+        console.warn(
+            "Не удалось загрузить birthdays.json",
+            error
         );
-
-
-    const month =
-      document.createElement("article");
-
-    month.className = "month";
-
-
-    const title =
-      document.createElement("div");
-
-    title.className = "month-title";
-
-    title.textContent =
-      `${monthName} · ${people.length}`;
-
-
-    const list =
-      document.createElement("ul");
-
-    list.className = "month-list";
-
-
-    if (people.length === 0) {
-
-      const empty =
-        document.createElement("li");
-
-      empty.className = "month-empty";
-
-      empty.textContent =
-        "Пока никого нет.";
-
-      list.appendChild(empty);
 
     }
 
 
-    people.forEach(person => {
+    /*
+       Если в этом браузере уже есть
+       локальные изменения — используем их.
+    */
 
-      const item =
-        document.createElement("li");
-
-      item.className = "person";
-
-
-      const day =
-        document.createElement("div");
-
-      day.className = "person-day";
-
-      day.textContent =
-        String(person.day).padStart(2, "0");
-
-
-      const name =
-        document.createElement("div");
-
-      name.className = "person-name";
-
-      name.textContent =
-        person.name;
-
-
-      const info =
-        document.createElement("div");
-
-      info.className = "person-info";
-
-      const details = [];
-
-
-      if (
-        person.age !== undefined &&
-        person.age !== ""
-      ) {
-
-        details.push(
-          `${person.age} ${yearsWord(person.age)}`
+    const local =
+        localStorage.getItem(
+            STORAGE_KEY
         );
 
-      }
+
+    if (local) {
+
+        try {
+
+            const parsed =
+                JSON.parse(local);
 
 
-      if (person.note) {
-        details.push(person.note);
-      }
+            if (Array.isArray(parsed)) {
 
+                birthdays =
+                    cleanData(parsed);
 
-      info.textContent =
-        details.join(" · ");
+            }
 
+        } catch (error) {
 
-      item.appendChild(day);
-      item.appendChild(name);
-      item.appendChild(info);
-
-      list.appendChild(item);
-
-    });
-
-
-    month.appendChild(title);
-    month.appendChild(list);
-
-    container.appendChild(month);
-
-  });
-
-}
-
-
-/* СКОРО */
-
-function renderSoon() {
-
-  const container =
-    document.getElementById("soon-list");
-
-  container.innerHTML = "";
-
-
-  if (!birthdays.length) {
-
-    container.textContent =
-      "Пока нет дней рождения.";
-
-    return;
-
-  }
-
-
-  const today =
-    new Date();
-
-  today.setHours(0, 0, 0, 0);
-
-
-  const upcoming =
-    birthdays
-      .map(person => {
-
-        let date =
-          new Date(
-            today.getFullYear(),
-            Number(person.month) - 1,
-            Number(person.day)
-          );
-
-
-        if (date < today) {
-
-          date =
-            new Date(
-              today.getFullYear() + 1,
-              Number(person.month) - 1,
-              Number(person.day)
+            console.warn(
+                "Ошибка локальных данных",
+                error
             );
 
         }
 
-
-        return {
-          person: person,
-          date: date,
-          days: Math.round(
-            (date - today) / 86400000
-          )
-        };
-
-      })
-      .sort((a, b) =>
-        a.days - b.days
-      )
-      .slice(0, 5);
+    }
 
 
-  upcoming.forEach(item => {
+    /*
+       Если вообще нет данных,
+       создаём пустой список.
+    */
 
-    const row =
-      document.createElement("div");
+    if (!Array.isArray(birthdays)) {
 
-    row.className = "soon-item";
+        birthdays = [];
+
+    }
+
+}
 
 
-    const left =
-      document.createElement("div");
+/* =========================
+   CLEAN DATA
+========================= */
+
+function cleanData(data) {
+
+    return data
+        .filter(person => {
+
+            return (
+                person &&
+                person.name &&
+                person.day &&
+                person.month
+            );
+
+        })
+        .map(person => {
+
+            const cleaned = {
+
+                name:
+                    String(person.name),
+
+                day:
+                    Number(person.day),
+
+                month:
+                    Number(person.month)
+
+            };
+
+
+            /*
+               Возраст сохраняем,
+               если он существует.
+            */
+
+            if (
+                person.age !== undefined &&
+                person.age !== null &&
+                person.age !== ""
+            ) {
+
+                const age =
+                    Number(person.age);
+
+
+                if (
+                    Number.isInteger(age) &&
+                    age >= 0
+                ) {
+
+                    cleaned.age = age;
+
+                }
+
+            }
+
+
+            /*
+               note намеренно НЕ переносим.
+               Старое поле "скоро" полностью
+               удаляется из данных сайта.
+            */
+
+            return cleaned;
+
+        });
+
+}
+
+
+/* =========================
+   MONTH SELECT
+========================= */
+
+function createMonthSelect() {
+
+    const select =
+        document.getElementById(
+            "month"
+        );
+
+
+    MONTHS.forEach(
+        (month, index) => {
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+
+            option.value =
+                index + 1;
+
+
+            option.textContent =
+                month;
+
+
+            select.appendChild(
+                option
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================
+   RENDER
+========================= */
+
+function render() {
+
+    renderMonths();
+
+    renderSoon();
+
+}
+
+
+/* =========================
+   MONTHS
+========================= */
+
+function renderMonths() {
+
+    const container =
+        document.getElementById(
+            "months"
+        );
+
+
+    container.innerHTML = "";
+
+
+    MONTHS.forEach(
+        (monthName, index) => {
+
+            const monthNumber =
+                index + 1;
+
+
+            const people =
+                birthdays
+                    .filter(person => {
+
+                        return (
+                            Number(person.month)
+                            ===
+                            monthNumber
+                        );
+
+                    })
+                    .sort(
+                        compareBirthdays
+                    );
+
+
+            const month =
+                document.createElement(
+                    "article"
+                );
+
+
+            month.className =
+                "month";
+
+
+            const title =
+                document.createElement(
+                    "div"
+                );
+
+
+            title.className =
+                "month-title";
+
+
+            title.textContent =
+                `${monthName} · ${people.length}`;
+
+
+            const list =
+                document.createElement(
+                    "ul"
+                );
+
+
+            list.className =
+                "month-list";
+
+
+            if (
+                people.length === 0
+            ) {
+
+                const empty =
+                    document.createElement(
+                        "li"
+                    );
+
+
+                empty.className =
+                    "month-empty";
+
+
+                empty.textContent =
+                    "Пока никого нет.";
+
+
+                list.appendChild(
+                    empty
+                );
+
+            }
+
+
+            people.forEach(
+                person => {
+
+                    list.appendChild(
+                        createPerson(
+                            person
+                        )
+                    );
+
+                }
+            );
+
+
+            month.appendChild(
+                title
+            );
+
+
+            month.appendChild(
+                list
+            );
+
+
+            container.appendChild(
+                month
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================
+   PERSON
+========================= */
+
+function createPerson(person) {
+
+    const item =
+        document.createElement(
+            "li"
+        );
+
+
+    item.className =
+        "person";
+
+
+    const day =
+        document.createElement(
+            "div"
+        );
+
+
+    day.className =
+        "person-day";
+
+
+    day.textContent =
+        String(
+            person.day
+        ).padStart(2, "0");
 
 
     const name =
-      document.createElement("span");
+        document.createElement(
+            "div"
+        );
 
-    name.className = "soon-name";
+
+    name.className =
+        "person-name";
+
 
     name.textContent =
-      item.person.name;
+        person.name;
+
+
+    item.appendChild(
+        day
+    );
+
+
+    item.appendChild(
+        name
+    );
+
+
+    /*
+       Возраст показываем только если
+       он действительно указан.
+    */
+
+    if (
+        person.age !== undefined
+    ) {
+
+        const age =
+            document.createElement(
+                "div"
+            );
+
+
+        age.className =
+            "person-age";
+
+
+        age.style.color =
+            "#777";
+
+
+        age.style.fontSize =
+            "13px";
+
+
+        age.textContent =
+            `${person.age} ${yearsWord(person.age)}`;
+
+
+        item.appendChild(
+            age
+        );
+
+    }
+
+
+    return item;
+
+}
+
+
+/* =========================
+   SOON
+========================= */
+
+function renderSoon() {
+
+    const container =
+        document.getElementById(
+            "soon-list"
+        );
+
+
+    container.innerHTML = "";
+
+
+    if (
+        birthdays.length === 0
+    ) {
+
+        container.textContent =
+            "Пока нет дней рождения.";
+
+
+        return;
+
+    }
+
+
+    const today =
+        new Date();
+
+
+    today.setHours(
+        0,
+        0,
+        0,
+        0
+    );
+
+
+    /*
+       Для каждого человека
+       определяем следующий ДР.
+    */
+
+    const upcoming =
+        birthdays
+            .map(person => {
+
+                const date =
+                    nextBirthday(
+                        person,
+                        today
+                    );
+
+
+                const days =
+                    Math.round(
+                        (
+                            date.getTime()
+                            -
+                            today.getTime()
+                        )
+                        /
+                        86400000
+                    );
+
+
+                return {
+
+                    person,
+
+                    date,
+
+                    days
+
+                };
+
+            })
+            .sort(
+                (a, b) => {
+
+                    if (
+                        a.days !==
+                        b.days
+                    ) {
+
+                        return (
+                            a.days
+                            -
+                            b.days
+                        );
+
+                    }
+
+
+                    return compareBirthdays(
+                        a.person,
+                        b.person
+                    );
+
+                }
+            );
+
+
+    /*
+       ВАЖНО:
+       берём только одного человека —
+       ближайший день рождения.
+    */
+
+    const next =
+        upcoming[0];
+
+
+    const row =
+        document.createElement(
+            "div"
+        );
+
+
+    row.className =
+        "soon-item";
+
+
+    const left =
+        document.createElement(
+            "div"
+        );
+
+
+    const name =
+        document.createElement(
+            "span"
+        );
+
+
+    name.className =
+        "soon-name";
+
+
+    name.textContent =
+        next.person.name;
 
 
     const date =
-      document.createElement("span");
+        document.createElement(
+            "span"
+        );
 
-    date.className = "soon-date";
+
+    date.className =
+        "soon-date";
+
 
     date.textContent =
-      ` · ${formatDate(item.person)}`;
+        ` · ${formatDate(next.person)}`;
 
 
-    left.appendChild(name);
-    left.appendChild(date);
+    left.appendChild(
+        name
+    );
+
+
+    left.appendChild(
+        date
+    );
 
 
     const days =
-      document.createElement("span");
+        document.createElement(
+            "span"
+        );
 
-    days.className = "soon-days";
+
+    days.className =
+        "soon-days";
+
 
     days.textContent =
-      daysText(item.days);
+        formatDays(
+            next.days
+        );
 
 
-    row.appendChild(left);
-    row.appendChild(days);
+    row.appendChild(
+        left
+    );
 
-    container.appendChild(row);
 
-  });
+    row.appendChild(
+        days
+    );
+
+
+    container.appendChild(
+        row
+    );
 
 }
 
 
-/* ДОБАВЛЕНИЕ */
+/* =========================
+   NEXT BIRTHDAY
+========================= */
+
+function nextBirthday(
+    person,
+    today
+) {
+
+    const year =
+        today.getFullYear();
+
+
+    let date =
+        new Date(
+            year,
+            Number(person.month) - 1,
+            Number(person.day)
+        );
+
+
+    date.setHours(
+        0,
+        0,
+        0,
+        0
+    );
+
+
+    if (
+        date < today
+    ) {
+
+        date =
+            new Date(
+                year + 1,
+                Number(person.month) - 1,
+                Number(person.day)
+            );
+
+
+        date.setHours(
+            0,
+            0,
+            0,
+            0
+        );
+
+    }
+
+
+    return date;
+
+}
+
+
+/* =========================
+   ADD BIRTHDAY
+========================= */
 
 function addBirthday(event) {
 
-  event.preventDefault();
+    event.preventDefault();
 
 
-  const name =
-    document
-      .getElementById("name")
-      .value
-      .trim();
+    const name =
+        document
+            .getElementById("name")
+            .value
+            .trim();
 
 
-  const day =
-    Number(
-      document
-        .getElementById("day")
-        .value
+    const day =
+        Number(
+            document
+                .getElementById("day")
+                .value
+        );
+
+
+    const month =
+        Number(
+            document
+                .getElementById("month")
+                .value
+        );
+
+
+    const ageInput =
+        document
+            .getElementById("age")
+            .value;
+
+
+    if (!name) {
+
+        alert(
+            "Введите имя."
+        );
+
+
+        return;
+
+    }
+
+
+    const maxDay =
+        new Date(
+            2024,
+            month,
+            0
+        ).getDate();
+
+
+    if (
+        !Number.isInteger(day)
+        ||
+        day < 1
+        ||
+        day > maxDay
+    ) {
+
+        alert(
+            "Введите правильный день."
+        );
+
+
+        return;
+
+    }
+
+
+    const person = {
+
+        name,
+
+        day,
+
+        month
+
+    };
+
+
+    if (
+        ageInput !== ""
+    ) {
+
+        const age =
+            Number(ageInput);
+
+
+        if (
+            !Number.isInteger(age)
+            ||
+            age < 0
+        ) {
+
+            alert(
+                "Введите правильный возраст."
+            );
+
+
+            return;
+
+        }
+
+
+        person.age =
+            age;
+
+    }
+
+
+    birthdays.push(
+        person
     );
 
 
-  const month =
-    Number(
-      document
-        .getElementById("month")
-        .value
+    birthdays.sort(
+        compareBirthdays
     );
 
 
-  const age =
+    saveLocal();
+
+
+    render();
+
+
     document
-      .getElementById("age")
-      .value;
+        .getElementById(
+            "birthday-form"
+        )
+        .reset();
 
 
-  const note =
-    document
-      .getElementById("note")
-      .value
-      .trim();
-
-
-  if (!name) {
-
-    alert("Введите имя.");
-
-    return;
-
-  }
-
-
-  const maxDay =
-    new Date(
-      2024,
-      month,
-      0
-    ).getDate();
-
-
-  if (
-    !Number.isInteger(day) ||
-    day < 1 ||
-    day > maxDay
-  ) {
-
-    alert("Неверный день.");
-
-    return;
-
-  }
-
-
-  const person = {
-    name: name,
-    day: day,
-    month: month
-  };
-
-
-  if (age !== "") {
-    person.age = Number(age);
-  }
-
-
-  if (note) {
-    person.note = note;
-  }
-
-
-  birthdays.push(person);
-
-  saveData();
-
-  render();
-
-
-  document
-    .getElementById("birthday-form")
-    .reset();
-
-
-  window.location.hash = "list";
+    window.location.hash =
+        "list";
 
 }
 
 
-/* СОХРАНЕНИЕ */
+/* =========================
+   LOCAL STORAGE
+========================= */
 
-function saveData() {
+function saveLocal() {
 
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(
-      birthdays
-    )
-  );
+    localStorage.setItem(
+
+        STORAGE_KEY,
+
+        JSON.stringify(
+            birthdays,
+            null,
+            2
+        )
+
+    );
 
 }
 
 
-/* СКАЧАТЬ JSON */
+/* =========================
+   DOWNLOAD JSON
+========================= */
 
 function downloadJSON() {
 
-  const data =
-    JSON.stringify(
-      birthdays,
-      null,
-      2
+    /*
+       Перед скачиванием ещё раз
+       очищаем старые поля.
+    */
+
+    const clean =
+        cleanData(
+            birthdays
+        );
+
+
+    const json =
+        JSON.stringify(
+            clean,
+            null,
+            2
+        );
+
+
+    const blob =
+        new Blob(
+            [json],
+            {
+                type:
+                    "application/json"
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(
+            blob
+        );
+
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+
+    link.href =
+        url;
+
+
+    link.download =
+        "birthdays.json";
+
+
+    document.body.appendChild(
+        link
     );
 
 
-  const blob =
-    new Blob(
-      [data],
-      {
-        type: "application/json"
-      }
+    link.click();
+
+
+    link.remove();
+
+
+    URL.revokeObjectURL(
+        url
     );
-
-
-  const url =
-    URL.createObjectURL(blob);
-
-
-  const link =
-    document.createElement("a");
-
-  link.href = url;
-
-  link.download =
-    "birthdays.json";
-
-
-  document.body.appendChild(link);
-
-  link.click();
-
-  link.remove();
-
-  URL.revokeObjectURL(url);
 
 }
 
 
-/* СБРОС */
+/* =========================
+   RESET
+========================= */
 
 function resetData() {
 
-  if (
-    !confirm(
-      "Удалить все сохранённые дни рождения?"
-    )
-  ) {
-
-    return;
-
-  }
+    const confirmed =
+        confirm(
+            "Сбросить локальные изменения?"
+        );
 
 
-  localStorage.removeItem(
-    STORAGE_KEY
-  );
+    if (!confirmed) {
 
-  birthdays = [];
+        return;
 
-  render();
-
-}
+    }
 
 
-/* ДАТА */
+    localStorage.removeItem(
+        STORAGE_KEY
+    );
 
-function formatDate(person) {
 
-  return (
-    String(person.day).padStart(2, "0")
-    + "."
-    +
-    String(person.month).padStart(2, "0")
-  );
+    /*
+       После сброса снова загружаем
+       birthdays.json с GitHub.
+    */
+
+    location.reload();
 
 }
 
 
-/* ДНИ */
+/* =========================
+   SORT
+========================= */
 
-function daysText(days) {
+function compareBirthdays(
+    a,
+    b
+) {
 
-  if (days === 0) {
-    return "сегодня 🎉";
-  }
+    const monthA =
+        Number(a.month);
 
-  if (days === 1) {
-    return "завтра";
-  }
 
-  return `через ${days} ${daysWord(days)}`;
+    const monthB =
+        Number(b.month);
+
+
+    if (
+        monthA !== monthB
+    ) {
+
+        return (
+            monthA -
+            monthB
+        );
+
+    }
+
+
+    const dayA =
+        Number(a.day);
+
+
+    const dayB =
+        Number(b.day);
+
+
+    if (
+        dayA !== dayB
+    ) {
+
+        return (
+            dayA -
+            dayB
+        );
+
+    }
+
+
+    return String(a.name)
+        .localeCompare(
+            String(b.name),
+            "ru"
+        );
 
 }
 
 
-function daysWord(number) {
+/* =========================
+   FORMAT DATE
+========================= */
 
-  const n =
-    Math.abs(number) % 100;
+function formatDate(
+    person
+) {
 
-  const last =
-    n % 10;
+    return (
+
+        String(
+            person.day
+        ).padStart(2, "0")
+
+        +
+
+        "."
+
+        +
+
+        String(
+            person.month
+        ).padStart(2, "0")
+
+    );
+
+}
 
 
-  if (n >= 11 && n <= 19) {
+/* =========================
+   FORMAT DAYS
+========================= */
+
+function formatDays(
+    days
+) {
+
+    if (
+        days === 0
+    ) {
+
+        return "сегодня 🎉";
+
+    }
+
+
+    if (
+        days === 1
+    ) {
+
+        return "завтра";
+
+    }
+
+
+    return (
+        `через ${days} ${daysWord(days)}`
+    );
+
+}
+
+
+/* =========================
+   DAYS WORD
+========================= */
+
+function daysWord(
+    number
+) {
+
+    const n =
+        Math.abs(number)
+        % 100;
+
+
+    const last =
+        n % 10;
+
+
+    if (
+        n >= 11 &&
+        n <= 19
+    ) {
+
+        return "дней";
+
+    }
+
+
+    if (
+        last === 1
+    ) {
+
+        return "день";
+
+    }
+
+
+    if (
+        last >= 2 &&
+        last <= 4
+    ) {
+
+        return "дня";
+
+    }
+
+
     return "дней";
-  }
-
-  if (last === 1) {
-    return "день";
-  }
-
-  if (last >= 2 && last <= 4) {
-    return "дня";
-  }
-
-  return "дней";
 
 }
 
 
-/* ГОДЫ */
+/* =========================
+   YEARS WORD
+========================= */
 
-function yearsWord(number) {
+function yearsWord(
+    number
+) {
 
-  const n =
-    Math.abs(number) % 100;
-
-  const last =
-    n % 10;
+    const n =
+        Math.abs(number)
+        % 100;
 
 
-  if (n >= 11 && n <= 19) {
+    const last =
+        n % 10;
+
+
+    if (
+        n >= 11 &&
+        n <= 19
+    ) {
+
+        return "лет";
+
+    }
+
+
+    if (
+        last === 1
+    ) {
+
+        return "год";
+
+    }
+
+
+    if (
+        last >= 2 &&
+        last <= 4
+    ) {
+
+        return "года";
+
+    }
+
+
     return "лет";
-  }
-
-  if (last === 1) {
-    return "год";
-  }
-
-  if (last >= 2 && last <= 4) {
-    return "года";
-  }
-
-  return "лет";
 
 }
+
 
 </script>
 
