@@ -36,28 +36,10 @@
     "birthYear": 2007
   },
   {
-    "name": "lilanova",
-    "day": 17,
-    "month": 4,
-    "birthYear": 2012
-  },
-  {
     "name": "lofifo",
     "day": 20,
     "month": 4,
     "birthYear": 2007
-  },
-  {
-    "name": "𝑻𝒊𝒉𝒊𝒍𝒍",
-    "day": 10,
-    "month": 5,
-    "birthYear": 2010
-  },
-  {
-    "name": "livris",
-    "day": 17,
-    "month": 5,
-    "birthYear": 2010
   },
   {
     "name": "EntyCode",
@@ -78,27 +60,21 @@
     "birthYear": 2009
   },
   {
-    "name": "Radiokonal",
-    "day": 9,
-    "month": 7,
-    "birthYear": 2011
-  },
-  {
     "name": "lum1nirov",
     "day": 22,
     "month": 7,
     "birthYear": 2009
   },
   {
-    "name": "Chicha#13",
+    "name": "Abdulita",
+    "day": 23,
+    "month": 8,
+    "birthYear": 2012
+  },
+  {
+    "name": "chicha013",
     "day": 28,
     "month": 9,
     "birthYear": 2009
-  },
-  {
-    "name": "Blade_In_Winter",
-    "day": 15,
-    "month": 11,
-    "birthYear": 2011
   }
 ]
